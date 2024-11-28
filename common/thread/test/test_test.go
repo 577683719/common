@@ -1,8 +1,8 @@
 package test
 
 import (
-	"ecs_cloud/common/thread"
 	"fmt"
+	"github.com/577683719/common/common/thread"
 	"testing"
 	"time"
 )

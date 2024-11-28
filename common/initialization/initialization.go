@@ -1,7 +1,7 @@
 package initialization
 
 import (
-	"ecs_cloud/common/util/logger"
+	"github.com/577683719/common/common/util/logger"
 	"os"
 	"os/signal"
 	"syscall"

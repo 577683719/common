@@ -1,8 +1,8 @@
 package main
 
 import (
-	"ecs_cloud/common/util/common_util"
 	"fmt"
+	"github.com/577683719/common/common/util/common_util"
 	"github.com/duke-git/lancet/v2/datetime"
 	"strconv"
 	"time"

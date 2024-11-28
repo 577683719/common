@@ -1,7 +1,7 @@
 package gredis_lock
 
 import (
-	"ecs_cloud/common/util/gredis"
+	"github.com/577683719/common/common/util/gredis"
 	"github.com/go-redsync/redsync/v4"
 	"time"
 )

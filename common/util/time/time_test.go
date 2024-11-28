@@ -1,9 +1,9 @@
 package time_util
 
 import (
-	"ecs_cloud/common/util/common_util/date_util"
-	"ecs_cloud/common/util/logger"
 	"fmt"
+	"github.com/577683719/common/common/util/common_util/date_util"
+	"github.com/577683719/common/common/util/logger"
 	"testing"
 	"time"
 )

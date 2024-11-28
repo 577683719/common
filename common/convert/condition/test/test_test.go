@@ -1,9 +1,9 @@
 package test
 
 import (
-	condition_gen "ecs_cloud/common/convert/condition"
-	"ecs_cloud/idl/gen/v1/coupons"
-	"ecs_cloud/service_api/repository/model"
+	condition_gen "github.com/577683719/common/common/convert/condition"
+	"github.com/577683719/common/idl/gen/v1/coupons"
+	"github.com/577683719/common/service_api/repository/model"
 	"testing"
 )
 

@@ -1,4 +1,4 @@
-module ecs_cloud
+module github.com/577683719/common
 
 go 1.22.2
 

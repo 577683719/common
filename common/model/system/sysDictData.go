@@ -1,11 +1,11 @@
 package system
 
 import (
-	"ecs_cloud/service/admin_gatway/app/admin/model/tools"
-	"ecs_cloud/service/admin_gatway/pkg/mysql"
-	"ecs_cloud/service/admin_gatway/utils"
-	"ecs_cloud/service/admin_gatway/utils/R"
 	"fmt"
+	"github.com/577683719/common/service/admin_gatway/app/admin/model/tools"
+	"github.com/577683719/common/service/admin_gatway/pkg/mysql"
+	"github.com/577683719/common/service/admin_gatway/utils"
+	"github.com/577683719/common/service/admin_gatway/utils/R"
 	"time"
 )
 

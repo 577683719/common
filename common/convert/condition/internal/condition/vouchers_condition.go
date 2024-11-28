@@ -1,8 +1,8 @@
 package vouchers_condition
 
 import (
-	"ecs_cloud/service_api/repository/dao"
-	"ecs_cloud/service_api/repository/model"
+	"github.com/577683719/common/service_api/repository/dao"
+	"github.com/577683719/common/service_api/repository/model"
 	"time"
 )
 

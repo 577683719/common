@@ -1,7 +1,7 @@
 package ctl
 
 import (
-	"ecs_cloud/common/e"
+	"github.com/577683719/common/common/e"
 	"github.com/gin-gonic/gin"
 )
 

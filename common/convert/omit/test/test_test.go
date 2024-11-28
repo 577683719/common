@@ -1,9 +1,9 @@
 package test
 
 import (
-	convert_gen_omit "ecs_cloud/common/convert/omit"
-	"ecs_cloud/idl/gen/v1/coupons"
-	"ecs_cloud/service_api/repository/model"
+	convert_gen_omit "github.com/577683719/common/common/convert/omit"
+	"github.com/577683719/common/idl/gen/v1/coupons"
+	"github.com/577683719/common/service_api/repository/model"
 	"testing"
 )
 

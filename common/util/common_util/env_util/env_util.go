@@ -1,7 +1,7 @@
 package env_util
 
 import (
-	"ecs_cloud/common/util/strutil"
+	"github.com/577683719/common/common/util/strutil"
 	"github.com/spf13/viper"
 	"strings"
 )

@@ -2,7 +2,7 @@ package permissions_util
 
 import (
 	"context"
-	rpc_constant "ecs_cloud/common/util/constant/rpc"
+	rpc_constant "github.com/577683719/common/common/util/constant/rpc"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
 )

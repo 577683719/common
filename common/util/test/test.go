@@ -1,8 +1,8 @@
 package test_util
 
 import (
-	"ecs_cloud/service_api/repository/dao"
 	"fmt"
+	"github.com/577683719/common/service_api/repository/dao"
 	"strings"
 )
 

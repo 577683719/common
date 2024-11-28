@@ -1,7 +1,7 @@
 package result
 
 import (
-	"ecs_cloud/common/e"
+	"github.com/577683719/common/common/e"
 )
 
 // Result 表示统一响应的JSON格式

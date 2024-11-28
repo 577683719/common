@@ -1,7 +1,7 @@
 package jwt
 
 import (
-	"ecs_cloud/config"
+	"github.com/577683719/common/config"
 	"time"
 
 	"github.com/dgrijalva/jwt-go"

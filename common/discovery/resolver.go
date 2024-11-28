@@ -2,7 +2,7 @@ package discovery
 
 import (
 	"context"
-	"ecs_cloud/common/util/logger"
+	"github.com/577683719/common/common/util/logger"
 	"strings"
 	"time"
 

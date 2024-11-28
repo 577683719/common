@@ -1,11 +1,11 @@
 package job_client
 
 import (
-	httpClient "ecs_cloud/common/util/http"
-	"ecs_cloud/common/util/logger"
-	"ecs_cloud/config"
 	"encoding/json"
 	"fmt"
+	httpClient "github.com/577683719/common/common/util/http"
+	"github.com/577683719/common/common/util/logger"
+	"github.com/577683719/common/config"
 	"net/http"
 	"strconv"
 	"strings"

@@ -1,7 +1,7 @@
 package user_omit
 
 import (
-	"ecs_cloud/service_api/repository/model"
+	"github.com/577683719/common/service_api/repository/model"
 	"time"
 )
 

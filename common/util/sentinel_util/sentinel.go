@@ -1,9 +1,9 @@
 package sentinel_util
 
 import (
-	"ecs_cloud/common/util/logger"
-	"ecs_cloud/config"
 	"fmt"
+	"github.com/577683719/common/common/util/logger"
+	"github.com/577683719/common/config"
 	sentinel "github.com/alibaba/sentinel-golang/api"
 	sentinel_config "github.com/alibaba/sentinel-golang/core/config"
 	"github.com/alibaba/sentinel-golang/ext/datasource"

@@ -1,7 +1,7 @@
 package dict_util
 
 import (
-	"ecs_cloud/common/model/system"
+	"github.com/577683719/common/common/model/system"
 	"gorm.io/gorm"
 )
 

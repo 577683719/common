@@ -2,9 +2,9 @@ package gredis
 
 import (
 	"context"
-	"ecs_cloud/common/util/common_util/date_util"
-	"ecs_cloud/config"
 	"fmt"
+	"github.com/577683719/common/common/util/common_util/date_util"
+	"github.com/577683719/common/config"
 	"github.com/duke-git/lancet/v2/datetime"
 	"github.com/go-redsync/redsync/v4"
 	"github.com/go-redsync/redsync/v4/redis/goredis/v8"

@@ -1,8 +1,8 @@
 package device_client
 
 import (
-	httpClient "ecs_cloud/common/util/http"
-	"ecs_cloud/config"
+	httpClient "github.com/577683719/common/common/util/http"
+	"github.com/577683719/common/config"
 )
 
 import (

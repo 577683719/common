@@ -2,12 +2,12 @@ package common_util
 
 import (
 	"context"
-	"ecs_cloud/common/ctl"
-	"ecs_cloud/common/util/common_util/date_util"
-	common_util_snowflake "ecs_cloud/common/util/common_util/snowflake"
-	"ecs_cloud/common/util/common_util/xid_util"
-	"ecs_cloud/config"
 	"fmt"
+	"github.com/577683719/common/common/ctl"
+	"github.com/577683719/common/common/util/common_util/date_util"
+	common_util_snowflake "github.com/577683719/common/common/util/common_util/snowflake"
+	"github.com/577683719/common/common/util/common_util/xid_util"
+	"github.com/577683719/common/config"
 	"github.com/duke-git/lancet/v2/netutil"
 	"github.com/duke-git/lancet/v2/strutil"
 	"github.com/google/uuid"

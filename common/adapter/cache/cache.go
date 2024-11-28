@@ -1,10 +1,10 @@
 package cache_adapter
 
 import (
-	"ecs_cloud/common/util/gredis"
-	"ecs_cloud/idl/gen/v1/enums"
 	"encoding/json"
 	"fmt"
+	"github.com/577683719/common/common/util/gredis"
+	"github.com/577683719/common/idl/gen/v1/enums"
 	"github.com/patrickmn/go-cache"
 	"time"
 )

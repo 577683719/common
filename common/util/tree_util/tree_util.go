@@ -1,6 +1,6 @@
 package tree_util
 
-import "ecs_cloud/idl/gen/v1/device"
+import "github.com/577683719/common/idl/gen/v1/device"
 
 /**
  * 递归模式，数组转tree

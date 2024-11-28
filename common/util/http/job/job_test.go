@@ -1,8 +1,8 @@
 package job_client
 
 import (
-	"ecs_cloud/common/util/common_util/corn_util"
 	"fmt"
+	"github.com/577683719/common/common/util/common_util/corn_util"
 	"github.com/duke-git/lancet/v2/compare"
 	"github.com/duke-git/lancet/v2/datetime"
 	"strconv"

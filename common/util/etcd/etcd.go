@@ -2,9 +2,9 @@ package etcd_util
 
 import (
 	"context"
-	"ecs_cloud/common/util/logger"
-	"ecs_cloud/config"
 	"encoding/json"
+	"github.com/577683719/common/common/util/logger"
+	"github.com/577683719/common/config"
 	clientv3 "go.etcd.io/etcd/client/v3"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
