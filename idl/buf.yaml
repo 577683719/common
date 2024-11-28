@@ -1,0 +1,8 @@
+version: v2
+modules:
+  # Each module entry defines a path, which must be relative to the directory where the
+  # buf.yaml is located. You can also specify directories to exclude from a module.
+  - path: api/v1/device
+  - path: api/v1/validate
+deps:
+  - buf.build/envoyproxy/protoc-gen-validate

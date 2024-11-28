@@ -1,0 +1,60 @@
+type: google.api.Service
+config_version: 3
+
+# Please refer google.api.Http in https://github.com/googleapis/googleapis/blob/master/google/api/http.proto file for details.
+http:
+  rules:
+    #编辑发票信息
+    - selector: InvoiceService.EditInvoiceInfo
+      post: /api/v1/invoice/editInvoiceInfo
+      body: "*"
+
+    #查询发票信息
+    - selector: InvoiceService.QueryInvoiceInfo
+      post: /api/v1/invoice/queryInvoiceInfo
+      body: "*"
+
+    #查询发票信息
+    - selector: InvoiceService.QueryInvoiceReceiveAddr
+      post: /api/v1/invoice/queryInvoiceReceiveAddr
+      body: "*"
+
+    #查询发票信息
+    - selector: InvoiceService.QueryInvoiceReceiveEmail
+      post: /api/v1/invoice/queryInvoiceReceiveEmail
+      body: "*"
+
+    - selector: InvoiceService.EditInvoiceReceiveEmail
+      post: /api/v1/invoice/editInvoiceReceiveEmail
+      body: "*"
+
+    - selector: InvoiceService.EditInvoiceReceiveAddr
+      post: /api/v1/invoice/editInvoiceReceiveAddr
+      body: "*"
+    - selector: InvoiceService.AddInvoiceInfo
+      post: /api/v1/invoice/addInvoiceInfo
+      body: "*"
+
+    - selector: InvoiceService.GetInvoicableAmount
+      post: /api/v1/invoice/getInvoicableAmount
+      body: "*"
+
+    - selector: InvoiceService.GetInvoicableTransactionDetailList
+      post: /api/v1/invoice/getInvoicableTransactionDetailList
+      body: "*"
+
+    - selector: InvoiceService.BillInvoicingApplication
+      post: /api/v1/invoice/billInvoicingApplication
+      body: "*"
+    - selector: InvoiceService.GetInvoiceApplicationRecord
+      post: /api/v1/invoice/getInvoiceApplicationRecord
+      body: "*"
+
+
+#  管理端
+    - selector: InvoiceService.SelectInvoiceApplicationPage
+      post: /admin/v1/invoice/selectInvoiceApplicationPage
+      body: "*"
+    - selector: InvoiceService.RefuseIssueInvoice
+      post: /admin/v1/invoice/refuseIssueInvoice
+      body: "*"

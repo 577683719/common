@@ -1,0 +1,1035 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "bill.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "BillServices"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/admin/v1/bill/getBillProductList": {
+      "post": {
+        "summary": "管理端_获取产品列表",
+        "operationId": "BillServices_GetBillProductList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetBillProductListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetBillProductListRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BillServices"
+        ]
+      }
+    },
+    "/admin/v1/bill/queryBillDetailsList": {
+      "post": {
+        "summary": "管理端_查询账单明细列表",
+        "operationId": "BillServices_QueryBillDetailsList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/QueryBillDetailsListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryBillDetailsListRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BillServices"
+        ]
+      }
+    },
+    "/admin/v1/bill/queryTransactionDetailList": {
+      "post": {
+        "summary": "管理端_查询收支明细列表",
+        "operationId": "BillServices_QueryTransactionDetailList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/QueryTransactionDetailListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryTransactionDetailListRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BillServices"
+        ]
+      }
+    },
+    "/api/v1/bill/billDetails": {
+      "post": {
+        "summary": "账单详细接口",
+        "operationId": "BillServices_BillDetails",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/BillDetailsResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BillDetailsReq"
+            }
+          }
+        ],
+        "tags": [
+          "BillServices"
+        ]
+      }
+    },
+    "/api/v1/bill/billDetailsList": {
+      "post": {
+        "summary": "账单明细列表接口",
+        "operationId": "BillServices_BillDetailsList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/BillDetailsListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BillDetailsListRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BillServices"
+        ]
+      }
+    },
+    "/api/v1/bill/getRecentPointsStatistics": {
+      "post": {
+        "summary": "获取近期雨点统计",
+        "operationId": "BillServices_GetRecentPointsStatistics",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetRecentPointsStatisticsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetRecentPointsStatisticsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BillServices"
+        ]
+      }
+    },
+    "/api/v1/bill/getTransactionDetailList": {
+      "post": {
+        "summary": "收支明细列表",
+        "operationId": "BillServices_TransactionDetailList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/TransactionDetailListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TransactionDetailListRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BillServices"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "BillDetailsListRequest": {
+      "type": "object",
+      "properties": {
+        "orderCode": {
+          "type": "string",
+          "title": "订单编号"
+        },
+        "subAccounts": {
+          "type": "string",
+          "title": "子账号"
+        },
+        "billingTimeFrom": {
+          "type": "string",
+          "title": "账单时间从"
+        },
+        "billingTimeTo": {
+          "type": "string",
+          "title": "账单时间到"
+        },
+        "pageNum": {
+          "type": "string",
+          "format": "int64",
+          "title": "页号"
+        },
+        "pagesize": {
+          "type": "string",
+          "format": "int64",
+          "title": "页大小"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        }
+      },
+      "title": "账单明细列表请求对象"
+    },
+    "BillDetailsListResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码"
+        },
+        "message": {
+          "type": "string",
+          "title": "响应消息"
+        },
+        "data": {
+          "$ref": "#/definitions/BillingDetailsPage",
+          "title": "收支明细响应结构体"
+        }
+      },
+      "title": "账单明细列表响应对象"
+    },
+    "BillDetailsReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "账单id"
+        }
+      },
+      "title": "账单详细请求对象"
+    },
+    "BillDetailsResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码"
+        },
+        "message": {
+          "type": "string",
+          "title": "响应消息"
+        },
+        "data": {
+          "$ref": "#/definitions/BillingDetails",
+          "title": "订单详细"
+        }
+      },
+      "title": "账单详细响应对象"
+    },
+    "BillProduct": {
+      "type": "object",
+      "properties": {
+        "productName": {
+          "type": "string",
+          "title": "产品名称"
+        },
+        "productId": {
+          "type": "string",
+          "title": "产品id"
+        },
+        "duration": {
+          "type": "string",
+          "format": "int64",
+          "title": "时长"
+        },
+        "totalPrice": {
+          "type": "string",
+          "title": "总价格"
+        }
+      },
+      "title": "账单产品"
+    },
+    "BillingDetails": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "主键"
+        },
+        "serialNumber": {
+          "type": "string",
+          "title": "流水号"
+        },
+        "transactionTime": {
+          "type": "string",
+          "title": "交易时间"
+        },
+        "transactionType": {
+          "type": "string",
+          "title": "交易类型"
+        },
+        "productName": {
+          "type": "string",
+          "title": "产品名称"
+        },
+        "transactionAmount": {
+          "type": "string",
+          "title": "交易金额"
+        },
+        "originalPrice": {
+          "type": "string",
+          "title": "原价"
+        },
+        "discountAmount": {
+          "type": "string",
+          "title": "优惠金额"
+        },
+        "balancePayment": {
+          "type": "string",
+          "title": "余额支付"
+        },
+        "voucherDeduction": {
+          "type": "string",
+          "title": "代金券抵扣"
+        },
+        "subAccount": {
+          "type": "string",
+          "title": "子账号"
+        },
+        "orderCode": {
+          "type": "string",
+          "title": "订单号"
+        },
+        "instanceId": {
+          "type": "string",
+          "title": "实例id"
+        },
+        "billingType": {
+          "type": "string",
+          "title": "计费方式"
+        },
+        "billingCycle": {
+          "type": "string",
+          "title": "计费周期"
+        },
+        "billingDuration": {
+          "type": "string",
+          "title": "计费时长"
+        },
+        "deductionReason": {
+          "type": "string",
+          "title": "扣费原因"
+        },
+        "noCardMode": {
+          "type": "string",
+          "title": "无卡模式"
+        },
+        "createTime": {
+          "type": "string",
+          "title": "创建时间"
+        },
+        "updateTime": {
+          "type": "string",
+          "title": "更新时间"
+        },
+        "createUser": {
+          "type": "string",
+          "format": "int64",
+          "title": "创建人"
+        },
+        "updateUser": {
+          "type": "string",
+          "format": "int64",
+          "title": "修改人"
+        },
+        "version": {
+          "type": "integer",
+          "format": "int32",
+          "title": "版本号"
+        },
+        "del": {
+          "type": "boolean",
+          "title": "删除标记，0:未删除，1:已删除"
+        },
+        "billingState": {
+          "type": "string",
+          "title": "账单状态[UNPAID未支付，PAID已支付，CANCELLED已取消，REFUNDED已退款，PENDING_REVIEW待审核，REVIEW_FAILED审核不通过，COMPLETED已完成]'"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        }
+      },
+      "title": "账单明细对象"
+    },
+    "BillingDetailsPage": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "总的记录数"
+        },
+        "size": {
+          "type": "string",
+          "format": "int64",
+          "title": "每页显示的大小"
+        },
+        "current": {
+          "type": "string",
+          "format": "int64",
+          "title": "当前页"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/BillingDetails"
+          },
+          "title": "账单明细对象列表"
+        }
+      },
+      "title": "账单明细分页对象"
+    },
+    "ExportDailyStatement": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string",
+          "title": "日期"
+        },
+        "serialNumber": {
+          "type": "string",
+          "title": "流水号"
+        },
+        "billCreateTime": {
+          "type": "string",
+          "title": "账单创建时间"
+        },
+        "transactionType": {
+          "type": "string",
+          "title": "交易类型"
+        },
+        "transactionAmount": {
+          "type": "string",
+          "title": "交易金额"
+        },
+        "discountAmount": {
+          "type": "string",
+          "title": "优惠金额"
+        },
+        "balancePayment": {
+          "type": "string",
+          "title": "余额支付"
+        },
+        "voucherDeduction": {
+          "type": "string",
+          "title": "代金券抵扣"
+        }
+      }
+    },
+    "ExportDailyStatementResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "format": "int64",
+          "title": "bytes content = 1;\r\n string filename = 2;"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/ExportDailyStatement"
+          }
+        }
+      },
+      "title": "导出日结账单响应对象"
+    },
+    "GetBillProductListPage": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "总的记录数"
+        },
+        "size": {
+          "type": "string",
+          "format": "int64",
+          "title": "每页显示的大小"
+        },
+        "current": {
+          "type": "string",
+          "format": "int64",
+          "title": "当前页"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/BillProduct"
+          },
+          "title": "账单产品列表"
+        }
+      },
+      "title": "获取账单产品列表product对象"
+    },
+    "GetBillProductListRequest": {
+      "type": "object",
+      "properties": {
+        "pageNum": {
+          "type": "string",
+          "format": "int64",
+          "title": "页号"
+        },
+        "pagesize": {
+          "type": "string",
+          "format": "int64",
+          "title": "页大小"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        }
+      },
+      "title": "获取账单产品列表"
+    },
+    "GetBillProductListResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码"
+        },
+        "message": {
+          "type": "string",
+          "title": "响应消息"
+        },
+        "data": {
+          "$ref": "#/definitions/GetBillProductListPage",
+          "title": "收支明细响应结构体"
+        }
+      }
+    },
+    "GetRecentPointsStatisticsRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        }
+      },
+      "title": "获取近期雨点统计请求对象"
+    },
+    "GetRecentPointsStatisticsResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码"
+        },
+        "message": {
+          "type": "string",
+          "title": "响应消息"
+        },
+        "data": {
+          "$ref": "#/definitions/RecentPointsStatistics",
+          "title": "响应对象"
+        }
+      },
+      "title": "获取近期雨点统计响应对象"
+    },
+    "QueryBillDetailsList": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "总的记录数"
+        },
+        "size": {
+          "type": "string",
+          "format": "int64",
+          "title": "每页显示的大小"
+        },
+        "current": {
+          "type": "string",
+          "format": "int64",
+          "title": "当前页"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/BillingDetails"
+          },
+          "title": "账单明细对象列表"
+        }
+      },
+      "title": "账单明细分页对象"
+    },
+    "QueryBillDetailsListRequest": {
+      "type": "object",
+      "properties": {
+        "pageNum": {
+          "type": "string",
+          "format": "int64",
+          "title": "页号"
+        },
+        "pagesize": {
+          "type": "string",
+          "format": "int64",
+          "title": "页大小"
+        },
+        "orderCode": {
+          "type": "string",
+          "title": "订单编号"
+        },
+        "subAccounts": {
+          "type": "string",
+          "title": "子账号"
+        },
+        "billingTimeFrom": {
+          "type": "string",
+          "title": "账单时间从"
+        },
+        "billingTimeTo": {
+          "type": "string",
+          "title": "账单时间到"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        },
+        "serialNumber": {
+          "type": "string",
+          "title": "流水号"
+        },
+        "transactionType": {
+          "type": "string",
+          "title": "交易类型"
+        },
+        "productName": {
+          "type": "string",
+          "title": "产品名称"
+        },
+        "instanceId": {
+          "type": "string",
+          "title": "实例id"
+        },
+        "billingType": {
+          "type": "string",
+          "title": "计费方式"
+        },
+        "deductionReason": {
+          "type": "string",
+          "title": "扣费原因"
+        },
+        "billingState": {
+          "type": "string",
+          "title": "账单状态"
+        }
+      },
+      "title": "账单明细列表请求对象"
+    },
+    "QueryBillDetailsListResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码"
+        },
+        "message": {
+          "type": "string",
+          "title": "响应消息"
+        },
+        "data": {
+          "$ref": "#/definitions/QueryBillDetailsList",
+          "title": "收支明细响应结构体"
+        }
+      },
+      "title": "账单明细列表响应对象"
+    },
+    "QueryTransactionDetailList": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "总的记录数"
+        },
+        "size": {
+          "type": "string",
+          "format": "int64",
+          "title": "每页显示的大小"
+        },
+        "current": {
+          "type": "string",
+          "format": "int64",
+          "title": "当前页"
+        },
+        "transactionDetails": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/TransactionDetail"
+          },
+          "title": "收支明细列表"
+        }
+      },
+      "title": "收支明细响应分页对象"
+    },
+    "QueryTransactionDetailListRequest": {
+      "type": "object",
+      "properties": {
+        "pageNum": {
+          "type": "string",
+          "format": "int64",
+          "title": "页号"
+        },
+        "pagesize": {
+          "type": "string",
+          "format": "int64",
+          "title": "页大小"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        },
+        "transactionTimeFrom": {
+          "type": "string",
+          "title": "交易时间从"
+        },
+        "transactionTimeTimeTo": {
+          "type": "string",
+          "title": "交易结束到"
+        },
+        "serialNumber": {
+          "type": "string",
+          "title": "流水号"
+        },
+        "incomeExpenseType": {
+          "type": "string",
+          "title": "收支类型"
+        },
+        "transactionType": {
+          "type": "string",
+          "title": "交易类型"
+        }
+      },
+      "title": "收支明细列表请求对象"
+    },
+    "QueryTransactionDetailListResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码"
+        },
+        "message": {
+          "type": "string",
+          "title": "响应消息"
+        },
+        "data": {
+          "$ref": "#/definitions/QueryTransactionDetailList",
+          "title": "收支明细响应结构体"
+        }
+      },
+      "title": "收支明细响应对象"
+    },
+    "RecentPointsStatistics": {
+      "type": "object",
+      "properties": {
+        "rechargePoints": {
+          "type": "string",
+          "title": "充值雨点"
+        },
+        "consumptionPoints": {
+          "type": "string",
+          "title": "消费雨点"
+        }
+      },
+      "title": "最近雨点统计对象"
+    },
+    "TransactionDetail": {
+      "type": "object",
+      "properties": {
+        "serialNumber": {
+          "type": "string",
+          "title": "流水号"
+        },
+        "transactionTime": {
+          "type": "string",
+          "title": "交易时间"
+        },
+        "incomeExpenseType": {
+          "type": "string",
+          "title": "收支类型"
+        },
+        "transactionType": {
+          "type": "string",
+          "title": "交易类型"
+        },
+        "transactionChannel": {
+          "type": "string",
+          "title": "交易渠道"
+        },
+        "transactionAmount": {
+          "type": "string",
+          "title": "交易金额"
+        },
+        "accountBalance": {
+          "type": "string",
+          "title": "账户剩余雨点"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户ID"
+        },
+        "remark": {
+          "type": "string",
+          "title": "备注"
+        },
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "主键"
+        },
+        "walletBalance": {
+          "type": "string",
+          "title": "钱包余额"
+        }
+      },
+      "title": "TransactionDetail 收支明细表"
+    },
+    "TransactionDetailListRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        },
+        "transactionTimeFrom": {
+          "type": "string",
+          "title": "交易时间从"
+        },
+        "transactionTimeTimeTo": {
+          "type": "string",
+          "title": "交易结束到"
+        },
+        "pageNum": {
+          "type": "string",
+          "format": "int64",
+          "title": "页号"
+        },
+        "pagesize": {
+          "type": "string",
+          "format": "int64",
+          "title": "页大小"
+        }
+      },
+      "title": "收支明细列表请求对象"
+    },
+    "TransactionDetailListResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码"
+        },
+        "message": {
+          "type": "string",
+          "title": "响应消息"
+        },
+        "data": {
+          "$ref": "#/definitions/TransactionDetailPageResponse",
+          "title": "收支明细响应结构体"
+        }
+      },
+      "title": "收支明细响应对象"
+    },
+    "TransactionDetailPageResponse": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "总的记录数"
+        },
+        "size": {
+          "type": "string",
+          "format": "int64",
+          "title": "每页显示的大小"
+        },
+        "current": {
+          "type": "string",
+          "format": "int64",
+          "title": "当前页"
+        },
+        "transactionDetails": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/TransactionDetail"
+          },
+          "title": "收支明细列表"
+        }
+      },
+      "title": "收支明细响应分页对象"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

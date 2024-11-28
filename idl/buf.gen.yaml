@@ -1,0 +1,33 @@
+version: v2
+plugins:
+  # protoc-gen-go needs to be installed, generate go files based on proto files
+  - local:  protoc-gen-go
+    out: ./gen/v1/device
+    opt:
+      - paths=source_relative
+  # protoc-gen-go-grpc needs to be installed, generate grpc go files based on proto files
+  - local: protoc-gen-go-grpc
+    out: ./gen/v1/device
+    opt:
+      - paths=source_relative
+      - require_unimplemented_servers=false
+  # protoc-gen-grpc-gateway needs to be installed, generate grpc-gateway go files based on proto files
+  - local: protoc-gen-grpc-gateway
+    out: ./gen/v1/device
+    opt:
+      - paths=source_relative
+      - grpc_api_configuration=api/v1/device/gw_mapping.yaml
+  # protoc-gen-openapiv2 needs to be installed, generate swagger config files based on proto files
+  - local: protoc-gen-openapiv2
+    out: ./gen/v1/device
+    opt:
+      - grpc_api_configuration=api/v1/device/gw_mapping.yaml
+  - remote: buf.build/bufbuild/validate-go:v1.1.0
+    out: ./gen/v1/device
+    opt:
+      - paths=source_relative
+  - remote: buf.build/community/mfridman-go-json:v1.4.1
+    out: ./gen/v1/device
+    opt:
+      - paths=source_relative
+

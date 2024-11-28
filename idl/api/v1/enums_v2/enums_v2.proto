@@ -1,0 +1,302 @@
+syntax = "proto3";
+
+package enums_v2;
+option go_package = "enums_v2/";
+
+import "google/protobuf/descriptor.proto";
+import "nvac/enum_desc.proto";
+
+message SettlementApplication{
+
+    //     结算状态
+    enum SettlementStatus{
+        //待处理
+        PENDING=0[(nvac.enum_desc) = "待处理"];
+        //已结算
+        SETTLED=1[(nvac.enum_desc) = "已结算"];
+        //拒绝
+        REJECTED=2[(nvac.enum_desc) = "拒绝"];
+    }
+
+}
+//转账状态
+message TransferStatus{
+    //转账状态
+    enum TransferStatus{
+        //未转账
+        PENDING=0[(nvac.enum_desc) = "未转账"];
+        //已转账
+        SUCCESS=1[(nvac.enum_desc) = "已转账"];
+        //转账失败
+        FAIL=2[(nvac.enum_desc) = "转账失败"];
+    }
+}
+
+//审批状态
+message ApprovalStatus{
+    //审批状态枚举
+    enum ApprovalStatus{
+        //待审批
+        PENDING=0[(nvac.enum_desc) = "待审批"];
+        //已批准
+        APPROVED=1[(nvac.enum_desc) = "已批准"];
+        //已拒绝
+        REJECTED=2[(nvac.enum_desc) = "已拒绝"];
+        //审核中
+        IN_REVIEW=3[(nvac.enum_desc) = "审核中"];
+        //已完成
+        COMPLETED=4[(nvac.enum_desc) = "已完成"];
+        //正在审查
+        UNDER_REVIEW=5[(nvac.enum_desc) = "正在审查"];
+        //已取消
+        CANCELLED=6[(nvac.enum_desc) = "已取消"];
+    }
+}
+
+
+
+enum CacheAdapterEnums{
+    REDIS = 0[(nvac.enum_desc) = "REDIS"];
+}
+
+//充值类型
+message RechargeType{
+    enum RechargeTypeEnum{
+        //雨点充值
+        INTEGRAL=0[(nvac.enum_desc) = "雨点充值"];
+        //余额充值
+        WALLET=1[(nvac.enum_desc) = "余额充值"];
+    }
+}
+message MessageType{
+    enum MessageType{
+        // 普通文本消息
+        TEXT = 0[(nvac.enum_desc) = "普通文本消息"];
+        //图片消息
+        IMAGE = 1[(nvac.enum_desc) = "图片消息"];
+        //文件消息
+        FILE = 2[(nvac.enum_desc) = "文件消息"];
+        //实例消息
+        INSTANCE = 3[(nvac.enum_desc) = "实例消息"];
+    }
+}
+//交易渠道
+message TransactionChannel{
+    //    //交易渠道
+    enum TransactionChannel {
+        // 雨点
+        INTEGRAL = 0[(nvac.enum_desc) = "雨点"];
+        //支付宝
+        ALI = 1[(nvac.enum_desc) = "支付宝"];
+        //微信
+        WECHAT = 2[(nvac.enum_desc) = "微信"];
+        //钱包
+        WALLET=3[(nvac.enum_desc) = "钱包"];
+    }
+}
+//交易类型
+message TransactionType{
+
+    //    //交易类型
+    enum TransactionType{
+        // 消费
+        CONSUMPTION  = 0[(nvac.enum_desc) = "消费"];
+        //充值
+        RECHARGE   = 1[(nvac.enum_desc) = "充值"];
+    }
+
+}
+//收支类型
+message IncomeExpenseType{
+    //收支类型
+    enum IncomeExpenseType{
+        // 支出
+        EXPENDITURE  = 0[(nvac.enum_desc) = "支出"];
+        //收入
+        INCOME   = 1[(nvac.enum_desc) = "收入"];
+    }
+}
+//订单枚举
+message OrderState{
+
+    //订单状态
+    enum OrderState{
+        // 已支付
+        NEW  = 0[(nvac.enum_desc) = "已支付"];
+        //完成
+        COMPLETE   = 1[(nvac.enum_desc) = "完成"];
+        //取消
+        CANCELLED   = 2[(nvac.enum_desc) = "取消"];
+        //失败
+        FAIL = 4[(nvac.enum_desc) = "失败"];
+    }
+
+}
+//支付枚举
+message PayState{
+    //订单支付状态
+    enum PayState {
+        // 已支付
+        PAY = 0[(nvac.enum_desc) = "已支付"];
+        //失败
+        FAILED = 1[(nvac.enum_desc) = "失败"];
+        //已退款
+        REFUNDED = 2[(nvac.enum_desc) = "已退款"];
+        // 已取消
+        CANCELLED = 3[(nvac.enum_desc) = "已取消"];
+        //处理中
+        PROCESSING = 4[(nvac.enum_desc) = "处理中"];
+        //未支付订单
+        NEW = 5[(nvac.enum_desc) = "未支付订单"];
+        //已经支付订单
+        //超时取消订单
+        CANCEL = 6[(nvac.enum_desc) = "超时取消订单"];
+        //创建失败
+        FAIL = 7[(nvac.enum_desc) = "创建失败"];
+
+    }
+}
+//MQ事件消息类型
+enum EventMessageType{
+    //订单添加
+    ORDER_ADD=0[(nvac.enum_desc) = "订单添加"];
+    //延迟扣减用户金额
+    ORDER_EXPENSE_DEDUCTIONS=1[(nvac.enum_desc) = "延迟扣减用户金额"];
+    //创建实例
+    ORDER_CREATE_INSEANCE=2[(nvac.enum_desc) = "创建实例"];
+
+    //关闭实例
+    DEVICE_STOP_INSEANCE=3[(nvac.enum_desc) = "关闭实例"];
+    //开机
+    DEVICE_START_INSEANCE=4[(nvac.enum_desc) = "开机"];
+    //实例释放
+    DEVICE_RELEASE_INSEANCE=5[(nvac.enum_desc) = "实例释放"];
+
+    //雨点赠送
+    ACCOUNT_GRANT_INTEGRAL=20[(nvac.enum_desc) = "雨点赠送"];
+}
+
+
+
+//订单支付状态
+enum OrderPyStateEnums{
+    //未支付订单
+    NEW = 0[(nvac.enum_desc) = "未支付订单"];
+    //已经支付订单
+    PAY = 1[(nvac.enum_desc) = "已经支付订单"];
+    //超时取消订单
+    CANCEL = 2[(nvac.enum_desc) = "超时取消订单"];
+    //创建失败
+    FAIL = 3[(nvac.enum_desc) = "创建失败"];
+
+}
+
+enum InstanceStatusEnums {
+    //开机
+    On = 0[(nvac.enum_desc) = "开机"];
+    //关机
+    Off = 1[(nvac.enum_desc) = "关机"];
+    //失败
+    Fail = 2[(nvac.enum_desc) = "失败"];
+    //初始化
+    Invalid = 3[(nvac.enum_desc) = "初始化"];
+    //异常
+    Exception=4[(nvac.enum_desc) = "异常"];
+    //重新创建
+    ReCreate=5[(nvac.enum_desc) = "重新创建"];
+}
+
+
+message OrderType{
+    //计费类型
+    enum OrderTypeEnums{
+        //按量
+        AMOUNT = 0[(nvac.enum_desc) = "按量"];
+        //按日
+        DAY = 1[(nvac.enum_desc) = "按日"];
+        //按月
+        MONTH = 2[(nvac.enum_desc) = "按月"];
+        //周
+        WEEK = 3[(nvac.enum_desc) = "周"];
+        //年
+        YEAR = 4[(nvac.enum_desc) = "年"];
+        //续费
+        RENEW = 5[(nvac.enum_desc) = "续费"];
+    }
+}
+
+
+//计费类型
+enum BillingTypeEnums{
+    //按量
+    AMOUNT = 0[(nvac.enum_desc) = "按量"];
+    //按日
+    DAY = 1[(nvac.enum_desc) = "按日"];
+    //按月
+    MONTH = 2[(nvac.enum_desc) = "按月"];
+    //周
+    WEEK = 3[(nvac.enum_desc) = "周"];
+    //年
+    YEAR = 4[(nvac.enum_desc) = "年"];
+    //续费
+    RENEW = 5[(nvac.enum_desc) = "续费"];
+}
+
+
+// 可用 NEW,已使用USED,过期 EXPIRED[(nvac.enum_desc) = "DELETED"];
+message VoucherState{
+    //优惠卷与代金券使用状态
+    enum UseStateEnums{
+        //领取状态
+        NEW =0[(nvac.enum_desc) = "领取状态"];
+        //使用状态
+        USED =1[(nvac.enum_desc) = "使用状态"];
+        //过期状态
+        EXPIRED =2[(nvac.enum_desc) = "过期状态"];
+    }
+    //    代金券类型[NEW_USER注册赠券，TASK任务卷，PROMOTION促销劵]
+    enum CategoryEnums{
+        //NEW_USER注册赠券
+        NEW_USER = 0[(nvac.enum_desc) = "注册赠券"];
+        //任务卷
+        TASK = 1[(nvac.enum_desc) = "任务卷"];
+        //促销劵
+        PROMOTION = 2[(nvac.enum_desc) = "促销劵"];
+    }
+}
+
+//发票类型
+enum InvoiceType{
+    //增值税普通发票
+    VAT_PLAIN_INVOICE = 0[(nvac.enum_desc) = "增值税普通发票"];
+    //增值税专用发票
+    VAT_SPECIAL_INVOICE = 1[(nvac.enum_desc) = "增值税专用发票"];
+}
+
+//代金券发布状态
+enum VoucherPublishState{
+    //发布
+    PUBLISH = 0[(nvac.enum_desc) = "发布"];
+    //草稿
+    DRAFT = 1[(nvac.enum_desc) = "草稿"];
+    //下线
+    OFFLINE = 2[(nvac.enum_desc) = "下线"];
+}
+
+message SmsType{
+    enum SmsTypeEnums{
+        TencentSms=0[(nvac.enum_desc) = "DELETED"];
+    }
+}
+
+//支付策略
+message PayStrategy{
+    enum PayType{
+        //支付宝
+        ALI=0[(nvac.enum_desc) = "支付宝"];
+        //微信
+        WECHAT=1[(nvac.enum_desc) = "微信"];
+        //雨点
+        INTEGRAL=3[(nvac.enum_desc) = "雨点"];
+    }
+}

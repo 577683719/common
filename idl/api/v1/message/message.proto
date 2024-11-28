@@ -1,0 +1,252 @@
+syntax = "proto3";
+option go_package = "./message";
+
+import "validate/validate.proto";
+//消息服务
+service MessageService{
+    //发送消息
+    rpc SendMessage(SendMessageReq)returns (SendMessageResp);
+    //发送短信验证码
+    rpc SendSms(SendSmsRequest)returns (SendSmsResponse);
+
+    //校验验证码
+    rpc VerifyCaptcha(VerifyCaptchaRequest)returns (MessageDefaultResponse);
+
+    //获取消息列表
+    rpc GetMessageList(GetMessageListRequest)returns (GetMessageListResponse);
+    //获取消息数量
+    rpc GetMessageCount(GetMessageCountRequest)returns (GetMessageCountResponse);
+    //读取消息
+    rpc ReadMessage(ReadMessageRequest)returns (ReadMessageResponse);
+    //删除用户消息
+    rpc DeleteUserMessage(DeleteUserMessageRequest)returns (DeleteUserMessageResponse);
+
+    //管理端_查询短信验证码
+    rpc QuerySmsByPhone(QuerySmsByPhoneRequest)returns (QuerySmsByPhoneResponse);
+}
+
+
+//删除用户消息响应对象
+message DeleteUserMessageResponse{
+    int32 code =1;
+    string message=2;
+    //响应对象
+    bool date=3;
+}
+
+
+//删除用户消息请求对象
+message DeleteUserMessageRequest{
+    //用户id
+    int64 userId = 1;
+    //消息id
+    int64 messageId = 2;
+}
+
+//读取消息响应对象
+message ReadMessageResponse{
+    int32 code =1;
+    string message=2;
+    //响应对象
+    bool date=3;
+}
+
+//读取消息请求对象
+message ReadMessageRequest{
+    //用户id
+    int64 userId = 1;
+    //消息id
+    int64 messageId = 2;
+}
+
+//获取消息数量请求对象
+message GetMessageCountRequest{
+    //用户id
+    int64 userId = 1;
+}
+//获取消息数量响应对象
+message GetMessageCountResponse{
+    int32 code =1;
+    string message=2;
+    //响应对象
+    MessageCount date=3;
+}
+
+//消息数量
+message MessageCount{
+    //用户消息总数
+    int32 messagesTotalCount = 1;
+    //已读消息数
+    int32 messagesReadCount =2;
+    //未读消息数
+    int32 messagesUnreadCount = 3;
+}
+
+//获取消息列表请求对象
+message GetMessageListRequest{
+    //用户id
+    int64 userId = 1;
+
+    //读取状态 0代表未读 1代表已读
+    string readStatus=2;
+
+    //消息类型 普通文本消息 text 图片消息image 文件消息file  实例消息 instance
+    string messageType = 3;
+
+}
+
+//获取消息列表响应对象
+message GetMessageListResponse{
+    int32 code =1;
+    string message=2;
+    //用户消息对象
+    repeated UserMessage date=3;
+
+}
+
+//用户消息对象
+message UserMessage{
+
+    // 用户消息主键
+    int64 id = 1;
+
+    // 用户ID
+    int64 userId = 2;
+
+    // 实际的消息内容
+    string messageContent = 3;
+
+    // 发送时间 (发送是啊金 )
+    string sendTime = 4;
+
+    // 消息阅读状态，默认未读
+    bool isRead = 5;
+
+    // 消息主题（如果有）
+    string subject = 6;
+
+    // 附件URL（如果有）
+    string attachmentUrl = 7;
+
+    // 消息类型（例如，text、image、file等）
+    string messageType = 8;
+
+    // 消息优先级（例如，高、中、低）
+    int32 priority = 9;
+
+
+}
+
+//
+message QuerySmsByPhoneRequest{
+    //页号
+    int64 pageNum = 1;
+    //页大小
+    int64 pageSize = 2;
+    //接收人手机号
+    string receiverPhone = 3;
+}
+
+//
+message QuerySmsByPhoneResponse{
+    //200代表成功
+    int32 code= 1;
+    //返回消息
+    string message = 2;
+    //执行成功返回数据
+    QuerySmsByPhone data = 3;
+}
+
+message QuerySmsByPhone{
+    // 总的记录数
+    int64 total = 1;
+    // 每页显示的大小
+    int64 size = 2;
+    // 当前页
+    int64 current = 3;
+    //执行成功返回数据
+    repeated SMS rows = 4;
+}
+
+message SMS{
+    int64 id = 1;
+    // 接收人手机号
+    string receiverPhone = 2;
+    // 短信码
+    string captcha = 3;
+    // 发送时间
+    string sendTime = 4;
+    // 发送状态 'sent', 'failed', 'pending'
+    string status = 5;
+    // 重试次数
+    int32 retryCount = 6;
+}
+
+message MessageDefaultResponse{
+    //200代表成功
+    int32 code= 1;
+    //返回消息
+    string message = 2;
+    //ture代表发送成功
+    bool data = 3;
+}
+
+
+//校验验证码请求对象
+message VerifyCaptchaRequest{
+    //手机号
+    string phone=2;
+    //验证码
+    string captcha=1;
+}
+
+
+
+//发送短信请求对象
+message SendSmsRequest{
+    //验证码
+    string captchaId=1;
+    //手机号
+    string phone=2;
+    //x轴
+    string xAxis=3;
+    //Y轴
+    string yAxis=4;
+}
+
+//发送短信响应对象
+message SendSmsResponse{
+    //200代表成功
+    int32 code= 1;
+    //返回消息
+    string message = 2;
+    //ture代表发送成功
+    bool data = 3;
+}
+
+
+
+//发送消息请求对象
+message SendMessageReq{
+    //发送用户消息
+    int64 userId=1;
+
+    //消息体
+    string  messageContent = 2;
+    //优先级
+    int32 priority = 3;
+
+    //消息类型
+    string messageType = 4;
+    //消息主题
+    string subject=5;
+}
+//发送消息响应对象
+message SendMessageResp{
+    //200代表成功
+    int32 code= 1;
+    //返回消息
+    string message = 2;
+    //ture代表发送成功
+    bool data = 3;
+}

@@ -1,0 +1,3235 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "device.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "DeviceService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/admin/v1/device/addBmxServer": {
+      "post": {
+        "summary": "管理端-添加bmx服务器",
+        "operationId": "DeviceService_AddBmxServer",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AddBmxServerResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BmxServer"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/admin/v1/device/addDiskInfo": {
+      "post": {
+        "summary": "管理端-添加磁盘信息",
+        "operationId": "DeviceService_AddDiskInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AddDiskInfoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddDiskInfoRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/admin/v1/device/addImage": {
+      "post": {
+        "summary": "管理端-添加镜像",
+        "operationId": "DeviceService_AddImage",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AddImageResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Image"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/admin/v1/device/batchUpdateBmxServerDiskId": {
+      "post": {
+        "summary": "管理端-批量更新BmxServer的磁盘id",
+        "operationId": "DeviceService_BatchUpdateBmxServerDiskId",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/BatchUpdateBmxServerDiskIdResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BatchUpdateBmxServerDiskIdRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/admin/v1/device/deleteDiskInfo": {
+      "post": {
+        "summary": "管理端-删除磁盘信息",
+        "operationId": "DeviceService_DeleteDiskInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DeleteDiskInfoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeleteDiskInfoRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/admin/v1/device/deleteImage": {
+      "post": {
+        "summary": "管理端-删除镜像",
+        "operationId": "DeviceService_DeleteImage",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DeleteImageResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeleteImageRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/admin/v1/device/getBmxChartData": {
+      "get": {
+        "summary": "管理端-获取 BmxChart 数据",
+        "operationId": "DeviceService_GetBmxChartData",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetBmxChartDataResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "serverId",
+            "description": "服务器ID",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "interval",
+            "description": "时间间隔",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/admin/v1/device/getBmxServerIdList": {
+      "get": {
+        "summary": "管理端-获取 BmxServer ID 列表",
+        "operationId": "DeviceService_GetBmxServerIdList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetBmxServerIdListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/admin/v1/device/getVisitsChartData": {
+      "get": {
+        "summary": "新增接口 - 获取访问图表数据",
+        "operationId": "DeviceService_GetVisitsChartData",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetVisitsChartDataResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "interval",
+            "description": "时间间隔",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/admin/v1/device/instancePowerOnOffRecord": {
+      "post": {
+        "summary": "管理端-实例开关机记录",
+        "operationId": "DeviceService_InstancePowerOnOffRecord",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/InstancePowerOnOffRecordResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InstancePowerOnOffRecordRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/admin/v1/device/queryBmxServer": {
+      "post": {
+        "summary": "管理端-查询BmxServer",
+        "operationId": "DeviceService_QueryBmxServer",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/QueryBmxServerResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryBmxServerRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/admin/v1/device/queryBmxServerByDisk": {
+      "post": {
+        "summary": "管理端-查询磁盘对应的bmxServer列表",
+        "operationId": "DeviceService_QueryBmxServerByDisk",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/QueryBmxServerByDiskResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryBmxServerByDiskRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/admin/v1/device/queryClientLabel": {
+      "post": {
+        "summary": "管理端-查询客户标签",
+        "operationId": "DeviceService_QueryClientLabel",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/QueryClientLabelResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryClientLabelRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/admin/v1/device/queryDevice": {
+      "post": {
+        "summary": "管理端-查询设备",
+        "operationId": "DeviceService_QueryDevice",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/QueryDeviceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryDeviceRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/admin/v1/device/queryDiskHistoryBasedOn": {
+      "post": {
+        "summary": "管理端-查询磁盘历史记录根据",
+        "operationId": "DeviceService_QueryDiskHistoryBasedOn",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/QueryDiskHistoryBasedOnResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryDiskHistoryBasedOnRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/admin/v1/device/queryDiskInfo": {
+      "post": {
+        "summary": "管理端-查询磁盘信息",
+        "operationId": "DeviceService_QueryDiskInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/QueryDiskInfoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryDiskInfoRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/admin/v1/device/queryInstancePage": {
+      "post": {
+        "summary": "管理端-查看实例列表",
+        "operationId": "DeviceService_QueryInstancePage",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/QueryInstancePageResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Instance"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/admin/v1/device/queryPidExists": {
+      "post": {
+        "summary": "管理端-查询pid是否存在",
+        "operationId": "DeviceService_QueryPidExists",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/QueryPidExistsResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryPidExistsReq"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/admin/v1/device/selectImageList": {
+      "post": {
+        "summary": "管理端-获取镜像列表",
+        "operationId": "DeviceService_SelectImageList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SelectImageListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SelectImageListRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/admin/v1/device/start": {
+      "post": {
+        "summary": "管理端-启动实例",
+        "operationId": "DeviceService_AdminStartInstance",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DeviceDefaultResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/StartInstanceRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/admin/v1/device/stop": {
+      "post": {
+        "summary": "管理端-关闭实例",
+        "operationId": "DeviceService_AdminStopInstance",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/StopInstanceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/StopInstanceRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/admin/v1/device/updateBmxServerDiskId": {
+      "post": {
+        "summary": "管理端-更新BmxServer的磁盘id",
+        "operationId": "DeviceService_UpdateBmxServerDiskId",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UpdateBmxServerDiskIdResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateBmxServerDiskIdRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/admin/v1/device/updateDiskInfo": {
+      "post": {
+        "summary": "管理端-更新磁盘信息",
+        "operationId": "DeviceService_UpdateDiskInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UpdateDiskInfoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateDiskInfoRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/admin/v1/device/updateImage": {
+      "post": {
+        "summary": "管理端-更新镜像",
+        "operationId": "DeviceService_UpdateImage",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UpdateImageResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Image"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/admin/v1/device/updateInstance": {
+      "post": {
+        "summary": "管理端-更新实例",
+        "operationId": "DeviceService_UpdateInstance",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UpdateInstanceResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Instance"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/api/v1/device/getImageList": {
+      "post": {
+        "summary": "获取镜像列表",
+        "operationId": "DeviceService_GetImageList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetImageListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetImageListRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/api/v1/device/getUserInstanceInfo": {
+      "post": {
+        "summary": "获取容器实例信息",
+        "operationId": "DeviceService_GetUserInstanceInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetUserInstanceInfoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetUserInstanceInfoRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/api/v1/device/release": {
+      "post": {
+        "summary": "释放实例",
+        "operationId": "DeviceService_ReleaseInstance",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ReleaseInstanceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ReleaseInstanceRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/api/v1/device/renewalInstanceDetails": {
+      "post": {
+        "summary": "续费实例详细",
+        "operationId": "DeviceService_RenewalInstanceDetails",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/RenewalInstanceDetailsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RenewalInstanceDetailsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/api/v1/device/selectUserInstanceList": {
+      "post": {
+        "summary": "获取用户实例列表",
+        "operationId": "DeviceService_SelectUserInstanceList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SelectUserInstanceListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SelectUserInstanceListRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/api/v1/device/setInstanceName": {
+      "post": {
+        "summary": "设置名称",
+        "operationId": "DeviceService_SetInstanceName",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SetInstanceNameResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SetInstanceNameReq"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/api/v1/device/start": {
+      "post": {
+        "summary": "-----------------------------APP----------------------\r\n启动实例",
+        "operationId": "DeviceService_StartInstance",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DeviceDefaultResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/StartInstanceRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/api/v1/device/stop": {
+      "post": {
+        "summary": "关闭实例",
+        "operationId": "DeviceService_StopInstance",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/StopInstanceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/StopInstanceRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "AddBmxServerResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "$ref": "#/definitions/BmxServer",
+          "title": "新添加的服务器"
+        }
+      }
+    },
+    "AddDiskInfoRequest": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/DiskInfo",
+          "title": "磁盘信息"
+        }
+      },
+      "title": "添加磁盘信息请求对象"
+    },
+    "AddDiskInfoResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        }
+      },
+      "title": "添加磁盘信息响应对象"
+    },
+    "AddImageResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        }
+      },
+      "title": "添加镜像响应对象"
+    },
+    "BatchUpdateBmxServerDiskIdRequest": {
+      "type": "object",
+      "properties": {
+        "diskId": {
+          "type": "string",
+          "title": "磁盘id"
+        },
+        "bmxServerId": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "bmxserverId列表"
+        }
+      },
+      "title": "批量更新BmxServer的磁盘id请求对象"
+    },
+    "BatchUpdateBmxServerDiskIdResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        }
+      },
+      "title": "批量更新BmxServer的磁盘id响应对象"
+    },
+    "BmxChartData": {
+      "type": "object",
+      "properties": {
+        "deviceNumList": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": "设备数量列表"
+        },
+        "deviceReadyNumList": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": "设备就绪数量列表"
+        },
+        "createTimeList": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "创建时间列表"
+        },
+        "totalDeviceNumList": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "totalDeviceReadyNumList": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "title": "BmxChart 数据"
+    },
+    "BmxServer": {
+      "type": "object",
+      "properties": {
+        "serverID": {
+          "type": "string",
+          "title": "Bmx服务器ID，主键"
+        },
+        "serverArea": {
+          "type": "string",
+          "title": "服务器区域"
+        },
+        "deviceNum": {
+          "type": "integer",
+          "format": "int32",
+          "title": "设备总数"
+        },
+        "deviceReadyNum": {
+          "type": "integer",
+          "format": "int32",
+          "title": "可用设备数"
+        },
+        "clientID": {
+          "type": "string",
+          "title": "Bmx服务器作为客户端的ID"
+        },
+        "sysdiskID": {
+          "type": "string",
+          "title": "系统母盘ID"
+        },
+        "datadiskID": {
+          "type": "string",
+          "title": "数据母盘ID"
+        },
+        "label": {
+          "type": "string",
+          "title": "标签"
+        },
+        "price": {
+          "type": "string",
+          "title": "价格"
+        },
+        "comment": {
+          "type": "string",
+          "title": "备注"
+        }
+      }
+    },
+    "BmxServerIdList": {
+      "type": "object",
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "使用 repeated 关键字表示这是一个字符串数组"
+        }
+      },
+      "title": "BmxServer ID 列表"
+    },
+    "DeleteDiskInfoRequest": {
+      "type": "object",
+      "properties": {
+        "diskID": {
+          "type": "string",
+          "title": "磁盘镜像ID"
+        }
+      },
+      "title": "删除磁盘信息请求对象"
+    },
+    "DeleteDiskInfoResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        }
+      },
+      "title": "删除磁盘信息响应对象"
+    },
+    "DeleteImageRequest": {
+      "type": "object",
+      "properties": {
+        "imageID": {
+          "type": "integer",
+          "format": "int32",
+          "title": "镜像ID"
+        }
+      },
+      "title": "添加镜像请求对象"
+    },
+    "DeleteImageResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        }
+      },
+      "title": "添加镜像响应对象"
+    },
+    "Device": {
+      "type": "object",
+      "properties": {
+        "deviceID": {
+          "type": "string",
+          "title": "设备ID，主键"
+        },
+        "serverID": {
+          "type": "string",
+          "title": "Bmx服务器ID"
+        },
+        "macAddr": {
+          "type": "string",
+          "title": "Mac地址"
+        },
+        "gpuType": {
+          "type": "string",
+          "title": "GPU类型"
+        },
+        "gpuNum": {
+          "type": "string",
+          "title": "GPU个数"
+        },
+        "gpuMem": {
+          "type": "string",
+          "title": "GPU内存"
+        },
+        "cudaVer": {
+          "type": "string",
+          "title": "Cuda版本"
+        },
+        "cpuType": {
+          "type": "string",
+          "title": "CPU类型"
+        },
+        "cpuFreq": {
+          "type": "string",
+          "title": "CPU频率"
+        },
+        "cpuNum": {
+          "type": "string",
+          "title": "CPU个数"
+        },
+        "cpuMem": {
+          "type": "string",
+          "title": "CPU内存"
+        },
+        "deviceStatus": {
+          "type": "string",
+          "title": "设备状态"
+        },
+        "productID": {
+          "type": "string",
+          "title": "产品ID"
+        },
+        "timeOfUsed": {
+          "type": "string",
+          "title": "使用时间"
+        },
+        "price": {
+          "type": "string",
+          "title": "价格"
+        },
+        "label": {
+          "type": "string",
+          "title": "客户标签"
+        }
+      }
+    },
+    "DeviceDefaultResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "type": "boolean",
+          "title": "执行成功返回true"
+        }
+      }
+    },
+    "DeviceResponse": {
+      "type": "object",
+      "properties": {
+        "deviceID": {
+          "type": "string",
+          "title": "设备ID，主键"
+        },
+        "serverID": {
+          "type": "string",
+          "title": "Bmx服务器ID"
+        },
+        "macAddr": {
+          "type": "string",
+          "title": "Mac地址"
+        },
+        "gpuType": {
+          "type": "string",
+          "title": "GPU类型"
+        },
+        "gpuNum": {
+          "type": "string",
+          "title": "GPU个数"
+        },
+        "gpuMem": {
+          "type": "string",
+          "title": "GPU内存"
+        },
+        "cudaVer": {
+          "type": "string",
+          "title": "Cuda版本"
+        },
+        "cpuType": {
+          "type": "string",
+          "title": "CPU类型"
+        },
+        "cpuFreq": {
+          "type": "string",
+          "title": "CPU频率"
+        },
+        "cpuNum": {
+          "type": "string",
+          "title": "CPU个数"
+        },
+        "cpuMem": {
+          "type": "string",
+          "title": "CPU内存"
+        },
+        "deviceStatus": {
+          "type": "string",
+          "title": "设备状态"
+        },
+        "productID": {
+          "type": "string",
+          "title": "产品ID"
+        },
+        "timeOfUsed": {
+          "type": "string",
+          "title": "使用时间"
+        },
+        "price": {
+          "type": "string",
+          "title": "价格"
+        }
+      }
+    },
+    "DiskInfo": {
+      "type": "object",
+      "properties": {
+        "diskID": {
+          "type": "string",
+          "title": "磁盘镜像ID"
+        },
+        "type": {
+          "type": "string",
+          "title": "磁盘类型"
+        },
+        "snapshotID": {
+          "type": "string",
+          "title": "镜像快照ID"
+        },
+        "version": {
+          "type": "string",
+          "title": "磁盘镜像版本"
+        },
+        "machineType": {
+          "type": "string",
+          "title": "机器启动类型"
+        },
+        "initiator": {
+          "type": "string"
+        },
+        "updateContent": {
+          "type": "string",
+          "title": "修改内容 仅克隆: CLONE_ONLY  克隆后修改: CLONE_AND_MODIFY"
+        },
+        "parentID": {
+          "type": "string",
+          "title": "上级id"
+        },
+        "description": {
+          "type": "string",
+          "title": "磁盘说明"
+        },
+        "updateTime": {
+          "type": "string",
+          "title": "更新时间"
+        },
+        "createTime": {
+          "type": "string",
+          "title": "创建时间"
+        },
+        "gpuDriveVer": {
+          "type": "string",
+          "title": "gpu驱动版本"
+        },
+        "datadiskSize": {
+          "type": "string",
+          "title": "数据盘大小"
+        }
+      }
+    },
+    "GetBmxChartDataResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200 代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "$ref": "#/definitions/BmxChartData",
+          "title": "执行成功返回数据"
+        }
+      },
+      "title": "获取 BmxChart 数据响应对象"
+    },
+    "GetBmxServerIdListResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200 代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "$ref": "#/definitions/BmxServerIdList",
+          "title": "执行成功返回数据"
+        }
+      },
+      "title": "获取 BmxServer ID 列表响应对象"
+    },
+    "GetImageListRequest": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        }
+      },
+      "title": "获取镜像列表请求对象"
+    },
+    "GetImageListResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/Image"
+          },
+          "title": "执行成功返回数据"
+        }
+      },
+      "title": "获取镜像列表响应对象"
+    },
+    "GetUserInstanceInfoRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        }
+      },
+      "title": "获取容器实例信息请求对象"
+    },
+    "GetUserInstanceInfoResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "$ref": "#/definitions/InstanceInfoCountResponse",
+          "title": "执行成功返回数据"
+        }
+      },
+      "title": "获取容器实例信息响应对象"
+    },
+    "GetVisitsChartDataResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200 代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "$ref": "#/definitions/VisitsChartData",
+          "title": "执行成功返回数据"
+        }
+      }
+    },
+    "Image": {
+      "type": "object",
+      "properties": {
+        "imageID": {
+          "type": "integer",
+          "format": "int32",
+          "title": "镜像ID"
+        },
+        "imageType": {
+          "type": "string",
+          "title": "镜像类型"
+        },
+        "imageName": {
+          "type": "string",
+          "title": "镜像名称"
+        },
+        "description": {
+          "type": "string",
+          "title": "镜像描述"
+        },
+        "imagePath": {
+          "type": "string",
+          "title": "镜像路径"
+        },
+        "discussPage": {
+          "type": "string",
+          "title": "镜像社区讨论页"
+        },
+        "downloadTime": {
+          "type": "string",
+          "title": "下载次数"
+        },
+        "author": {
+          "type": "string",
+          "title": "作者"
+        },
+        "authorPage": {
+          "type": "string",
+          "title": "作者社区页"
+        },
+        "imageSize": {
+          "type": "string",
+          "title": "镜像大小"
+        },
+        "framework": {
+          "type": "string",
+          "title": "框架"
+        },
+        "cudaVersion": {
+          "type": "string",
+          "title": "CUDA版本"
+        },
+        "cmdRun": {
+          "type": "string",
+          "title": "新加字段"
+        }
+      }
+    },
+    "Instance": {
+      "type": "object",
+      "properties": {
+        "instanceId": {
+          "type": "string",
+          "title": "用户实例ID"
+        },
+        "nodeId": {
+          "type": "string",
+          "title": "节点ID"
+        },
+        "productId": {
+          "type": "string",
+          "title": "产品ID"
+        },
+        "imageName": {
+          "type": "string",
+          "title": "镜像名称"
+        },
+        "instanceStatus": {
+          "type": "string",
+          "title": "实例运行状态: On, Off, invalid, Re-Create, Fail"
+        },
+        "yamlPath": {
+          "type": "string",
+          "title": "实例配置Yaml路径"
+        },
+        "sysdiskPath": {
+          "type": "string",
+          "title": "系统盘挂载路径"
+        },
+        "datadiskPath": {
+          "type": "string",
+          "title": "数据盘挂载路径"
+        },
+        "sysdiskSize": {
+          "type": "string",
+          "title": "系统盘大小"
+        },
+        "datadiskSize": {
+          "type": "string",
+          "title": "数据盘大小"
+        },
+        "sysvolumeId": {
+          "type": "string",
+          "title": "系统盘ID"
+        },
+        "password": {
+          "type": "string",
+          "title": "用户实例访问密码"
+        },
+        "frpServer": {
+          "type": "string",
+          "title": "FRP服务器"
+        },
+        "frpUuid": {
+          "type": "string",
+          "title": "FRP服务器的UUID"
+        },
+        "sshPort": {
+          "type": "string",
+          "title": "SSH访问实例的端口"
+        },
+        "jupyterPort": {
+          "type": "string",
+          "title": "Jupyter端口号"
+        },
+        "sysAttachment": {
+          "type": "string",
+          "title": "系统盘信息"
+        },
+        "datavolumeId": {
+          "type": "string",
+          "title": "数据盘ID"
+        },
+        "dataAttachment": {
+          "type": "string",
+          "title": "数据盘信息"
+        },
+        "token": {
+          "type": "string",
+          "title": "用户实例访问令牌"
+        },
+        "startTime": {
+          "type": "string",
+          "title": "启动时间"
+        },
+        "stopTime": {
+          "type": "string",
+          "title": "停止时间"
+        },
+        "reason": {
+          "type": "string",
+          "title": "理由"
+        },
+        "autoReleaseTime": {
+          "type": "string",
+          "title": "自动释放时间"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户ID"
+        },
+        "useTime": {
+          "type": "string",
+          "format": "int64",
+          "title": "使用时常"
+        },
+        "productName": {
+          "type": "string",
+          "title": "产品名"
+        },
+        "macAddr": {
+          "type": "string",
+          "title": "mac地址"
+        },
+        "pageNum": {
+          "type": "string",
+          "format": "int64",
+          "title": "页号"
+        },
+        "pageSize": {
+          "type": "string",
+          "format": "int64",
+          "title": "页大小"
+        }
+      },
+      "title": "实例对象"
+    },
+    "InstanceInfoCountResponse": {
+      "type": "object",
+      "properties": {
+        "instanceCount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "容器实例"
+        },
+        "instanceRunCount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "运行中"
+        },
+        "expirationComingCount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "即将到期"
+        },
+        "comingSoonCount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "即将释放"
+        }
+      }
+    },
+    "InstancePageResp": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "总的记录数"
+        },
+        "size": {
+          "type": "string",
+          "format": "int64",
+          "title": "每页显示的大小"
+        },
+        "current": {
+          "type": "string",
+          "format": "int64",
+          "title": "当前页"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/Instance"
+          },
+          "title": "执行成功返回数据"
+        }
+      },
+      "title": "实例分页响应对象"
+    },
+    "InstancePowerOnOffRecordRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "主键"
+        },
+        "instanceId": {
+          "type": "string",
+          "title": "用户实例ID"
+        },
+        "nodeId": {
+          "type": "string",
+          "title": "节点ID"
+        },
+        "productId": {
+          "type": "string",
+          "title": "产品ID"
+        },
+        "instanceStatus": {
+          "type": "string",
+          "title": "实例运行状态: On, Off, invalid, Re-Create, Fail"
+        },
+        "sysvolumeId": {
+          "type": "string",
+          "title": "系统盘ID"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户ID"
+        },
+        "useTime": {
+          "type": "string",
+          "format": "int64",
+          "title": "使用时常"
+        },
+        "productName": {
+          "type": "string",
+          "title": "产品名"
+        },
+        "pageNum": {
+          "type": "string",
+          "format": "int64",
+          "title": "页号"
+        },
+        "pageSize": {
+          "type": "string",
+          "format": "int64",
+          "title": "页大小"
+        }
+      },
+      "title": "实例开关机记录请求对象"
+    },
+    "InstancePowerOnOffRecordResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "$ref": "#/definitions/InstanceTableRecordPage",
+          "title": "实例开关机page对象"
+        }
+      },
+      "title": "实例开关机记录响应对象"
+    },
+    "InstanceTableRecord": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "主键"
+        },
+        "instanceId": {
+          "type": "string",
+          "title": "用户实例ID"
+        },
+        "nodeId": {
+          "type": "string",
+          "title": "节点ID"
+        },
+        "productId": {
+          "type": "string",
+          "title": "产品ID"
+        },
+        "imageName": {
+          "type": "string",
+          "title": "镜像名称"
+        },
+        "instanceStatus": {
+          "type": "string",
+          "title": "实例运行状态: On, Off, invalid, Re-Create, Fail"
+        },
+        "yamlPath": {
+          "type": "string",
+          "title": "实例配置Yaml路径"
+        },
+        "sysdiskPath": {
+          "type": "string",
+          "title": "系统盘挂载路径"
+        },
+        "datadiskPath": {
+          "type": "string",
+          "title": "数据盘挂载路径"
+        },
+        "sysdiskSize": {
+          "type": "string",
+          "title": "系统盘大小"
+        },
+        "datadiskSize": {
+          "type": "string",
+          "title": "数据盘大小"
+        },
+        "sysvolumeId": {
+          "type": "string",
+          "title": "系统盘ID"
+        },
+        "password": {
+          "type": "string",
+          "title": "用户实例访问密码"
+        },
+        "frpServer": {
+          "type": "string",
+          "title": "FRP服务器"
+        },
+        "frpUuid": {
+          "type": "string",
+          "title": "FRP服务器的UUID"
+        },
+        "sshPort": {
+          "type": "string",
+          "title": "SSH访问实例的端口"
+        },
+        "jupyterPort": {
+          "type": "string",
+          "title": "Jupyter端口号"
+        },
+        "sysAttachment": {
+          "type": "string",
+          "title": "系统盘信息"
+        },
+        "datavolumeId": {
+          "type": "string",
+          "title": "数据盘ID"
+        },
+        "dataAttachment": {
+          "type": "string",
+          "title": "数据盘信息"
+        },
+        "token": {
+          "type": "string",
+          "title": "用户实例访问令牌"
+        },
+        "startTime": {
+          "type": "string",
+          "title": "启动时间"
+        },
+        "stopTime": {
+          "type": "string",
+          "title": "停止时间"
+        },
+        "reason": {
+          "type": "string",
+          "title": "理由"
+        },
+        "autoReleaseTime": {
+          "type": "string",
+          "title": "自动释放时间"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户ID"
+        },
+        "useTime": {
+          "type": "string",
+          "format": "int64",
+          "title": "使用时常"
+        },
+        "productName": {
+          "type": "string",
+          "title": "产品名"
+        },
+        "macAddr": {
+          "type": "string",
+          "title": "mac地址"
+        }
+      },
+      "title": "实例记录对象"
+    },
+    "InstanceTableRecordPage": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "总的记录数"
+        },
+        "size": {
+          "type": "string",
+          "format": "int64",
+          "title": "每页显示的大小"
+        },
+        "current": {
+          "type": "string",
+          "format": "int64",
+          "title": "当前页"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/InstanceTableRecord"
+          },
+          "title": "执行成功返回数据"
+        }
+      },
+      "title": "实例记录page对象"
+    },
+    "InstanceTableResponse": {
+      "type": "object",
+      "properties": {
+        "instanceId": {
+          "type": "string",
+          "title": "用户实例ID"
+        },
+        "nodeId": {
+          "type": "string",
+          "title": "节点ID"
+        },
+        "productId": {
+          "type": "string",
+          "title": "产品ID"
+        },
+        "imageName": {
+          "type": "string",
+          "title": "镜像名称"
+        },
+        "instanceStatus": {
+          "type": "string",
+          "title": "实例运行状态: On, Off, invalid, Re-Create, Fail"
+        },
+        "yamlPath": {
+          "type": "string",
+          "title": "实例配置Yaml路径"
+        },
+        "sysdiskPath": {
+          "type": "string",
+          "title": "系统盘挂载路径"
+        },
+        "datadiskPath": {
+          "type": "string",
+          "title": "数据盘挂载路径"
+        },
+        "sysdiskSize": {
+          "type": "string",
+          "title": "系统盘大小"
+        },
+        "datadiskSize": {
+          "type": "string",
+          "title": "数据盘大小"
+        },
+        "sysvolumeId": {
+          "type": "string",
+          "title": "系统盘ID"
+        },
+        "password": {
+          "type": "string",
+          "title": "用户实例访问密码"
+        },
+        "frpServer": {
+          "type": "string",
+          "title": "FRP服务器"
+        },
+        "frpUuid": {
+          "type": "string",
+          "title": "FRP服务器的UUID"
+        },
+        "sshPort": {
+          "type": "string",
+          "title": "SSH访问实例的端口"
+        },
+        "jupyterPort": {
+          "type": "string",
+          "title": "Jupter端口号"
+        },
+        "sysAttachment": {
+          "type": "string",
+          "title": "系统盘信息"
+        },
+        "datavolumeId": {
+          "type": "string",
+          "title": "数据盘ID"
+        },
+        "dataAttachment": {
+          "type": "string",
+          "title": "数据盘信息"
+        },
+        "token": {
+          "type": "string",
+          "title": "用户实例访问令牌"
+        },
+        "startTime": {
+          "type": "string",
+          "title": "启动时间"
+        },
+        "stopTime": {
+          "type": "string",
+          "title": "停止时间"
+        },
+        "reason": {
+          "type": "string",
+          "title": "原因"
+        },
+        "autoReleaseTime": {
+          "type": "string",
+          "title": "自定释放时间"
+        },
+        "userId": {
+          "type": "string",
+          "title": "用户id"
+        },
+        "jupyterUrl": {
+          "type": "string",
+          "title": "Jupyter的url"
+        },
+        "specificationAndModel": {
+          "type": "string",
+          "title": "规格型号"
+        },
+        "paymentMethod": {
+          "type": "string",
+          "title": "付费方式 [DAY日 WEEK 周 MONTH 月 AMOUNT 按量]"
+        },
+        "progressBar": {
+          "type": "string",
+          "format": "int64",
+          "title": "进度条"
+        },
+        "instanceName": {
+          "type": "string",
+          "title": "实例名称"
+        }
+      },
+      "title": "实例表响应对象"
+    },
+    "LabelPage": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string",
+          "title": "客户标签"
+        },
+        "bmxServerNum": {
+          "type": "integer",
+          "format": "int32",
+          "title": "bmx服务器数量"
+        },
+        "deviceNum": {
+          "type": "integer",
+          "format": "int32",
+          "title": "设备数量"
+        },
+        "totalPrice": {
+          "type": "string",
+          "title": "总价格"
+        },
+        "sharingRatio": {
+          "type": "string",
+          "title": "比例价格"
+        },
+        "profit": {
+          "type": "string",
+          "title": "总收益"
+        },
+        "settledAmount": {
+          "type": "string",
+          "title": "已结算金额"
+        },
+        "unsettledAmount": {
+          "type": "string",
+          "title": "未结算金额"
+        },
+        "settlementCount": {
+          "type": "string",
+          "format": "int64",
+          "title": "结算申请数量"
+        }
+      }
+    },
+    "QueryBmxServer": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "总的记录数"
+        },
+        "size": {
+          "type": "string",
+          "format": "int64",
+          "title": "每页显示的大小"
+        },
+        "current": {
+          "type": "string",
+          "format": "int64",
+          "title": "当前页"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/BmxServer"
+          },
+          "title": "执行成功返回数据"
+        }
+      }
+    },
+    "QueryBmxServerByDiskRequest": {
+      "type": "object",
+      "properties": {
+        "diskId": {
+          "type": "string",
+          "title": "磁盘id"
+        }
+      },
+      "title": "查询磁盘对应的bmxServer列表请求对象"
+    },
+    "QueryBmxServerByDiskResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "bmxServerId": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "bmxServer列表"
+        }
+      },
+      "title": "查询磁盘对应的bmxServer列表响应对象"
+    },
+    "QueryBmxServerRequest": {
+      "type": "object",
+      "properties": {
+        "pageNum": {
+          "type": "string",
+          "format": "int64",
+          "title": "页号"
+        },
+        "pageSize": {
+          "type": "string",
+          "format": "int64",
+          "title": "页大小"
+        },
+        "data": {
+          "$ref": "#/definitions/BmxServer",
+          "title": "筛选参数"
+        }
+      },
+      "title": "查询BmxServer请求对象"
+    },
+    "QueryBmxServerResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "$ref": "#/definitions/QueryBmxServer",
+          "title": "执行成功返回数据"
+        }
+      },
+      "title": "查询BmxServer响应对象"
+    },
+    "QueryClientLabel": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "总的记录数"
+        },
+        "size": {
+          "type": "string",
+          "format": "int64",
+          "title": "每页显示的大小"
+        },
+        "current": {
+          "type": "string",
+          "format": "int64",
+          "title": "当前页"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/LabelPage"
+          },
+          "title": "执行成功返回数据"
+        },
+        "label": {
+          "type": "string",
+          "title": "客户标签"
+        }
+      }
+    },
+    "QueryClientLabelRequest": {
+      "type": "object",
+      "properties": {
+        "pageNum": {
+          "type": "string",
+          "format": "int64",
+          "title": "页号"
+        },
+        "pageSize": {
+          "type": "string",
+          "format": "int64",
+          "title": "页大小"
+        }
+      },
+      "title": "查询客户标签请求对象"
+    },
+    "QueryClientLabelResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "$ref": "#/definitions/QueryClientLabel",
+          "title": "执行成功返回数据"
+        }
+      },
+      "title": "查询客户标签响应对象"
+    },
+    "QueryDevice": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "总的记录数"
+        },
+        "size": {
+          "type": "string",
+          "format": "int64",
+          "title": "每页显示的大小"
+        },
+        "current": {
+          "type": "string",
+          "format": "int64",
+          "title": "当前页"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/DeviceResponse"
+          },
+          "title": "执行成功返回数据"
+        }
+      }
+    },
+    "QueryDeviceRequest": {
+      "type": "object",
+      "properties": {
+        "pageNum": {
+          "type": "string",
+          "format": "int64",
+          "title": "页号"
+        },
+        "pageSize": {
+          "type": "string",
+          "format": "int64",
+          "title": "页大小"
+        },
+        "data": {
+          "$ref": "#/definitions/Device",
+          "title": "筛选参数"
+        }
+      },
+      "title": "查询Device请求对象"
+    },
+    "QueryDeviceResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "$ref": "#/definitions/QueryDevice",
+          "title": "执行成功返回数据"
+        }
+      },
+      "title": "查询Device响应对象"
+    },
+    "QueryDiskHistoryBasedOn": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "名称"
+        },
+        "id": {
+          "type": "string",
+          "title": "id"
+        },
+        "pid": {
+          "type": "string",
+          "title": "pid"
+        },
+        "diskID": {
+          "type": "string",
+          "title": "//磁盘记录\r\n   repeated DiskTableRecords data = 4;\r\n磁盘镜像ID"
+        },
+        "type": {
+          "type": "string",
+          "title": "磁盘类型"
+        },
+        "snapshotID": {
+          "type": "string",
+          "title": "镜像快照ID"
+        },
+        "version": {
+          "type": "string",
+          "title": "磁盘镜像版本"
+        },
+        "machineType": {
+          "type": "string",
+          "title": "机器启动类型"
+        },
+        "initiator": {
+          "type": "string"
+        },
+        "updateContent": {
+          "type": "string",
+          "title": "修改内容"
+        },
+        "parentID": {
+          "type": "string",
+          "title": "上级id"
+        },
+        "description": {
+          "type": "string",
+          "title": "磁盘说明"
+        },
+        "updateTime": {
+          "type": "string",
+          "title": "更新时间"
+        },
+        "createTime": {
+          "type": "string",
+          "title": "创建时间"
+        },
+        "diskTableRecordsId": {
+          "type": "string",
+          "format": "int64",
+          "title": "记录主键"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/QueryDiskHistoryBasedOn"
+          },
+          "title": "磁盘子记录"
+        }
+      },
+      "title": "磁盘历史查询"
+    },
+    "QueryDiskHistoryBasedOnRequest": {
+      "type": "object",
+      "properties": {
+        "diskId": {
+          "type": "string",
+          "title": "磁盘镜像id"
+        },
+        "snapshotId": {
+          "type": "string",
+          "title": "镜像快照id"
+        }
+      },
+      "title": "查询磁盘历史记录请求对象"
+    },
+    "QueryDiskHistoryBasedOnResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/QueryDiskHistoryBasedOn"
+          }
+        }
+      },
+      "title": "查询磁盘历史记录响应对象"
+    },
+    "QueryDiskInfo": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "总的记录数"
+        },
+        "size": {
+          "type": "string",
+          "format": "int64",
+          "title": "每页显示的大小"
+        },
+        "current": {
+          "type": "string",
+          "format": "int64",
+          "title": "当前页"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/DiskInfo"
+          },
+          "title": "执行成功返回数据"
+        }
+      }
+    },
+    "QueryDiskInfoRequest": {
+      "type": "object",
+      "properties": {
+        "pageNum": {
+          "type": "string",
+          "format": "int64",
+          "title": "页号"
+        },
+        "pageSize": {
+          "type": "string",
+          "format": "int64",
+          "title": "页大小"
+        },
+        "diskId": {
+          "type": "string",
+          "title": "磁盘id"
+        },
+        "diskType": {
+          "type": "string",
+          "title": "磁盘类型"
+        }
+      },
+      "title": "查询磁盘信息请求对象"
+    },
+    "QueryDiskInfoResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "$ref": "#/definitions/QueryDiskInfo",
+          "title": "执行成功返回数据"
+        }
+      },
+      "title": "查询磁盘信息响应对象"
+    },
+    "QueryInstancePageResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "$ref": "#/definitions/InstancePageResp",
+          "title": "实例列表响应对象"
+        }
+      },
+      "title": "查看实例列表响应对象"
+    },
+    "QueryPidExistsReq": {
+      "type": "object",
+      "properties": {
+        "pid": {
+          "type": "string"
+        }
+      },
+      "title": "查询pid是否存在请求对象"
+    },
+    "QueryPidExistsResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        }
+      },
+      "title": "查询pid是否存在响应对象"
+    },
+    "ReleaseInstanceRequest": {
+      "type": "object",
+      "properties": {
+        "instanceId": {
+          "type": "string",
+          "title": "实例id"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        }
+      },
+      "title": "释放实例请求对象"
+    },
+    "ReleaseInstanceResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "type": "boolean",
+          "title": "执行成功返回true"
+        }
+      },
+      "title": "释放实例响应对象"
+    },
+    "RenewalInstanceDetails": {
+      "type": "object",
+      "properties": {
+        "instanceId": {
+          "type": "string",
+          "title": "实例id"
+        },
+        "specificationDetails": {
+          "type": "string",
+          "title": "规格详情"
+        },
+        "expirationDate": {
+          "type": "string",
+          "title": "到期时间"
+        },
+        "expirationDateAfterRenewal": {
+          "type": "string",
+          "title": "续费后到期时间"
+        },
+        "amountMoney": {
+          "type": "string",
+          "title": "金额"
+        },
+        "productId": {
+          "type": "string",
+          "title": "产品id"
+        }
+      },
+      "title": "实例续费详细"
+    },
+    "RenewalInstanceDetailsRequest": {
+      "type": "object",
+      "properties": {
+        "instanceId": {
+          "type": "string",
+          "title": "实例id"
+        },
+        "billingType": {
+          "type": "string",
+          "title": "续费类型"
+        },
+        "expirationDate": {
+          "type": "string",
+          "title": "到期时间"
+        }
+      },
+      "title": "实例续费请求对象"
+    },
+    "RenewalInstanceDetailsResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "$ref": "#/definitions/RenewalInstanceDetails",
+          "title": "续费实例"
+        }
+      },
+      "title": "实例续费响应对象"
+    },
+    "SelectImageList": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "总的记录数"
+        },
+        "size": {
+          "type": "string",
+          "format": "int64",
+          "title": "每页显示的大小"
+        },
+        "current": {
+          "type": "string",
+          "format": "int64",
+          "title": "当前页"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/Image"
+          },
+          "title": "执行成功返回数据"
+        }
+      }
+    },
+    "SelectImageListRequest": {
+      "type": "object",
+      "properties": {
+        "pageNum": {
+          "type": "string",
+          "format": "int64",
+          "title": "页号"
+        },
+        "pageSize": {
+          "type": "string",
+          "format": "int64",
+          "title": "页大小"
+        },
+        "imageId": {
+          "type": "string",
+          "title": "镜像id"
+        },
+        "imageType": {
+          "type": "string",
+          "title": "镜像类型"
+        }
+      },
+      "title": "获取镜像列表请求对象"
+    },
+    "SelectImageListResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "$ref": "#/definitions/SelectImageList",
+          "title": "执行成功返回数据"
+        }
+      },
+      "title": "获取镜像列表响应对象"
+    },
+    "SelectUserInstanceListRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        },
+        "pageNum": {
+          "type": "string",
+          "format": "int64",
+          "title": "页号"
+        },
+        "pageSize": {
+          "type": "string",
+          "format": "int64",
+          "title": "页大小"
+        },
+        "instanceId": {
+          "type": "string",
+          "title": "实例id"
+        }
+      },
+      "title": "获取用户实例信息请求对象"
+    },
+    "SelectUserInstanceListResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "$ref": "#/definitions/SelectUserInstancePageResponse",
+          "title": "实例表响应对像"
+        }
+      },
+      "title": "获取用户实例信息响应对象"
+    },
+    "SelectUserInstancePageResponse": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "总的记录数"
+        },
+        "size": {
+          "type": "string",
+          "format": "int64",
+          "title": "每页显示的大小"
+        },
+        "current": {
+          "type": "string",
+          "format": "int64",
+          "title": "当前页"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/InstanceTableResponse"
+          },
+          "title": "查询数据列表，使用 bytes 类型表示任意数据"
+        }
+      },
+      "title": "获取用户实例分页对象"
+    },
+    "SetInstanceNameReq": {
+      "type": "object",
+      "properties": {
+        "instanceName": {
+          "type": "string",
+          "title": "实例名称"
+        },
+        "instanceId": {
+          "type": "string",
+          "title": "实例id"
+        }
+      },
+      "title": "设置实例名称"
+    },
+    "SetInstanceNameResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        }
+      }
+    },
+    "StartInstanceRequest": {
+      "type": "object",
+      "properties": {
+        "instanceId": {
+          "type": "string",
+          "title": "实例id"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        }
+      },
+      "title": "启动实例请求对象"
+    },
+    "StopInstanceRequest": {
+      "type": "object",
+      "properties": {
+        "instanceId": {
+          "type": "string",
+          "title": "实例id"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        }
+      },
+      "title": "关闭实例请求对象"
+    },
+    "StopInstanceResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "boolean",
+          "title": "执行成功返回true"
+        }
+      },
+      "title": "关闭实例响应对象"
+    },
+    "UpdateBmxServerDiskIdRequest": {
+      "type": "object",
+      "properties": {
+        "serverID": {
+          "type": "string",
+          "title": "Bmx服务器ID，主键"
+        },
+        "sysDiskID": {
+          "type": "string",
+          "title": "系统母盘ID"
+        },
+        "dataDiskID": {
+          "type": "string",
+          "title": "数据母盘ID"
+        },
+        "comment": {
+          "type": "string",
+          "title": "备注"
+        }
+      },
+      "title": "更新BmxServer的磁盘id请求对象"
+    },
+    "UpdateBmxServerDiskIdResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        }
+      },
+      "title": "更新BmxServer的磁盘id响应对象"
+    },
+    "UpdateDiskInfoRequest": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/DiskInfo",
+          "title": "磁盘信息"
+        }
+      },
+      "title": "更新磁盘信息请求对象"
+    },
+    "UpdateDiskInfoResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        }
+      },
+      "title": "更新磁盘信息响应对象"
+    },
+    "UpdateImageResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        }
+      },
+      "title": "更新镜像响应对象"
+    },
+    "UpdateInstanceResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        }
+      },
+      "title": "更新实例响应对象"
+    },
+    "VisitsChartData": {
+      "type": "object",
+      "properties": {
+        "pvList": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": "使用 repeated 表示数组"
+        },
+        "pvDate": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "使用 repeated 表示数组"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,300 @@
+syntax="proto3";
+
+
+option go_package = "enums/";
+
+
+message SettlementApplication{
+
+//     结算状态
+    enum SettlementStatus{
+        //待处理
+        PENDING=0;
+        //已结算
+        SETTLED=1;
+        //拒绝
+        REJECTED=2;
+    }
+
+}
+//转账状态
+message TransferStatus{
+    //转账状态
+    enum TransferStatus{
+        //未转账
+        PENDING=0;
+        //已转账
+        SUCCESS=1;
+        //转账失败
+        FAIL=2;
+    }
+}
+
+//审批状态
+message ApprovalStatus{
+    //审批状态枚举
+    enum ApprovalStatus{
+        //待审批
+        PENDING=0;
+        //已批准
+        APPROVED=1;
+        //已拒绝
+        REJECTED=2;
+        //审核中
+        IN_REVIEW=3;
+        //已完成
+        COMPLETED=4;
+        //正在审查
+        UNDER_REVIEW=5;
+        //已取消
+        CANCELLED=6;
+    }
+}
+
+
+
+enum CacheAdapterEnums{
+    REDIS = 0;
+}
+
+//充值类型
+message RechargeType{
+    enum RechargeTypeEnum{
+        //雨点充值
+        INTEGRAL=0;
+        //余额充值
+        WALLET=1;
+    }
+}
+message MessageType{
+    enum MessageType{
+        // 普通文本消息
+        TEXT = 0;
+        //图片消息
+        IMAGE = 1;
+        //文件消息
+        FILE = 2;
+        //实例消息
+        INSTANCE = 3;
+    }
+}
+//交易渠道
+message TransactionChannel{
+    //    //交易渠道
+        enum TransactionChannel {
+            // 雨点
+            INTEGRAL = 0;
+            //支付宝
+            ALI = 1;
+            //微信
+            WECHAT = 2;
+            //钱包
+            WALLET=3;
+        }
+}
+//交易类型
+message TransactionType{
+
+    //    //交易类型
+        enum TransactionType{
+            // 消费
+            CONSUMPTION  = 0;
+            //充值
+            RECHARGE   = 1;
+        }
+
+}
+//收支类型
+message IncomeExpenseType{
+    //收支类型
+    enum IncomeExpenseType{
+        // 支出
+        EXPENDITURE  = 0;
+        //收入
+        INCOME   = 1;
+    }
+}
+//订单枚举
+message OrderState{
+
+    //订单状态
+    enum OrderState{
+        // 已支付
+        NEW  = 0;
+        //完成
+        COMPLETE   = 1;
+        //取消
+        CANCELLED   = 2;
+        //失败
+        FAIL = 4;
+    }
+
+}
+//支付枚举
+message PayState{
+    //订单支付状态
+    enum PayState {
+        // 已支付
+        PAY = 0;
+        //失败
+        FAILED = 1;
+        //已退款
+        REFUNDED = 2;
+        // 已取消
+        CANCELLED = 3;
+        //处理中
+        PROCESSING = 4;
+        //未支付订单
+        NEW = 5;
+        //已经支付订单
+        //超时取消订单
+        CANCEL = 6;
+        //创建失败
+        FAIL = 7;
+
+    }
+}
+//MQ事件消息类型
+enum EventMessageType{
+    //订单添加
+    ORDER_ADD=0;
+    //延迟扣减用户金额
+    ORDER_EXPENSE_DEDUCTIONS=1;
+    //创建实例
+    ORDER_CREATE_INSEANCE=2;
+
+    //关闭实例
+    DEVICE_STOP_INSEANCE=3;
+    //开机
+    DEVICE_START_INSEANCE=4;
+    //实例释放
+    DEVICE_RELEASE_INSEANCE=5;
+
+    //雨点赠送
+    ACCOUNT_GRANT_INTEGRAL=20;
+}
+
+
+
+//订单支付状态
+enum OrderPyStateEnums{
+    //未支付订单
+    NEW = 0;
+    //已经支付订单
+    PAY = 1;
+    //超时取消订单
+    CANCEL = 2;
+    //创建失败
+    FAIL = 3;
+
+}
+
+enum InstanceStatusEnums {
+    //开机
+    On = 0;
+    //关机
+    Off = 1;
+    //失败
+    Fail = 2;
+    //初始化
+    Invalid = 3;
+    //异常
+    Exception=4;
+    //重新创建
+    ReCreate=5;
+}
+
+
+message OrderType{
+    //计费类型
+    enum OrderTypeEnums{
+        //按量
+        AMOUNT = 0;
+        //按日
+        DAY = 1;
+        //按月
+        MONTH = 2;
+        //周
+        WEEK = 3;
+        //年
+        YEAR = 4;
+        //续费
+        RENEW = 5;
+    }
+}
+
+
+//计费类型
+enum BillingTypeEnums{
+    //按量
+    AMOUNT = 0;
+    //按日
+    DAY = 1;
+    //按月
+    MONTH = 2;
+    //周
+    WEEK = 3;
+    //年
+    YEAR = 4;
+    //续费
+    RENEW = 5;
+}
+
+
+// 可用 NEW,已使用USED,过期 EXPIRED;
+message VoucherState{
+    //优惠卷与代金券使用状态
+    enum UseStateEnums{
+        //领取状态
+        NEW =0;
+        //使用状态
+        USED =1;
+        //过期状态
+        EXPIRED =2;
+    }
+//    代金券类型[NEW_USER注册赠券，TASK任务卷，PROMOTION促销劵]
+    enum CategoryEnums{
+        //NEW_USER注册赠券
+        NEW_USER = 0;
+        //任务卷
+        TASK = 1;
+        //促销劵
+        PROMOTION = 2;
+    }
+}
+
+//发票类型
+enum InvoiceType{
+    //增值税普通发票
+    VAT_PLAIN_INVOICE = 0;
+    //增值税专用发票
+    VAT_SPECIAL_INVOICE = 1;
+}
+
+//代金券发布状态
+enum VoucherPublishState{
+    //发布
+    PUBLISH = 0;
+    //草稿
+    DRAFT = 1;
+    //下线
+    OFFLINE = 2;
+}
+
+message SmsType{
+    enum SmsTypeEnums{
+        TencentSms=0;
+    }
+}
+
+//支付策略
+message PayStrategy{
+    enum PayType{
+        //支付宝
+        ALI=0;
+        //微信
+        WECHAT=1;
+        //雨点
+        INTEGRAL=3;
+    }
+}

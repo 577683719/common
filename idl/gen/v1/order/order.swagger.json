@@ -1,0 +1,1037 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "order.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "OrderService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/admin/v1/order/queryOrderList": {
+      "post": {
+        "summary": "管理端_查询订单列表",
+        "operationId": "OrderService_QueryOrderList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/QueryOrderListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryOrderListRequest"
+            }
+          }
+        ],
+        "tags": [
+          "OrderService"
+        ]
+      }
+    },
+    "/admin/v1/order/settlementApplication": {
+      "post": {
+        "summary": "管理端-结算申请",
+        "operationId": "OrderService_UserSettlementApplication",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SettlementApplicationResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SettlementApplicationPB"
+            }
+          }
+        ],
+        "tags": [
+          "OrderService"
+        ]
+      }
+    },
+    "/admin/v1/order/settlementApplicationPage": {
+      "post": {
+        "summary": "管理端-结算申请分页对象",
+        "operationId": "OrderService_SettlementApplicationPage",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SettlementApplicationPageResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SettlementApplicationPB"
+            }
+          }
+        ],
+        "tags": [
+          "OrderService"
+        ]
+      }
+    },
+    "/admin/v1/order/updateSettlementApplication": {
+      "post": {
+        "summary": "管理端-更新申请单",
+        "operationId": "OrderService_UpdateSettlementApplication",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UpdateSettlementApplicationResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SettlementApplicationPB"
+            }
+          }
+        ],
+        "tags": [
+          "OrderService"
+        ]
+      }
+    },
+    "/api/v1/order/createOrder": {
+      "post": {
+        "summary": "创建订单",
+        "operationId": "OrderService_CreateOrder",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CreateOrderResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateOrderRequest"
+            }
+          }
+        ],
+        "tags": [
+          "OrderService"
+        ]
+      }
+    },
+    "/api/v1/order/getOrderToken": {
+      "post": {
+        "summary": "获取订单提交token",
+        "operationId": "OrderService_GetOrderToken",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetOrderTokenResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OrderEmptyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "OrderService"
+        ]
+      }
+    },
+    "/api/v1/order/orderDetailed": {
+      "post": {
+        "summary": "订单详细",
+        "operationId": "OrderService_OrderDetailed",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/OrderDetailResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OrderDetailedRequest"
+            }
+          }
+        ],
+        "tags": [
+          "OrderService"
+        ]
+      }
+    },
+    "/api/v1/order/orderList": {
+      "post": {
+        "summary": "订单列表",
+        "operationId": "OrderService_OrderList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/OrderListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OrderListRequest"
+            }
+          }
+        ],
+        "tags": [
+          "OrderService"
+        ]
+      }
+    },
+    "/api/v1/order/orderRenewalLease": {
+      "post": {
+        "summary": "订单续费",
+        "operationId": "OrderService_OrderRenewalLease",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/OrderDefaultResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OrderRenewalLeaseRequest"
+            }
+          }
+        ],
+        "tags": [
+          "OrderService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "CreateOrderRequest": {
+      "type": "object",
+      "properties": {
+        "productId": {
+          "type": "string",
+          "title": "产品id"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        },
+        "payType": {
+          "type": "string",
+          "title": "支付类型"
+        },
+        "totalAmount": {
+          "type": "string",
+          "title": "总价格"
+        },
+        "realPayAmount": {
+          "type": "string",
+          "title": "实际支付价格"
+        },
+        "billingType": {
+          "type": "string",
+          "title": "计费类型"
+        },
+        "token": {
+          "type": "string",
+          "title": "防重令牌"
+        },
+        "image": {
+          "type": "string",
+          "title": "镜像 这个值不需要传"
+        },
+        "bmxSevArea": {
+          "type": "string",
+          "title": "地区"
+        },
+        "imageId": {
+          "type": "integer",
+          "format": "int32",
+          "title": "镜像id"
+        }
+      },
+      "title": "创建订单请求对象"
+    },
+    "CreateOrderResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "format": "int64",
+          "title": "code码 200 请求成功"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "type": "string",
+          "title": "实例id"
+        }
+      },
+      "title": "创建订单响应对象"
+    },
+    "GetOrderTokenResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码"
+        },
+        "message": {
+          "type": "string",
+          "title": "响应消息"
+        },
+        "data": {
+          "type": "string",
+          "title": "响应数据 提交token"
+        }
+      },
+      "title": "获取提交订单token响应对象"
+    },
+    "Order": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "title": "订单编号"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        },
+        "payState": {
+          "type": "string",
+          "title": "订单支付状态"
+        },
+        "billingType": {
+          "type": "string",
+          "title": "计费方式"
+        },
+        "orderState": {
+          "type": "string",
+          "title": "订单状态"
+        },
+        "createTime": {
+          "type": "string",
+          "title": "订单生成时间"
+        },
+        "updateTime": {
+          "type": "string",
+          "title": "更新时间"
+        },
+        "totalAmount": {
+          "type": "string",
+          "title": "订单总金额"
+        },
+        "payAmount": {
+          "type": "string",
+          "title": "订单实际支付价格"
+        },
+        "payType": {
+          "type": "string",
+          "title": "支付类型"
+        },
+        "nickname": {
+          "type": "string",
+          "title": "昵称"
+        },
+        "headImg": {
+          "type": "string",
+          "title": "头像"
+        },
+        "orderType": {
+          "type": "string",
+          "title": "订单类型"
+        },
+        "emailAddress": {
+          "type": "string",
+          "title": "邮箱地址"
+        },
+        "info": {
+          "type": "string",
+          "title": "备注"
+        },
+        "del": {
+          "type": "boolean",
+          "title": "删除状态 0代表未删除，1代表已删除"
+        },
+        "instanceId": {
+          "type": "string",
+          "title": "实例id"
+        },
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "主键"
+        }
+      },
+      "title": "订单model"
+    },
+    "OrderDefaultResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码"
+        },
+        "message": {
+          "type": "string",
+          "title": "响应消息"
+        },
+        "data": {
+          "type": "boolean",
+          "title": "成功为true"
+        }
+      },
+      "title": "自定义订单默认响应对象"
+    },
+    "OrderDetail": {
+      "type": "object",
+      "properties": {
+        "order": {
+          "$ref": "#/definitions/Order"
+        },
+        "orderItem": {
+          "$ref": "#/definitions/OrderItem"
+        }
+      }
+    },
+    "OrderDetailResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码"
+        },
+        "message": {
+          "type": "string",
+          "title": "响应消息"
+        },
+        "data": {
+          "$ref": "#/definitions/OrderDetail",
+          "title": "响应数据 提交token"
+        }
+      },
+      "title": "订单详细响应对象"
+    },
+    "OrderDetailedRequest": {
+      "type": "object",
+      "properties": {
+        "orderId": {
+          "type": "string",
+          "format": "int64",
+          "title": "订单id"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        },
+        "orderCode": {
+          "type": "string",
+          "title": "订单编号"
+        }
+      },
+      "title": "订单详细请求对象"
+    },
+    "OrderEmptyRequest": {
+      "type": "object"
+    },
+    "OrderItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "订单项id"
+        },
+        "orderCode": {
+          "type": "string",
+          "title": "订单号"
+        },
+        "orderId": {
+          "type": "string",
+          "format": "int64",
+          "title": "订单id"
+        },
+        "productId": {
+          "type": "string",
+          "title": "商品id"
+        },
+        "productName": {
+          "type": "string",
+          "title": "商品名称"
+        },
+        "productImg": {
+          "type": "string",
+          "title": "商品图片"
+        },
+        "buyNum": {
+          "type": "integer",
+          "format": "int32",
+          "title": "购买数量"
+        },
+        "updateTime": {
+          "type": "string",
+          "title": "修改时间"
+        },
+        "createTime": {
+          "type": "string",
+          "title": "创建时间"
+        },
+        "totalAmount": {
+          "type": "string",
+          "title": "商品总价格"
+        },
+        "amount": {
+          "type": "string",
+          "title": "商品单价"
+        },
+        "cpuType": {
+          "type": "string",
+          "title": "CPU类型"
+        },
+        "cpuNum": {
+          "type": "string",
+          "title": "CPU数量"
+        },
+        "gpuMem": {
+          "type": "string",
+          "title": "GPU内存"
+        },
+        "datadiskSize": {
+          "type": "string",
+          "title": "数据磁盘大小"
+        },
+        "instanceId": {
+          "type": "string",
+          "title": "实例id"
+        }
+      },
+      "title": "订单项"
+    },
+    "OrderListRequest": {
+      "type": "object",
+      "properties": {
+        "instanceId": {
+          "type": "string",
+          "title": "实例id"
+        },
+        "tradingHoursFrom": {
+          "type": "string",
+          "title": "交易时间从"
+        },
+        "tradingHoursTo": {
+          "type": "string",
+          "title": "交易时间到"
+        },
+        "pageNum": {
+          "type": "string",
+          "format": "int64",
+          "title": "页号"
+        },
+        "pageSize": {
+          "type": "string",
+          "format": "int64",
+          "title": "页大小"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        },
+        "orderCode": {
+          "type": "string",
+          "title": "订单号"
+        }
+      },
+      "title": "订单列表请求对象"
+    },
+    "OrderListResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "code码"
+        },
+        "message": {
+          "type": "string",
+          "title": "响应消息"
+        },
+        "data": {
+          "$ref": "#/definitions/PageResponse",
+          "title": "订单体"
+        }
+      },
+      "title": "订单列表响应对象"
+    },
+    "OrderOrderItem": {
+      "type": "object",
+      "properties": {
+        "column": {
+          "type": "string",
+          "title": "需要排序的字段"
+        },
+        "asc": {
+          "type": "boolean",
+          "title": "正序倒序"
+        }
+      }
+    },
+    "OrderRenewalLeaseRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        },
+        "productId": {
+          "type": "string",
+          "title": "产品id"
+        },
+        "productBillingType": {
+          "type": "string",
+          "title": "续费类型"
+        },
+        "instanceId": {
+          "type": "string",
+          "title": "实例id"
+        },
+        "totalAmount": {
+          "type": "string",
+          "title": "总金额"
+        },
+        "realPayAmount": {
+          "type": "string",
+          "title": "实际支付金额"
+        }
+      },
+      "title": "订单续续租请求对象"
+    },
+    "PageResponse": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "总的记录数"
+        },
+        "size": {
+          "type": "string",
+          "format": "int64",
+          "title": "每页显示的大小"
+        },
+        "current": {
+          "type": "string",
+          "format": "int64",
+          "title": "当前页"
+        },
+        "orders": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/OrderOrderItem"
+          },
+          "title": "排序条件，repeated 表示重复字段，类似于 slice"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/Order"
+          },
+          "title": "查询数据列表，使用 bytes 类型表示任意数据"
+        }
+      },
+      "title": "风险响应对象"
+    },
+    "QueryOrderList": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "总的记录数"
+        },
+        "size": {
+          "type": "string",
+          "format": "int64",
+          "title": "每页显示的大小"
+        },
+        "current": {
+          "type": "string",
+          "format": "int64",
+          "title": "当前页"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/Order"
+          },
+          "title": "查询数据列表，使用 bytes 类型表示任意数据"
+        }
+      },
+      "title": "风险响应对象"
+    },
+    "QueryOrderListRequest": {
+      "type": "object",
+      "properties": {
+        "pageNum": {
+          "type": "string",
+          "format": "int64",
+          "title": "页号"
+        },
+        "pageSize": {
+          "type": "string",
+          "format": "int64",
+          "title": "页大小"
+        },
+        "tradingHoursFrom": {
+          "type": "string",
+          "title": "交易时间从"
+        },
+        "tradingHoursTo": {
+          "type": "string",
+          "title": "交易时间到"
+        },
+        "code": {
+          "type": "string",
+          "title": "订单编号"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        },
+        "payState": {
+          "type": "string",
+          "title": "订单支付状态"
+        },
+        "billingType": {
+          "type": "string",
+          "title": "计费方式"
+        },
+        "orderState": {
+          "type": "string",
+          "title": "订单状态"
+        }
+      },
+      "title": "订单列表请求对象"
+    },
+    "QueryOrderListResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "code码"
+        },
+        "message": {
+          "type": "string",
+          "title": "响应消息"
+        },
+        "data": {
+          "$ref": "#/definitions/QueryOrderList",
+          "title": "订单体"
+        }
+      },
+      "title": "订单列表响应对象"
+    },
+    "SettlementApplicationPB": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "主键ID"
+        },
+        "customerTag": {
+          "type": "string",
+          "title": "客户标签"
+        },
+        "bankAccount": {
+          "type": "string",
+          "title": "银行账户"
+        },
+        "bankName": {
+          "type": "string",
+          "title": "开户行"
+        },
+        "applicationTime": {
+          "type": "string",
+          "title": "结算申请时间 (ISO 8601 格式)"
+        },
+        "applicationAmount": {
+          "type": "string",
+          "title": "结算申请金额 (Decimal 表示为字符串)"
+        },
+        "settlementAmount": {
+          "type": "string",
+          "title": "结算金额 (Decimal 表示为字符串)"
+        },
+        "settlementTime": {
+          "type": "string",
+          "title": "结算时间 (ISO 8601 格式)"
+        },
+        "settlementStatus": {
+          "type": "string",
+          "title": "结算状态 (PENDING: 待处理, SETTLED: 已结算, REJECTED: 拒绝)"
+        },
+        "createTime": {
+          "type": "string",
+          "title": "创建时间 (ISO 8601 格式)"
+        },
+        "updateTime": {
+          "type": "string",
+          "title": "更新时间 (ISO 8601 格式)"
+        },
+        "del": {
+          "type": "boolean",
+          "title": "删除标记 (false: 未删除, true: 已删除)"
+        },
+        "info": {
+          "type": "string",
+          "title": "备注"
+        },
+        "pageNum": {
+          "type": "string",
+          "format": "int64",
+          "title": "页号"
+        },
+        "pageSize": {
+          "type": "string",
+          "format": "int64",
+          "title": "页大小"
+        },
+        "accountName": {
+          "type": "string",
+          "title": "账号姓名"
+        }
+      },
+      "title": "结算申请请求对象"
+    },
+    "SettlementApplicationPage": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "总的记录数"
+        },
+        "size": {
+          "type": "string",
+          "format": "int64",
+          "title": "每页显示的大小"
+        },
+        "current": {
+          "type": "string",
+          "format": "int64",
+          "title": "当前页"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/SettlementApplicationPB"
+          }
+        }
+      },
+      "title": "结算申请分页对象"
+    },
+    "SettlementApplicationPageResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "code码"
+        },
+        "message": {
+          "type": "string",
+          "title": "响应消息"
+        },
+        "data": {
+          "$ref": "#/definitions/SettlementApplicationPage"
+        }
+      },
+      "title": "结算申请响应对象"
+    },
+    "SettlementApplicationResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "code码"
+        },
+        "message": {
+          "type": "string",
+          "title": "响应消息"
+        }
+      },
+      "title": "结算申请响应对象"
+    },
+    "UpdateSettlementApplicationResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "code码"
+        },
+        "message": {
+          "type": "string",
+          "title": "响应消息"
+        }
+      },
+      "title": "更新申请单响应对象"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

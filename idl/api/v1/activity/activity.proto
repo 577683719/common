@@ -1,0 +1,44 @@
+syntax="proto3";
+
+
+
+option go_package = "./activity";
+
+import "validate/validate.proto";
+
+//活动服务
+service ActivityService{
+    //获取Banner列表
+    rpc GetBannerList(GetBannerListRequest)returns (GetBannerListResponse);
+}
+//获取bannaer列表请求对象
+message GetBannerListRequest{
+}
+
+//获取bannar列表响应对象
+message GetBannerListResponse{
+    //响应码
+    int32 code = 1;
+    //消息
+    string message = 2;
+    //banner对象
+    repeated BannerResp data = 3;
+
+}
+//banner对象
+message BannerResp{
+    // banner的主键
+    int64 id = 1;
+    // banner的位置
+    int32 bannerIndex = 2;
+    // banner的名称
+    string bannerName = 3;
+    // banner的备注
+    string bannerInfo = 4;
+    // 显示图片的URL
+    string showPicture = 8;
+}
+
+
+
+

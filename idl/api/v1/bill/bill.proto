@@ -1,0 +1,409 @@
+syntax="proto3";
+
+option go_package = "./bill";
+
+import "validate/validate.proto";
+
+//billingServices
+service BillServices{
+  //收支明细列表
+  rpc TransactionDetailList(TransactionDetailListRequest)returns (TransactionDetailListResponse);
+  //账单明细列表接口
+  rpc BillDetailsList(BillDetailsListRequest)returns (BillDetailsListResponse);
+
+  //账单详细接口
+  rpc BillDetails(BillDetailsReq)returns (BillDetailsResp);
+
+  //导出日结账单接口
+  rpc ExportDailyStatement(ExportDailyStatementRequest) returns (ExportDailyStatementResponse);
+
+  //获取近期雨点统计
+  rpc GetRecentPointsStatistics(GetRecentPointsStatisticsRequest)returns (GetRecentPointsStatisticsResponse);
+
+
+  //管理端_查询收支明细列表
+  rpc QueryTransactionDetailList(QueryTransactionDetailListRequest)returns (QueryTransactionDetailListResponse);
+  //管理端_查询账单明细列表
+  rpc QueryBillDetailsList(QueryBillDetailsListRequest)returns (QueryBillDetailsListResponse);
+  //管理端_获取产品列表
+  rpc GetBillProductList(GetBillProductListRequest)returns (GetBillProductListResponse);
+}
+
+//账单详细响应对象
+message BillDetailsResp {
+  //响应码
+  int32 code = 1;
+  //响应消息
+  string message = 2;
+  //订单详细
+  BillingDetails data = 3;
+
+}
+
+
+//账单详细请求对象
+message BillDetailsReq{
+  //账单id
+  int64 id = 1;
+}
+
+
+//获取近期雨点统计请求对象
+message GetRecentPointsStatisticsRequest{
+  //用户id
+  int64 userId=1;
+
+}
+
+//获取近期雨点统计响应对象
+message GetRecentPointsStatisticsResponse{
+  //响应码
+  int32 code = 1;
+  //响应消息
+  string message = 2;
+  //响应对象
+  RecentPointsStatistics data = 3;
+}
+//最近雨点统计对象
+message RecentPointsStatistics{
+  //充值雨点
+  string rechargePoints=1;
+  //消费雨点
+  string consumptionPoints=2;
+}
+
+
+//获取账单产品列表
+message  GetBillProductListRequest{
+  //页号
+  int64 pageNum = 5;
+  //页大小
+  int64 pagesize = 6;
+  //用户id
+  int64 userId = 7;
+}
+message GetBillProductListResponse{
+  //响应码
+  int32 code = 1;
+  //响应消息
+  string message = 2;
+  //收支明细响应结构体
+  GetBillProductListPage data = 3;
+}
+
+
+//获取账单产品列表product对象
+message GetBillProductListPage{
+  // 总的记录数
+  int64 total = 1;
+  // 每页显示的大小
+  int64 size = 2;
+  // 当前页
+  int64 current = 3;
+  // 账单产品列表
+  repeated BillProduct rows = 5;
+}
+
+
+//账单产品
+message BillProduct{
+  //产品名称
+  string productName = 1;
+  //产品id
+  string productId = 2;
+  //时长
+  int64 duration=3;
+  //总价格
+  string totalPrice = 4;
+}
+
+
+//账单明细列表请求对象
+message BillDetailsListRequest{
+  //订单编号
+  string orderCode = 1;
+  //子账号
+  string subAccounts=2;
+  //账单时间从
+  string billingTimeFrom=3;
+  //账单时间到
+  string billingTimeTo = 4;
+  //页号
+  int64 pageNum = 5;
+  //页大小
+  int64 pagesize = 6;
+  //用户id
+  int64 userId = 7;
+}
+
+//账单明细列表响应对象
+message BillDetailsListResponse{
+  //响应码
+  int32 code = 1;
+  //响应消息
+  string message = 2;
+  //收支明细响应结构体
+  BillingDetailsPage data = 3;
+}
+
+//账单明细分页对象
+message BillingDetailsPage {
+  // 总的记录数
+  int64 total = 1;
+  // 每页显示的大小
+  int64 size = 2;
+  // 当前页
+  int64 current = 3;
+  // 账单明细对象列表
+  repeated BillingDetails rows = 5;
+}
+
+//收支明细列表请求对象
+message QueryTransactionDetailListRequest{
+  //页号
+  int64 pageNum = 1;
+  //页大小
+  int64 pagesize = 2;
+  //用户id
+  int64 userId = 3;
+  //交易时间从
+  string transactionTimeFrom  = 4;
+  //交易结束到
+  string transactionTimeTimeTo  = 5;
+  // 流水号
+  string serialNumber = 6;
+  // 收支类型
+  string incomeExpenseType = 7;
+  // 交易类型
+  string transactionType = 8;
+}
+
+//收支明细响应分页对象
+message QueryTransactionDetailList {
+  // 总的记录数
+  int64 total = 1;
+  // 每页显示的大小
+  int64 size = 2;
+  // 当前页
+  int64 current = 3;
+  // 收支明细列表
+  repeated TransactionDetail transactionDetails = 4;
+}
+//收支明细响应对象
+message QueryTransactionDetailListResponse{
+  //响应码
+  int32 code = 1;
+  //响应消息
+  string message = 2;
+  //收支明细响应结构体
+  QueryTransactionDetailList data = 3;
+}
+
+//导出日结账单文件对象
+message ExportDailyStatementRequest{
+  int64 userId=1;
+}
+//导出日结账单响应对象
+message ExportDailyStatementResponse {
+//  bytes content = 1;
+//  string filename = 2;
+  int64 code = 1;
+  string message=2;
+  repeated ExportDailyStatement data = 3;
+}
+message ExportDailyStatement {
+  // 日期
+  string date = 1;
+
+  // 流水号
+  string serialNumber = 2;
+
+  // 账单创建时间
+  string billCreateTime = 3;
+
+  // 交易类型
+  string transactionType = 4;
+
+  // 交易金额
+  string transactionAmount = 5;
+
+  // 优惠金额
+  string discountAmount = 6;
+
+  // 余额支付
+  string balancePayment = 7;
+
+  // 代金券抵扣
+  string voucherDeduction = 8;
+}
+
+//账单明细列表请求对象
+message QueryBillDetailsListRequest{
+  //页号
+  int64 pageNum = 1;
+  //页大小
+  int64 pagesize = 2;
+  //订单编号
+  string orderCode = 3;
+  //子账号
+  string subAccounts=4;
+  //账单时间从
+  string billingTimeFrom=5;
+  //账单时间到
+  string billingTimeTo = 6;
+  //用户id
+  int64 userId = 7;
+  // 流水号
+  string serialNumber = 8;
+  // 交易类型
+  string transactionType = 9;
+  // 产品名称
+  string productName = 10;
+  // 实例id
+  string instanceId = 12;
+  // 计费方式
+  string billingType = 13;
+  // 扣费原因
+  string deductionReason = 14;
+  // 账单状态
+  string billing_state = 15;
+}
+
+//账单明细列表响应对象
+message QueryBillDetailsListResponse{
+  //响应码
+  int32 code = 1;
+  //响应消息
+  string message = 2;
+  //收支明细响应结构体
+  QueryBillDetailsList data = 3;
+}
+//账单明细对象
+message BillingDetails{
+  // 主键
+  int64 id = 1;
+  // 流水号
+  string serialNumber = 2;
+  // 交易时间
+  string transactionTime = 3;
+  // 交易类型
+  string transactionType = 4;
+  // 产品名称
+  string productName = 5;
+  // 交易金额
+  string transactionAmount = 6;
+  // 原价
+  string originalPrice = 7;
+  // 优惠金额
+  string discountAmount = 8;
+  // 余额支付
+  string balancePayment = 9;
+  // 代金券抵扣
+  string voucherDeduction = 10;
+  // 子账号
+  string subAccount = 11;
+  // 订单号
+  string orderCode = 12;
+  // 实例id
+  string instanceId = 13;
+  // 计费方式
+  string billingType = 14;
+  // 计费周期
+  string billingCycle = 15;
+  // 计费时长
+  string billingDuration = 16;
+  // 扣费原因
+  string deductionReason = 17;
+  // 无卡模式
+  string noCardMode = 18;
+  // 创建时间
+  string createTime = 19;
+  // 更新时间
+  string updateTime = 20;
+  // 创建人
+  int64 createUser = 21;
+  // 修改人
+  int64 updateUser = 22;
+  // 版本号
+  int32 version = 23;
+  // 删除标记，0:未删除，1:已删除
+  bool del = 24;
+  // 账单状态[UNPAID未支付，PAID已支付，CANCELLED已取消，REFUNDED已退款，PENDING_REVIEW待审核，REVIEW_FAILED审核不通过，COMPLETED已完成]'
+  string billing_state = 25;
+  // 用户id
+  int64 userId = 26;
+}
+//账单明细分页对象
+message QueryBillDetailsList {
+  // 总的记录数
+  int64 total = 1;
+  // 每页显示的大小
+  int64 size = 2;
+  // 当前页
+  int64 current = 3;
+  // 账单明细对象列表
+  repeated BillingDetails rows = 5;
+}
+
+//收支明细列表请求对象
+message TransactionDetailListRequest{
+  //用户id
+  int64 userId = 1;
+  //交易时间从
+  string transactionTimeFrom  = 2;
+  //交易结束到
+  string transactionTimeTimeTo  = 3;
+  //页号
+  int64 pageNum = 4;
+  //页大小
+  int64 pagesize = 5;
+}
+
+//收支明细响应分页对象
+message TransactionDetailPageResponse {
+  // 总的记录数
+  int64 total = 1;
+  // 每页显示的大小
+  int64 size = 2;
+  // 当前页
+  int64 current = 3;
+  // 收支明细列表
+  repeated TransactionDetail transactionDetails = 4;
+}
+//收支明细响应对象
+message TransactionDetailListResponse{
+  //响应码
+  int32 code = 1;
+  //响应消息
+  string message = 2;
+  //收支明细响应结构体
+  TransactionDetailPageResponse data = 3;
+}
+// TransactionDetail 收支明细表
+message TransactionDetail {
+  // 流水号
+  string serialNumber = 1;
+  // 交易时间
+  string transactionTime = 2;
+    // 收支类型
+  string incomeExpenseType = 3;
+  // 交易类型
+  string transactionType = 4;
+  // 交易渠道
+  string transactionChannel = 5;
+  // 交易金额
+  string transactionAmount = 6;
+    // 账户剩余雨点
+  string accountBalance = 7;
+    // 用户ID
+  int64 userId = 8;
+  // 备注
+  string remark = 9;
+  //主键
+  int64 id = 10;
+  //钱包余额
+  string walletBalance = 11;
+
+}
+
+

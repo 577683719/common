@@ -1,0 +1,715 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "message.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "MessageService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/admin/v1/message/querySmsByPhone": {
+      "post": {
+        "summary": "管理端_查询短信验证码",
+        "operationId": "MessageService_QuerySmsByPhone",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/QuerySmsByPhoneResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QuerySmsByPhoneRequest"
+            }
+          }
+        ],
+        "tags": [
+          "MessageService"
+        ]
+      }
+    },
+    "/admin/v1/message/send": {
+      "post": {
+        "summary": "发送消息",
+        "operationId": "MessageService_SendMessage2",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SendMessageResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SendMessageReq"
+            }
+          }
+        ],
+        "tags": [
+          "MessageService"
+        ]
+      }
+    },
+    "/api/v1/message/deleteUserMessage": {
+      "post": {
+        "summary": "删除用户消息",
+        "operationId": "MessageService_DeleteUserMessage",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DeleteUserMessageResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeleteUserMessageRequest"
+            }
+          }
+        ],
+        "tags": [
+          "MessageService"
+        ]
+      }
+    },
+    "/api/v1/message/getMessageCount": {
+      "post": {
+        "summary": "获取消息数量",
+        "operationId": "MessageService_GetMessageCount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetMessageCountResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetMessageCountRequest"
+            }
+          }
+        ],
+        "tags": [
+          "MessageService"
+        ]
+      }
+    },
+    "/api/v1/message/getMessageList": {
+      "post": {
+        "summary": "获取消息列表",
+        "operationId": "MessageService_GetMessageList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetMessageListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetMessageListRequest"
+            }
+          }
+        ],
+        "tags": [
+          "MessageService"
+        ]
+      }
+    },
+    "/api/v1/message/readMessage": {
+      "post": {
+        "summary": "读取消息",
+        "operationId": "MessageService_ReadMessage",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ReadMessageResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ReadMessageRequest"
+            }
+          }
+        ],
+        "tags": [
+          "MessageService"
+        ]
+      }
+    },
+    "/api/v1/message/send": {
+      "post": {
+        "summary": "发送消息",
+        "operationId": "MessageService_SendMessage",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SendMessageResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SendMessageReq"
+            }
+          }
+        ],
+        "tags": [
+          "MessageService"
+        ]
+      }
+    },
+    "/api/v1/message/sendSms": {
+      "post": {
+        "summary": "发送短信验证码",
+        "operationId": "MessageService_SendSms",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SendSmsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SendSmsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "MessageService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "DeleteUserMessageRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        },
+        "messageId": {
+          "type": "string",
+          "format": "int64",
+          "title": "消息id"
+        }
+      },
+      "title": "删除用户消息请求对象"
+    },
+    "DeleteUserMessageResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "date": {
+          "type": "boolean",
+          "title": "响应对象"
+        }
+      },
+      "title": "删除用户消息响应对象"
+    },
+    "GetMessageCountRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        }
+      },
+      "title": "获取消息数量请求对象"
+    },
+    "GetMessageCountResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "date": {
+          "$ref": "#/definitions/MessageCount",
+          "title": "响应对象"
+        }
+      },
+      "title": "获取消息数量响应对象"
+    },
+    "GetMessageListRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        },
+        "readStatus": {
+          "type": "string",
+          "title": "读取状态 0代表未读 1代表已读"
+        },
+        "messageType": {
+          "type": "string",
+          "title": "消息类型 普通文本消息 text 图片消息image 文件消息file  实例消息 instance"
+        }
+      },
+      "title": "获取消息列表请求对象"
+    },
+    "GetMessageListResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "date": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/UserMessage"
+          },
+          "title": "用户消息对象"
+        }
+      },
+      "title": "获取消息列表响应对象"
+    },
+    "MessageCount": {
+      "type": "object",
+      "properties": {
+        "messagesTotalCount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "用户消息总数"
+        },
+        "messagesReadCount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "已读消息数"
+        },
+        "messagesUnreadCount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "未读消息数"
+        }
+      },
+      "title": "消息数量"
+    },
+    "MessageDefaultResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表成功"
+        },
+        "message": {
+          "type": "string",
+          "title": "返回消息"
+        },
+        "data": {
+          "type": "boolean",
+          "title": "ture代表发送成功"
+        }
+      }
+    },
+    "QuerySmsByPhone": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "总的记录数"
+        },
+        "size": {
+          "type": "string",
+          "format": "int64",
+          "title": "每页显示的大小"
+        },
+        "current": {
+          "type": "string",
+          "format": "int64",
+          "title": "当前页"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/SMS"
+          },
+          "title": "执行成功返回数据"
+        }
+      }
+    },
+    "QuerySmsByPhoneRequest": {
+      "type": "object",
+      "properties": {
+        "pageNum": {
+          "type": "string",
+          "format": "int64",
+          "title": "页号"
+        },
+        "pageSize": {
+          "type": "string",
+          "format": "int64",
+          "title": "页大小"
+        },
+        "receiverPhone": {
+          "type": "string",
+          "title": "接收人手机号"
+        }
+      }
+    },
+    "QuerySmsByPhoneResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表成功"
+        },
+        "message": {
+          "type": "string",
+          "title": "返回消息"
+        },
+        "data": {
+          "$ref": "#/definitions/QuerySmsByPhone",
+          "title": "执行成功返回数据"
+        }
+      }
+    },
+    "ReadMessageRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        },
+        "messageId": {
+          "type": "string",
+          "format": "int64",
+          "title": "消息id"
+        }
+      },
+      "title": "读取消息请求对象"
+    },
+    "ReadMessageResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "date": {
+          "type": "boolean",
+          "title": "响应对象"
+        }
+      },
+      "title": "读取消息响应对象"
+    },
+    "SMS": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "receiverPhone": {
+          "type": "string",
+          "title": "接收人手机号"
+        },
+        "captcha": {
+          "type": "string",
+          "title": "短信码"
+        },
+        "sendTime": {
+          "type": "string",
+          "title": "发送时间"
+        },
+        "status": {
+          "type": "string",
+          "title": "发送状态 'sent', 'failed', 'pending'"
+        },
+        "retryCount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "重试次数"
+        }
+      }
+    },
+    "SendMessageReq": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "发送用户消息"
+        },
+        "messageContent": {
+          "type": "string",
+          "title": "消息体"
+        },
+        "priority": {
+          "type": "integer",
+          "format": "int32",
+          "title": "优先级"
+        },
+        "messageType": {
+          "type": "string",
+          "title": "消息类型"
+        },
+        "subject": {
+          "type": "string",
+          "title": "消息主题"
+        }
+      },
+      "title": "发送消息请求对象"
+    },
+    "SendMessageResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表成功"
+        },
+        "message": {
+          "type": "string",
+          "title": "返回消息"
+        },
+        "data": {
+          "type": "boolean",
+          "title": "ture代表发送成功"
+        }
+      },
+      "title": "发送消息响应对象"
+    },
+    "SendSmsRequest": {
+      "type": "object",
+      "properties": {
+        "captchaId": {
+          "type": "string",
+          "title": "验证码"
+        },
+        "phone": {
+          "type": "string",
+          "title": "手机号"
+        },
+        "xAxis": {
+          "type": "string",
+          "title": "x轴"
+        },
+        "yAxis": {
+          "type": "string",
+          "title": "Y轴"
+        }
+      },
+      "title": "发送短信请求对象"
+    },
+    "SendSmsResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表成功"
+        },
+        "message": {
+          "type": "string",
+          "title": "返回消息"
+        },
+        "data": {
+          "type": "boolean",
+          "title": "ture代表发送成功"
+        }
+      },
+      "title": "发送短信响应对象"
+    },
+    "UserMessage": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户消息主键"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户ID"
+        },
+        "messageContent": {
+          "type": "string",
+          "title": "实际的消息内容"
+        },
+        "sendTime": {
+          "type": "string",
+          "title": "发送时间 (发送是啊金 )"
+        },
+        "isRead": {
+          "type": "boolean",
+          "title": "消息阅读状态，默认未读"
+        },
+        "subject": {
+          "type": "string",
+          "title": "消息主题（如果有）"
+        },
+        "attachmentUrl": {
+          "type": "string",
+          "title": "附件URL（如果有）"
+        },
+        "messageType": {
+          "type": "string",
+          "title": "消息类型（例如，text、image、file等）"
+        },
+        "priority": {
+          "type": "integer",
+          "format": "int32",
+          "title": "消息优先级（例如，高、中、低）"
+        }
+      },
+      "title": "用户消息对象"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

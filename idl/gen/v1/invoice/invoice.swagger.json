@@ -1,0 +1,1163 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "invoice.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "InvoiceService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/admin/v1/invoice/refuseIssueInvoice": {
+      "post": {
+        "summary": "管理端-拒绝开票",
+        "operationId": "InvoiceService_RefuseIssueInvoice",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/RefuseIssueInvoiceResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RefuseIssueInvoiceReq"
+            }
+          }
+        ],
+        "tags": [
+          "InvoiceService"
+        ]
+      }
+    },
+    "/admin/v1/invoice/selectInvoiceApplicationPage": {
+      "post": {
+        "summary": "管理端-查看开票申请列表",
+        "operationId": "InvoiceService_SelectInvoiceApplicationPage",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SelectInvoiceApplicationPageResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SelectInvoiceApplicationPageReq"
+            }
+          }
+        ],
+        "tags": [
+          "InvoiceService"
+        ]
+      }
+    },
+    "/api/v1/invoice/addInvoiceInfo": {
+      "post": {
+        "summary": "添加发票信息",
+        "operationId": "InvoiceService_AddInvoiceInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/InvoiceDefault"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InvoiceInfo"
+            }
+          }
+        ],
+        "tags": [
+          "InvoiceService"
+        ]
+      }
+    },
+    "/api/v1/invoice/billInvoicingApplication": {
+      "post": {
+        "summary": "交易流水开票申请",
+        "operationId": "InvoiceService_BillInvoicingApplication",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/BillInvoicingApplicationResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BillInvoicingApplicationReqeust"
+            }
+          }
+        ],
+        "tags": [
+          "InvoiceService"
+        ]
+      }
+    },
+    "/api/v1/invoice/editInvoiceInfo": {
+      "post": {
+        "summary": "编辑发票信息",
+        "operationId": "InvoiceService_EditInvoiceInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/EditInvoiceInfoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EditInvoiceInfoRequest"
+            }
+          }
+        ],
+        "tags": [
+          "InvoiceService"
+        ]
+      }
+    },
+    "/api/v1/invoice/editInvoiceReceiveAddr": {
+      "post": {
+        "summary": "编辑发票接收地址",
+        "operationId": "InvoiceService_EditInvoiceReceiveAddr",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/EditInvoiceReceiveAddrResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EditInvoiceReceiveAddrRequest"
+            }
+          }
+        ],
+        "tags": [
+          "InvoiceService"
+        ]
+      }
+    },
+    "/api/v1/invoice/editInvoiceReceiveEmail": {
+      "post": {
+        "summary": "编辑发票接收邮箱",
+        "operationId": "InvoiceService_EditInvoiceReceiveEmail",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/EditInvoiceReceiveEmailResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EditInvoiceReceiveEmailRequest"
+            }
+          }
+        ],
+        "tags": [
+          "InvoiceService"
+        ]
+      }
+    },
+    "/api/v1/invoice/getInvoicableAmount": {
+      "post": {
+        "summary": "获取可开票金额",
+        "operationId": "InvoiceService_GetInvoicableAmount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetInvoicedAmountResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetInvoicedAmountReqeust"
+            }
+          }
+        ],
+        "tags": [
+          "InvoiceService"
+        ]
+      }
+    },
+    "/api/v1/invoice/getInvoicableTransactionDetailList": {
+      "post": {
+        "summary": "获取可开票流水记录",
+        "operationId": "InvoiceService_GetInvoicableTransactionDetailList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetInvoicableTransactionDetailListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetInvoicableTransactionDetailListReqeust"
+            }
+          }
+        ],
+        "tags": [
+          "InvoiceService"
+        ]
+      }
+    },
+    "/api/v1/invoice/getInvoiceApplicationRecord": {
+      "post": {
+        "summary": "查询开票申请记录",
+        "operationId": "InvoiceService_GetInvoiceApplicationRecord",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/InvoiceApplicationRecordResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InvoiceApplicationRecordReq"
+            }
+          }
+        ],
+        "tags": [
+          "InvoiceService"
+        ]
+      }
+    },
+    "/api/v1/invoice/queryInvoiceInfo": {
+      "post": {
+        "summary": "查询发票信息",
+        "operationId": "InvoiceService_QueryInvoiceInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/QueryInvoiceInfoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryInvoiceInfoRequest"
+            }
+          }
+        ],
+        "tags": [
+          "InvoiceService"
+        ]
+      }
+    },
+    "/api/v1/invoice/queryInvoiceReceiveAddr": {
+      "post": {
+        "summary": "查询发票接收地址",
+        "operationId": "InvoiceService_QueryInvoiceReceiveAddr",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/QueryInvoiceReceiveAddrResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryInvoiceReceiveAddrRequest"
+            }
+          }
+        ],
+        "tags": [
+          "InvoiceService"
+        ]
+      }
+    },
+    "/api/v1/invoice/queryInvoiceReceiveEmail": {
+      "post": {
+        "summary": "查询发票接收邮箱",
+        "operationId": "InvoiceService_QueryInvoiceReceiveEmail",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/QueryInvoiceReceiveEmailResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryInvoiceReceiveEmailRequest"
+            }
+          }
+        ],
+        "tags": [
+          "InvoiceService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "BillInvoicingApplicationReqeust": {
+      "type": "object",
+      "properties": {
+        "transactionDetailIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          },
+          "title": "账单ids"
+        },
+        "invoiceAmount": {
+          "type": "string",
+          "title": "开票金额"
+        }
+      },
+      "title": "交易流水开票申请请求对象"
+    },
+    "BillInvoicingApplicationResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码"
+        },
+        "message": {
+          "type": "string",
+          "title": "响应消息"
+        }
+      },
+      "title": "交易流水开票申请响应对象"
+    },
+    "EditInvoiceInfoRequest": {
+      "type": "object",
+      "properties": {
+        "invoiceTitle": {
+          "type": "string",
+          "title": "发票抬头"
+        },
+        "invoiceType": {
+          "type": "string",
+          "title": "发票类型:[增值税普通发票=VAT_PLAIN_INVOICE,增值税专用发票 =VAT_SPECIAL_INVOICE]"
+        },
+        "taxpayerId": {
+          "type": "string",
+          "title": "纳税人识别号"
+        },
+        "depositBank": {
+          "type": "string",
+          "title": "开户银行"
+        },
+        "bankAccount": {
+          "type": "string",
+          "title": "开户银行账号"
+        },
+        "registeredAddr": {
+          "type": "string",
+          "title": "注册地址"
+        },
+        "registeredTel": {
+          "type": "string",
+          "title": "注册固定电话"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        }
+      }
+    },
+    "EditInvoiceInfoResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        }
+      },
+      "title": "编辑发票信息响应对象"
+    },
+    "EditInvoiceReceiveAddrRequest": {
+      "type": "object",
+      "properties": {
+        "recipientPhone": {
+          "type": "string",
+          "title": "收件人电话"
+        },
+        "recipientName": {
+          "type": "string",
+          "title": "收件人姓名"
+        },
+        "recipientAddr": {
+          "type": "string",
+          "title": "收件人地址"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        }
+      }
+    },
+    "EditInvoiceReceiveAddrResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        }
+      },
+      "title": "编辑发票信息响应对象"
+    },
+    "EditInvoiceReceiveEmailRequest": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "title": "电子邮箱"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        }
+      },
+      "title": "编辑发票信息请求对象"
+    },
+    "EditInvoiceReceiveEmailResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        }
+      },
+      "title": "编辑发票信息响应对象"
+    },
+    "GetInvoicableTransactionDetailListReqeust": {
+      "type": "object",
+      "title": "可交易流水账单请求对象"
+    },
+    "GetInvoicableTransactionDetailListResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码"
+        },
+        "message": {
+          "type": "string",
+          "title": "响应消息"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/InvoicableTransactionDetail"
+          },
+          "title": "可开票金额对象"
+        }
+      },
+      "title": "可交易流水账单响应对象"
+    },
+    "GetInvoicedAmountReqeust": {
+      "type": "object",
+      "title": "可开票金额请求对象"
+    },
+    "GetInvoicedAmountResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码"
+        },
+        "message": {
+          "type": "string",
+          "title": "响应消息"
+        },
+        "data": {
+          "$ref": "#/definitions/InvoicedAmount",
+          "title": "可开票金额对象"
+        }
+      },
+      "title": "可开票金额响应对象"
+    },
+    "InvoicableTransactionDetail": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "主键"
+        },
+        "serialNumber": {
+          "type": "string",
+          "title": "流水号"
+        },
+        "transactionTime": {
+          "type": "string",
+          "title": "交易时间"
+        },
+        "incomeExpenseType": {
+          "type": "string",
+          "title": "收支类型 支出 EXPENDITURE 收入 INCOME"
+        },
+        "transactionType": {
+          "type": "string",
+          "title": "交易类型 消费 CONSUMPTION 充值 RECHARGE"
+        },
+        "transactionChannel": {
+          "type": "string",
+          "title": "交易渠道 雨点 INTEGRAL 支付宝-ALI 微信-WECHAT"
+        },
+        "transactionAmount": {
+          "type": "string",
+          "title": "交易金额"
+        },
+        "walletBalance": {
+          "type": "string",
+          "title": "钱包余额"
+        },
+        "accountBalance": {
+          "type": "string",
+          "title": "账户余额"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户ID"
+        },
+        "remark": {
+          "type": "string",
+          "title": "备注"
+        }
+      },
+      "title": "可开票交易明细"
+    },
+    "InvoiceApplicationPage": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "总的记录数"
+        },
+        "size": {
+          "type": "string",
+          "format": "int64",
+          "title": "每页显示的大小"
+        },
+        "current": {
+          "type": "string",
+          "format": "int64",
+          "title": "当前页"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/InvoiceApplicationRecord"
+          }
+        }
+      },
+      "title": "风险响应对象"
+    },
+    "InvoiceApplicationRecord": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "主键ID"
+        },
+        "applicationTime": {
+          "type": "string",
+          "title": "申请时间"
+        },
+        "invoiceTitle": {
+          "type": "string",
+          "title": "发票抬头"
+        },
+        "invoiceValue": {
+          "type": "string",
+          "title": "发票总额"
+        },
+        "invoicingContents": {
+          "type": "string",
+          "title": "开票内容"
+        },
+        "invoicingMethod": {
+          "type": "string",
+          "title": "开票方式    MANUAL(0, \"手动开票\"), AUTOMATIC(1, \"自动开票\");"
+        },
+        "invoiceState": {
+          "type": "string",
+          "title": "发票状态 PENDING(0, \"待开票\"), IN_PROGRESS(1, \"开票中\"), SUCCESS(2, \"开票成功\"), FAILED(3, \"开票失败\"), CANCELLED(4, \"已取消\");"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户ID"
+        },
+        "invoiceNature": {
+          "type": "string",
+          "title": "发票性质 ELECTRONIC(0, \"电子发票\"), PAPER_MAIL(1, \"纸质发票（邮寄）\");"
+        },
+        "rejectionReason": {
+          "type": "string",
+          "title": "驳回原因"
+        },
+        "invoiceType": {
+          "type": "string",
+          "title": "发票类型 VAT_PLAIN_INVOICE = \"增值税普通发票\", VAT_SPECIAL_INVOICE = \"增值税专用发票\";"
+        },
+        "taxpayerId": {
+          "type": "string",
+          "title": "纳税人识别号"
+        },
+        "depositBank": {
+          "type": "string",
+          "title": "开户银行"
+        },
+        "bankAccount": {
+          "type": "string",
+          "title": "开户银行账号"
+        },
+        "registeredAddr": {
+          "type": "string",
+          "title": "注册地址"
+        },
+        "registeredTel": {
+          "type": "string",
+          "title": "注册固定电话"
+        },
+        "recipientName": {
+          "type": "string",
+          "title": "收件人姓名"
+        },
+        "recipientAddr": {
+          "type": "string",
+          "title": "收件人地址"
+        },
+        "email": {
+          "type": "string",
+          "title": "电子邮箱"
+        },
+        "fileUrl": {
+          "type": "string",
+          "title": "下载链接"
+        },
+        "info": {
+          "type": "string",
+          "title": "备注"
+        }
+      },
+      "title": "开票申请对象"
+    },
+    "InvoiceApplicationRecordReq": {
+      "type": "object",
+      "title": "开票申请记录请求对象"
+    },
+    "InvoiceApplicationRecordResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码"
+        },
+        "message": {
+          "type": "string",
+          "title": "响应消息"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/InvoiceApplicationRecord"
+          },
+          "title": "开票申请对象"
+        }
+      },
+      "title": "开票申请记录响应对象"
+    },
+    "InvoiceDefault": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码"
+        },
+        "message": {
+          "type": "string",
+          "title": "响应消息"
+        },
+        "data": {
+          "type": "boolean",
+          "title": "成功为true"
+        }
+      }
+    },
+    "InvoiceInfo": {
+      "type": "object",
+      "properties": {
+        "invoiceInfoId": {
+          "type": "string",
+          "format": "int64",
+          "title": "发票id"
+        },
+        "recipientPhone": {
+          "type": "string",
+          "title": "收件人电话"
+        },
+        "invoiceTitle": {
+          "type": "string",
+          "title": "发票抬头"
+        },
+        "invoiceType": {
+          "type": "string",
+          "title": "发票类型"
+        },
+        "taxpayerId": {
+          "type": "string",
+          "title": "纳税人识别号"
+        },
+        "depositBank": {
+          "type": "string",
+          "title": "开户银行"
+        },
+        "bankAccount": {
+          "type": "string",
+          "title": "开户银行账号"
+        },
+        "registeredAddr": {
+          "type": "string",
+          "title": "注册地址"
+        },
+        "registeredTel": {
+          "type": "string",
+          "title": "注册固定电话"
+        },
+        "recipientName": {
+          "type": "string",
+          "title": "收件人姓名"
+        },
+        "recipientAddr": {
+          "type": "string",
+          "title": "收件人地址"
+        },
+        "email": {
+          "type": "string",
+          "title": "电子邮箱"
+        },
+        "userId": {
+          "type": "string",
+          "title": "用户id"
+        }
+      },
+      "title": "添加发票请求对象"
+    },
+    "InvoicedAmount": {
+      "type": "object",
+      "properties": {
+        "InvoicedAmount": {
+          "type": "string",
+          "title": "可开票金额"
+        }
+      },
+      "title": "开票金额对象"
+    },
+    "QueryInvoiceInfoRequest": {
+      "type": "object",
+      "properties": {
+        "invoiceType": {
+          "type": "string",
+          "title": "发票类型:[增值税普通发票=VAT_PLAIN_INVOICE,增值税专用发票 =VAT_SPECIAL_INVOICE]"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        }
+      },
+      "title": "查询发票信息请求对象"
+    },
+    "QueryInvoiceInfoResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "invoiceTitle": {
+          "type": "string",
+          "title": "发票抬头"
+        },
+        "invoiceType": {
+          "type": "string",
+          "title": "发票类型:[增值税普通发票=VAT_PLAIN_INVOICE,增值税专用发票 =VAT_SPECIAL_INVOICE]"
+        },
+        "taxpayerId": {
+          "type": "string",
+          "title": "纳税人识别号"
+        },
+        "depositBank": {
+          "type": "string",
+          "title": "开户银行"
+        },
+        "bankAccount": {
+          "type": "string",
+          "title": "开户银行账号"
+        },
+        "registeredAddr": {
+          "type": "string",
+          "title": "注册地址"
+        },
+        "registeredTel": {
+          "type": "string",
+          "title": "注册固定电话"
+        }
+      },
+      "title": "查询发票接收地址响应对象"
+    },
+    "QueryInvoiceReceiveAddrRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        }
+      },
+      "title": "查询发票接收地址请求对象"
+    },
+    "QueryInvoiceReceiveAddrResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "recipientPhone": {
+          "type": "string",
+          "title": "收件人电话"
+        },
+        "recipientName": {
+          "type": "string",
+          "title": "收件人姓名"
+        },
+        "recipientAddr": {
+          "type": "string",
+          "title": "收件人地址"
+        }
+      },
+      "title": "查询发票邮箱响应对象"
+    },
+    "QueryInvoiceReceiveEmailRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        }
+      },
+      "title": "查询发票接收邮箱请求对象"
+    },
+    "QueryInvoiceReceiveEmailResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表正常"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "email": {
+          "type": "string",
+          "title": "电子邮箱"
+        }
+      },
+      "title": "查询发票信息响应对象"
+    },
+    "RefuseIssueInvoiceReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "发票申请记录主键"
+        },
+        "rejectionReason": {
+          "type": "string",
+          "title": "驳回原因"
+        }
+      },
+      "title": "拒绝开发票请求对象"
+    },
+    "RefuseIssueInvoiceResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "code码"
+        },
+        "message": {
+          "type": "string",
+          "title": "响应消息"
+        }
+      },
+      "title": "拒绝开发票响应对象"
+    },
+    "SelectInvoiceApplicationPageReq": {
+      "type": "object",
+      "properties": {
+        "pageNum": {
+          "type": "string",
+          "format": "int64",
+          "title": "页号"
+        },
+        "pageSize": {
+          "type": "string",
+          "format": "int64",
+          "title": "页大小"
+        },
+        "data": {
+          "$ref": "#/definitions/InvoiceApplicationRecord",
+          "title": "开票记录请求对象只需要 开票方式 发票状态 发票类型 纳税人识别号"
+        }
+      },
+      "title": "查看请求开票申请分页请求对象"
+    },
+    "SelectInvoiceApplicationPageResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "code码"
+        },
+        "message": {
+          "type": "string",
+          "title": "响应消息"
+        },
+        "data": {
+          "$ref": "#/definitions/InvoiceApplicationPage",
+          "title": "订单体"
+        }
+      },
+      "title": "查看请求开票申请分页响应对象"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

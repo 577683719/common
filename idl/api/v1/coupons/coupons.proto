@@ -1,0 +1,261 @@
+syntax="proto3";
+
+
+import "google/protobuf/timestamp.proto";
+option go_package = "./coupons";
+
+import "validate/validate.proto";
+
+//优惠券服务
+service CouponsService{
+    //领取优惠券
+    rpc AddPromotionCoupons(AddPromotionCouponsRequest)returns (AddPromotionCouponsResponse){
+
+    }
+    //添加优惠券
+    rpc AddCoupons(CouponsRequest)returns (AddCouponsResponse){}
+    //修改优惠卷
+    rpc EditCoupons(CouponsRequest)returns (EditCouponsResponse){}
+    //删除优惠卷
+    rpc DeleteCoupons(CouponsRequest)returns (DeleteCouponsResponse){}
+
+    //首页
+    rpc HomePage(HomePageRequest)returns (HomePageResponse);
+
+    //------------------------------app端----------------------
+
+    //领取代金券
+    rpc PickUpVouchers(PickUpVouchersRequest)returns (PickUpVouchersResponse){}
+
+    //-----------------------------------rpc接口--------------------------
+
+    //rpc接口-根据类型获取代金券
+    rpc GetAVoucherByCategory(GetAVoucherByCategoryRequest)returns (GetAVoucherByCategoryResponse);
+
+    //------------------------------管理端-----------------------------
+
+    //管理端-添加代金券
+    rpc AddVouchers(VouchersRequest)returns (DefaultResponse){}
+    //管理端-修改代金券
+    rpc EditVouchers(VouchersRequest)returns (DefaultResponse){}
+    //管理端-删除代金券
+    rpc DeleteVouchers(VouchersRequest)returns (DefaultResponse){}
+    //管理端-获取代金券列表
+    rpc GetVouchersList(GetVouchersListRequest)returns (GetVouchersListResponse){}
+    //管理端-发放代金券
+    rpc VouchersAreIssued(VouchersAreIssuedReqeust)returns (DefaultResponse);
+
+}
+
+//首页响应对象
+message HomePageResponse{
+    //rpcCode码 200代表调用成功 500代表调用失败
+    int32 code =1;
+    //rpc响应的消息
+    string message =2;
+    //响应的数据
+    bool data =3;
+}
+//首页响应对象
+message HomePageRequest{}
+//发放代金券请求对象
+message VouchersAreIssuedReqeust{
+    //用户id列表
+    repeated int64 userIds=1;
+    //代金券id
+    int64 vouchersId=2;
+}
+
+//根据类型获取代金券响应对象
+message GetAVoucherByCategoryResponse{
+    //rpcCode码 200代表调用成功 500代表调用失败
+    int32 code =1;
+    //rpc响应的消息
+    string message =2;
+    //代金券对象
+    VouchersResponse data=3;
+}
+//根据类型获取代金券对象
+message GetAVoucherByCategoryRequest{
+    //代金券类型
+    string category=1;
+}
+message GetVouchersListResponse{
+    //rpcCode码 200代表调用成功 500代表调用失败
+    int32 code =1;
+    //rpc响应的消息
+    string message =2;
+    //响应给用户的数据实体
+    VouchersListPageResponse data =3;
+}
+
+//用户列表响应对象
+message VouchersListPageResponse {
+    // 总的记录数
+    int64 total = 1;
+    // 每页显示的大小
+    int64 size = 2;
+    // 当前页
+    int64 current = 3;
+    // 当前页内容
+    repeated  VouchersResponse rows = 4;
+}
+
+message VouchersResponse{
+    // 代金券id
+    int64 id = 1;
+    // 代金券类型[NEW_USER注册赠券，TASK任务卷，PROMOTION促销劵]
+    string category = 2;
+    // 发布状态, PUBLISH发布，DRAFT草稿，OFFLINE下线
+    string publish = 3;
+    // 代金券图片
+    string vouchers_img = 4;
+    // 代金券标题
+    string vouchers_title = 5;
+    // 抵扣价格，这里假设抵扣价格是字符串，如果是整数或其他类型需要调整
+    string price = 6;
+    // 每人限制张数
+    int32 user_limit = 7;
+    // 代金券开始有效时间
+    string start_time = 8;
+    // 代金券失效时间
+    string end_time = 9;
+    // 代金券总量
+    int32 publish_count = 10;
+    // 库存
+    int32 stock = 11;
+    // 创建时间
+    string create_time = 12;
+}
+//获取代金券列表请求对象
+message GetVouchersListRequest{
+    //页号
+    int64 pageNum = 1;
+    //页大小
+    int64 pageSize = 2;
+}
+//代金券请求对象
+message VouchersRequest{
+    int64 id = 1;                           // 代金券id
+    string category = 2;                    // 代金券类型[NEW_USER注册赠券，TASK任务卷，PROMOTION促销劵]
+    string publish = 3;                     // 发布状态, PUBLISH发布，DRAFT草稿，OFFLINE下线
+    string vouchers_img = 4;                // 代金券图片
+    string vouchers_title = 5;              // 代金券标题
+    string price = 6;                       // 抵扣价格，这里假设抵扣价格是字符串，如果是整数或其他类型需要调整
+    int32 user_limit = 7;                   // 每人限制张数
+    string start_time = 8;   // 代金券开始有效时间
+    string end_time = 9;     // 代金券失效时间
+    int32 publish_count = 10;               // 代金券总量
+    int32 stock = 11;                       // 库存
+    string create_time = 12; // 创建时间
+}
+//defaultResponse
+message DefaultResponse{
+    //状态码
+    int32 code = 1;
+    //消息
+    string message = 2;
+    //添加成功与失败
+    bool data=3;
+}
+//领取代金券请求对象
+message PickUpVouchersRequest{
+    //代金券id
+    int64 vouchersId= 1;
+    //用户id
+    int64 userId= 2;
+}
+//领取代金券响应对象
+message PickUpVouchersResponse{
+    //状态码
+    int32 code = 1;
+    //消息
+    string message = 2;
+    //添加成功与失败
+    bool data=3;
+}
+
+
+
+
+message Empty{}
+
+// 添加优惠卷请求与响应对象
+message CouponsRequest{
+    // 优惠券ID
+    int64 ID = 1;
+
+    // 优惠卷类型[NEW_USER注册赠券，TASK任务卷，PROMOTION促销劵]
+    string category = 2;
+
+    // 发布状态, PUBLISH发布，DRAFT草稿，OFFLINE下线
+    string publish = 3;
+
+    // 优惠券图片
+    string couponImg = 4;
+
+    // 优惠券标题
+    string couponTitle = 5;
+
+    // 抵扣价格
+    string price = 6;
+
+    // 每人限制张数
+    int32 userLimit = 7;
+
+    // 优惠券开始有效时间
+    string startTime = 8;
+
+    // 优惠券失效时间
+    string endTime = 9;
+
+    // 优惠券总量
+    int32 publishCount = 10;
+
+    // 库存
+    int32 stock = 11;
+
+    // 创建时间
+    string createTime = 12;
+
+    // 满多少才可以使用
+    string conditionPrice = 13;
+}
+message AddCouponsResponse{
+    int32 code=1;
+    string message = 2;
+    bool data=3;
+}
+
+message EditCouponsResponse{
+    int32 code=1;
+    string message = 2;
+    bool data=3;
+}
+message DeleteCouponsResponse{
+    int32 code=1;
+    string message = 2;
+    bool data=3;
+}
+
+//领取优惠卷接口
+message AddPromotionCouponsRequest{
+    int64 couponsId= 1;
+    int64 userId= 2;
+    string category= 3;
+}
+
+message AddPromotionCouponsResponse{
+    int32 code = 1;
+    string message = 2;
+    bool data=3;
+}
+//优惠券
+enum CouponsCategoryEnum{
+    //新人注册
+    NEW_USER=0;
+    //活动任务
+    TASK=1;
+    //促销券
+    PROMOTION=2;
+}

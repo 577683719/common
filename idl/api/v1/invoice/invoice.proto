@@ -1,0 +1,441 @@
+syntax="proto3";
+
+
+option go_package = "./invoice";
+
+import "validate/validate.proto";
+
+//网关服务
+service InvoiceService{
+  //编辑发票接收邮箱
+  rpc EditInvoiceReceiveEmail(EditInvoiceReceiveEmailRequest)returns (EditInvoiceReceiveEmailResponse);
+  //编辑发票接收地址
+  rpc EditInvoiceReceiveAddr(EditInvoiceReceiveAddrRequest)returns (EditInvoiceReceiveAddrResponse);
+  //编辑发票信息
+  rpc EditInvoiceInfo(EditInvoiceInfoRequest)returns (EditInvoiceInfoResponse);
+  //查询发票信息
+  rpc QueryInvoiceInfo(QueryInvoiceInfoRequest)returns (QueryInvoiceInfoResponse);
+  //查询发票接收地址
+  rpc QueryInvoiceReceiveAddr(QueryInvoiceReceiveAddrRequest)returns (QueryInvoiceReceiveAddrResponse);
+  //查询发票接收邮箱
+  rpc QueryInvoiceReceiveEmail(QueryInvoiceReceiveEmailRequest)returns (QueryInvoiceReceiveEmailResponse);
+  // 添加发票信息
+  rpc AddInvoiceInfo(InvoiceInfo)returns (InvoiceDefault);
+
+
+
+
+  //获取可开票金额
+  rpc GetInvoicableAmount(GetInvoicedAmountReqeust)returns (GetInvoicedAmountResponse);
+
+  //获取可开票流水记录
+  rpc GetInvoicableTransactionDetailList(GetInvoicableTransactionDetailListReqeust)returns (GetInvoicableTransactionDetailListResponse);
+
+  //交易流水开票申请
+  rpc BillInvoicingApplication(BillInvoicingApplicationReqeust)returns (BillInvoicingApplicationResponse);
+
+  //查询开票申请记录
+  rpc GetInvoiceApplicationRecord(InvoiceApplicationRecordReq)returns (InvoiceApplicationRecordResponse);
+
+
+  //管理端-查看开票申请列表
+  rpc SelectInvoiceApplicationPage(SelectInvoiceApplicationPageReq)returns (SelectInvoiceApplicationPageResp);
+  //管理端-拒绝开票
+  rpc RefuseIssueInvoice(RefuseIssueInvoiceReq)returns (RefuseIssueInvoiceResp);
+
+}
+
+//拒绝开发票响应对象
+message RefuseIssueInvoiceResp{
+  //code码
+  int32 code = 1;
+  //响应消息
+  string message= 2;
+}
+
+//拒绝开发票请求对象
+message RefuseIssueInvoiceReq{
+  //发票申请记录主键
+  int64 id = 1;
+
+  //驳回原因
+  string rejectionReason = 2;
+}
+
+//查看请求开票申请分页响应对象
+message SelectInvoiceApplicationPageResp{
+  //code码
+  int32 code = 1;
+  //响应消息
+  string message= 2;
+  //订单体
+  InvoiceApplicationPage data=3;
+}
+//风险响应对象
+message InvoiceApplicationPage {
+  // 总的记录数
+  int64 total = 1;
+  // 每页显示的大小
+  int64 size = 2;
+  // 当前页
+  int64 current = 3;
+  repeated InvoiceApplicationRecord rows = 4;
+}
+//查看请求开票申请分页请求对象
+message SelectInvoiceApplicationPageReq{
+  //页号
+  int64 pageNum = 4;
+  //页大小
+  int64 pageSize = 5;
+  //开票记录请求对象只需要 开票方式 发票状态 发票类型 纳税人识别号
+  InvoiceApplicationRecord data = 6;
+}
+
+
+//开票申请记录请求对象
+message InvoiceApplicationRecordReq{
+}
+
+//开票申请记录响应对象
+message InvoiceApplicationRecordResponse{
+
+  //响应码
+  int32 code = 1;
+
+  //响应消息
+  string message = 2;
+
+  //开票申请对象
+  repeated InvoiceApplicationRecord data = 3;
+
+}
+//开票申请对象
+message InvoiceApplicationRecord{
+
+  // 主键ID
+  int64 id = 1;
+
+  // 申请时间
+  string applicationTime = 2;
+
+  // 发票抬头
+  string invoiceTitle = 3;
+
+  // 发票总额
+  string invoiceValue = 4;
+
+  // 开票内容
+  string invoicingContents = 5;
+
+  // 开票方式    MANUAL(0, "手动开票"), AUTOMATIC(1, "自动开票");
+  string invoicingMethod = 6;
+
+  // 发票状态 PENDING(0, "待开票"), IN_PROGRESS(1, "开票中"), SUCCESS(2, "开票成功"), FAILED(3, "开票失败"), CANCELLED(4, "已取消");
+  string invoiceState = 7;
+
+  // 用户ID
+  int64 userId = 8;
+
+  // 发票性质 ELECTRONIC(0, "电子发票"), PAPER_MAIL(1, "纸质发票（邮寄）");
+  string invoiceNature = 9;
+
+  // 驳回原因
+  string rejectionReason = 10;
+
+  // 发票类型 VAT_PLAIN_INVOICE = "增值税普通发票", VAT_SPECIAL_INVOICE = "增值税专用发票";
+  string invoiceType = 15;
+
+  // 纳税人识别号
+  string taxpayerId = 16;
+
+  // 开户银行
+  string depositBank = 17;
+
+  // 开户银行账号
+  string bankAccount = 18;
+
+  // 注册地址
+  string registeredAddr = 19;
+
+  // 注册固定电话
+  string registeredTel = 20;
+
+  // 收件人姓名
+  string recipientName = 21;
+
+  // 收件人地址
+  string recipientAddr = 22;
+
+  // 电子邮箱
+  string email = 23;
+
+  //下载链接
+  string fileUrl = 24;
+
+  //备注
+  string info = 25;
+
+}
+
+//交易流水开票申请请求对象
+message BillInvoicingApplicationReqeust{
+
+  //账单ids
+  repeated int64 transactionDetailIds =1;
+  //开票金额
+  string invoiceAmount = 2;
+
+}
+//交易流水开票申请响应对象
+message BillInvoicingApplicationResponse{
+  //响应码
+  int32 code = 1;
+  //响应消息
+  string message = 2;
+}
+
+//可交易流水账单响应对象
+message GetInvoicableTransactionDetailListResponse{
+
+  //响应码
+  int32 code = 1;
+  //响应消息
+  string message = 2;
+  //可开票金额对象
+  repeated InvoicableTransactionDetail data = 3;
+
+}
+
+//可开票交易明细
+message InvoicableTransactionDetail{
+  // 主键
+  int64 id = 1;
+
+  // 流水号
+  string serialNumber = 2;
+
+  // 交易时间
+  string transactionTime = 3;
+
+  // 收支类型 支出 EXPENDITURE 收入 INCOME
+  string incomeExpenseType = 4;
+
+  // 交易类型 消费 CONSUMPTION 充值 RECHARGE
+  string transactionType = 5;
+
+  // 交易渠道 雨点 INTEGRAL 支付宝-ALI 微信-WECHAT
+  string transactionChannel = 6;
+
+  // 交易金额
+  string transactionAmount = 7;
+
+  // 钱包余额
+  string walletBalance = 8;
+
+  // 账户余额
+  string accountBalance = 9;
+
+  // 用户ID
+  int64 userId = 10;
+
+  // 备注
+  string remark = 17;
+
+}
+
+//可交易流水账单请求对象
+message GetInvoicableTransactionDetailListReqeust{
+
+
+
+
+
+}
+
+//可开票金额请求对象
+message GetInvoicedAmountReqeust{
+}
+
+//可开票金额响应对象
+message GetInvoicedAmountResponse{
+  //响应码
+  int32 code = 1;
+  //响应消息
+  string message = 2;
+  //可开票金额对象
+  InvoicedAmount data = 3;
+
+}
+//开票金额对象
+message InvoicedAmount{
+  //可开票金额
+  string InvoicedAmount = 1;
+}
+
+message  InvoiceDefault{
+  //响应码
+  int32 code = 1;
+  //响应消息
+  string message = 2;
+  //成功为true
+  bool data = 3;
+}
+//添加发票请求对象
+message InvoiceInfo{
+  //发票id
+  int64 invoiceInfoId = 1;
+
+  //收件人电话
+  string recipientPhone = 2;
+
+  //发票抬头
+  string invoiceTitle = 3;
+
+  //发票类型
+  string invoiceType =4;
+  //纳税人识别号
+  string taxpayerId = 5;
+  //开户银行
+  string depositBank = 6;
+  //开户银行账号
+  string bankAccount=7;
+  //注册地址
+  string registeredAddr = 8;
+  //注册固定电话
+  string registeredTel = 9;
+  //收件人姓名
+  string recipientName = 10;
+  //收件人地址
+  string recipientAddr = 11;
+  // 电子邮箱
+  string email = 12;
+  //用户id
+  string userId = 13;
+}
+
+message EditInvoiceInfoRequest{
+  //发票抬头
+  string invoice_title = 2;
+  //发票类型:[增值税普通发票=VAT_PLAIN_INVOICE,增值税专用发票 =VAT_SPECIAL_INVOICE]
+  string invoice_type = 3;
+  //纳税人识别号
+  string taxpayer_id = 4;
+  //开户银行
+  string deposit_bank = 5;
+  //开户银行账号
+  string bank_account = 6;
+  //注册地址
+  string registered_addr = 7;
+  //注册固定电话
+  string registered_tel = 8;
+  //用户id
+  int64 user_id = 12;
+}
+
+//编辑发票信息响应对象
+message EditInvoiceInfoResponse{
+  //200代表正常
+  int32 code =1;
+  //消息
+  string message =2;
+}
+
+//查询发票信息请求对象
+message QueryInvoiceInfoRequest{
+  //发票类型:[增值税普通发票=VAT_PLAIN_INVOICE,增值税专用发票 =VAT_SPECIAL_INVOICE]
+  string invoice_type = 1;
+  //用户id
+  int64 user_id = 2;
+}
+
+//查询发票接收地址请求对象
+message QueryInvoiceReceiveAddrRequest{
+  //用户id
+  int64 user_id = 1;
+}
+
+//查询发票接收邮箱请求对象
+message QueryInvoiceReceiveEmailRequest{
+  //用户id
+  int64 user_id = 1;
+}
+//查询发票接收地址响应对象
+message QueryInvoiceInfoResponse{
+  //200代表正常
+  int32 code =1;
+  //消息
+  string message =2;
+  //发票抬头
+  string invoice_title = 3;
+  //发票类型:[增值税普通发票=VAT_PLAIN_INVOICE,增值税专用发票 =VAT_SPECIAL_INVOICE]
+  string invoice_type = 4;
+  //纳税人识别号
+  string taxpayer_id = 5;
+  //开户银行
+  string deposit_bank = 6;
+  //开户银行账号
+  string bank_account = 7;
+  //注册地址
+  string registered_addr = 8;
+  //注册固定电话
+  string registered_tel = 9;
+}
+
+//查询发票邮箱响应对象
+message QueryInvoiceReceiveAddrResponse{
+  //200代表正常
+  int32 code =1;
+  //消息
+  string message =2;
+  //收件人电话
+  string recipient_phone = 3;
+  //收件人姓名
+  string recipient_name = 4;
+  //收件人地址
+  string recipient_addr = 5;
+}
+
+//查询发票信息响应对象
+message QueryInvoiceReceiveEmailResponse{
+  //200代表正常
+  int32 code =1;
+  //消息
+  string message =2;
+  //电子邮箱
+  string email = 3;
+}
+
+//编辑发票信息请求对象
+message EditInvoiceReceiveEmailRequest{
+  //电子邮箱
+  string email = 11;
+  //用户id
+  int64 user_id = 12;
+}
+
+//编辑发票信息响应对象
+message EditInvoiceReceiveEmailResponse{
+  //200代表正常
+  int32 code =1;
+  //消息
+  string message =2;
+}
+
+message EditInvoiceReceiveAddrRequest{
+  //收件人电话
+  string recipient_phone = 1;
+  //收件人姓名
+  string recipient_name = 9;
+  //收件人地址
+  string recipient_addr = 10;
+  //用户id
+  int64 user_id = 12;
+}
+
+//编辑发票信息响应对象
+message EditInvoiceReceiveAddrResponse{
+  //200代表正常
+  int32 code =1;
+  //消息
+  string message =2;
+}

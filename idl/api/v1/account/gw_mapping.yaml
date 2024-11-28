@@ -1,0 +1,75 @@
+type: google.api.Service
+config_version: 3
+
+# Please refer google.api.Http in https://github.com/googleapis/googleapis/blob/master/google/api/http.proto file for details.
+http:
+  rules:
+
+#    - 用户
+#app端
+    - selector: UserService.UnbindWeChat
+      post: /api/v1/account/unbindWeChat
+      body: "*"
+    - selector:  UserService.UserLogin
+      post: /api/v1/account/login
+      body: "*"
+
+    - selector:  UserService.UserRegister
+      post: /api/v1/account/register
+      body: "*"
+
+    - selector:  UserService.LoginOut
+      post: /api/v1/account/loginout
+      body: "*"
+
+    - selector:  UserService.BindPhone
+      post: /api/v1/account/bindPhone
+      body: "*"
+
+    - selector:  UserService.EditPassword
+      post: /api/v1/account/editPassword
+      body: "*"
+
+    - selector:  UserService.GetUserInfo
+      post: /api/v1/account/getUserInfo
+      body: "*"
+    - selector:  UserService.UpdateWarnOpen
+      post: /api/v1/account/updateWarnOpen
+      body: "*"
+    - selector:  UserService.UpdateReleaseWarn
+      post: /api/v1/account/updateReleaseWarn
+      body: "*"
+    - selector: UserService.GetSlidingVerificationCode
+      post: /api/v1/account/getSlidingVerificationCode
+      body: "*"
+
+    - selector: UserService.UpdatePhone
+      post: /api/v1/account/updatePhone
+      body: "*"
+
+    - selector: UserService.GetWeChatBindingQRCode
+      get: /api/v1/account/getWeChatBindingQRCode
+
+    - selector: UserService.WeChatBindingCallback
+      get: /api/v1/account/weChatBindingCallback
+
+
+    - selector:  UserService.WechatLoginCallback
+      get: /api/v1/account/wechatLoginCallback
+    - selector:  UserService.GetWeChatLoginQRCode
+      get: /api/v1/account/getWeChatLoginQRCode
+
+#管理端
+    - selector: UserService.GetUserList
+      post: /admin/v1/account/getUserList
+      body: "*"
+    - selector:  UserService.GetRecommendedPersonList
+      post: /admin/v1/account/getRecommendedPersonList
+      body: "*"
+    - selector:  UserService.GetWebsiteTraffic
+      post: /admin/v1/account/getWebsiteTraffic
+      body: "*"
+    - selector:  UserService.UpdateUser
+      post: /admin/v1/account/updateUser
+      body: "*"
+

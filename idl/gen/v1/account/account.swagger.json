@@ -1,0 +1,1585 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "account.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "UserService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/admin/v1/account/getRecommendedPersonList": {
+      "post": {
+        "summary": "管理端_获取被推荐人列表",
+        "operationId": "UserService_GetRecommendedPersonList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetRecommendedPersonListResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetRecommendedPersonListReq"
+            }
+          }
+        ],
+        "tags": [
+          "UserService"
+        ]
+      }
+    },
+    "/admin/v1/account/getUserList": {
+      "post": {
+        "summary": "获取用户列表",
+        "operationId": "UserService_GetUserList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetUserListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetUserListRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserService"
+        ]
+      }
+    },
+    "/admin/v1/account/getWebsiteTraffic": {
+      "post": {
+        "summary": "管理端_查看网站访问量",
+        "operationId": "UserService_GetWebsiteTraffic",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetWebsiteTrafficResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetWebsiteTrafficRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserService"
+        ]
+      }
+    },
+    "/admin/v1/account/updateUser": {
+      "post": {
+        "summary": "管理端-修改用户信息",
+        "operationId": "UserService_UpdateUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UpdateUserResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserInfo"
+            }
+          }
+        ],
+        "tags": [
+          "UserService"
+        ]
+      }
+    },
+    "/api/v1/account/bindPhone": {
+      "post": {
+        "summary": "绑定手机号",
+        "operationId": "UserService_BindPhone",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/BindPhoneResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BindPhoneRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserService"
+        ]
+      }
+    },
+    "/api/v1/account/editPassword": {
+      "post": {
+        "summary": "忘记密码",
+        "operationId": "UserService_EditPassword",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/EditPasswordResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EditPasswordRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserService"
+        ]
+      }
+    },
+    "/api/v1/account/getSlidingVerificationCode": {
+      "post": {
+        "summary": "获取滑动式验证码",
+        "operationId": "UserService_GetSlidingVerificationCode",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetSlidingVerificationCodeResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetSlidingVerificationCodeReq"
+            }
+          }
+        ],
+        "tags": [
+          "UserService"
+        ]
+      }
+    },
+    "/api/v1/account/getUserInfo": {
+      "post": {
+        "summary": "用户详细",
+        "operationId": "UserService_GetUserInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UserInfoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserEmptyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserService"
+        ]
+      }
+    },
+    "/api/v1/account/getWeChatBindingQRCode": {
+      "get": {
+        "summary": "获取微信绑定二维码",
+        "operationId": "UserService_GetWeChatBindingQRCode",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetWeChatBindingQRCodeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "description": "用户id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "UserService"
+        ]
+      }
+    },
+    "/api/v1/account/getWeChatLoginQRCode": {
+      "get": {
+        "summary": "获取微信登录二维码",
+        "operationId": "UserService_GetWeChatLoginQRCode",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetWeChatLoginQRCodeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "UserService"
+        ]
+      }
+    },
+    "/api/v1/account/login": {
+      "post": {
+        "summary": "用户登录",
+        "operationId": "UserService_UserLogin",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UserLoginResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserLoginRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserService"
+        ]
+      }
+    },
+    "/api/v1/account/loginout": {
+      "post": {
+        "summary": "退出登录",
+        "operationId": "UserService_LoginOut",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/LoginOutResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginOutRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserService"
+        ]
+      }
+    },
+    "/api/v1/account/register": {
+      "post": {
+        "summary": "用户注册",
+        "operationId": "UserService_UserRegister",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UserRegisterResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserRegisterRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserService"
+        ]
+      }
+    },
+    "/api/v1/account/unbindWeChat": {
+      "post": {
+        "summary": "微信解绑",
+        "operationId": "UserService_UnbindWeChat",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UnbindWeChatResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UnbindWeChatReqeust"
+            }
+          }
+        ],
+        "tags": [
+          "UserService"
+        ]
+      }
+    },
+    "/api/v1/account/updatePhone": {
+      "post": {
+        "summary": "修改手机号",
+        "description": "---------------------------------管理端-----------------------------",
+        "operationId": "UserService_UpdatePhone",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UpdatePhoneResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdatePhoneRequest"
+            }
+          }
+        ],
+        "tags": [
+          "UserService"
+        ]
+      }
+    },
+    "/api/v1/account/updateReleaseWarn": {
+      "post": {
+        "summary": "修改到期释放预警",
+        "operationId": "UserService_UpdateReleaseWarn",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UserDefaultResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateReleaseWarnReqeust"
+            }
+          }
+        ],
+        "tags": [
+          "UserService"
+        ]
+      }
+    },
+    "/api/v1/account/updateWarnOpen": {
+      "post": {
+        "summary": "修改到期预警",
+        "operationId": "UserService_UpdateWarnOpen",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UserDefaultResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateWarnOpenReqeust"
+            }
+          }
+        ],
+        "tags": [
+          "UserService"
+        ]
+      }
+    },
+    "/api/v1/account/weChatBindingCallback": {
+      "get": {
+        "summary": "微信绑定回调通知",
+        "operationId": "UserService_WeChatBindingCallback",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/WeChatBindingCallbackResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "UserService"
+        ]
+      }
+    },
+    "/api/v1/account/wechatLoginCallback": {
+      "get": {
+        "summary": "微信登录回调",
+        "operationId": "UserService_WechatLoginCallback",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/WechatLoginCallbackResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "UserService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "BindPhoneRequest": {
+      "type": "object",
+      "properties": {
+        "phone": {
+          "type": "string",
+          "title": "手机号"
+        },
+        "code": {
+          "type": "string",
+          "title": "短信码"
+        },
+        "openId": {
+          "type": "string",
+          "title": "微信OpenId"
+        }
+      },
+      "title": "绑定手机号请求对象"
+    },
+    "BindPhoneResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表成功"
+        },
+        "message": {
+          "type": "string",
+          "title": "返回消息"
+        },
+        "data": {
+          "type": "string",
+          "title": "返回token"
+        }
+      },
+      "title": "绑定手机号响应对象"
+    },
+    "EditPasswordRequest": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "title": "验证码"
+        },
+        "phone": {
+          "type": "string",
+          "title": "手机号"
+        },
+        "emial": {
+          "type": "string",
+          "title": "邮箱"
+        },
+        "password": {
+          "type": "string",
+          "title": "密码"
+        }
+      },
+      "title": "修改密码请求对象与响应对象"
+    },
+    "EditPasswordResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "type": "boolean",
+          "title": "修改状态是否成功"
+        }
+      }
+    },
+    "GetRecommendedPersonListPage": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "总的记录数"
+        },
+        "size": {
+          "type": "string",
+          "format": "int64",
+          "title": "每页显示的大小"
+        },
+        "current": {
+          "type": "string",
+          "format": "int64",
+          "title": "当前页"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/UserRecommend"
+          },
+          "title": "查询数据列表，使用 bytes 类型表示任意数据"
+        }
+      },
+      "title": "响应体"
+    },
+    "GetRecommendedPersonListReq": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        },
+        "pageNum": {
+          "type": "string",
+          "format": "int64",
+          "title": "页号"
+        },
+        "pageSize": {
+          "type": "string",
+          "format": "int64",
+          "title": "页大小"
+        }
+      },
+      "title": "获取被推荐列表请求对象"
+    },
+    "GetRecommendedPersonListResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "code码"
+        },
+        "message": {
+          "type": "string",
+          "title": "响应消息"
+        },
+        "data": {
+          "$ref": "#/definitions/GetRecommendedPersonListPage",
+          "title": "响应体"
+        }
+      },
+      "title": "获取被推荐列表响应对象"
+    },
+    "GetSlidingVerificationCodeReq": {
+      "type": "object",
+      "title": "获取滑动验证码"
+    },
+    "GetSlidingVerificationCodeResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "code码"
+        },
+        "message": {
+          "type": "string",
+          "title": "响应消息"
+        },
+        "data": {
+          "$ref": "#/definitions/SlidingVerificationCode",
+          "title": "滑动验证码对象"
+        }
+      },
+      "title": "获取滑动验证码响应参数"
+    },
+    "GetUserListRequest": {
+      "type": "object",
+      "properties": {
+        "pageNum": {
+          "type": "string",
+          "format": "int64",
+          "title": "页号"
+        },
+        "pageSize": {
+          "type": "string",
+          "format": "int64",
+          "title": "页大小"
+        },
+        "phone": {
+          "type": "string",
+          "title": "手机号"
+        },
+        "invoiceFlag": {
+          "type": "boolean",
+          "title": "发票标记"
+        }
+      },
+      "title": "获取用户列表请求对象"
+    },
+    "GetUserListResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "rpcCode码 200代表调用成功 500代表调用失败"
+        },
+        "message": {
+          "type": "string",
+          "title": "rpc响应的消息"
+        },
+        "data": {
+          "$ref": "#/definitions/UserListPageResponse",
+          "title": "响应给用户的数据实体"
+        }
+      },
+      "title": "用户列表响应对象"
+    },
+    "GetWeChatBindingQRCodeResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表成功"
+        },
+        "message": {
+          "type": "string",
+          "title": "返回消息"
+        },
+        "data": {
+          "type": "string",
+          "title": "返回的是微信登录的二维码链接"
+        }
+      },
+      "title": "微信登录回调响应对象"
+    },
+    "GetWeChatLoginQRCodeResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表成功"
+        },
+        "message": {
+          "type": "string",
+          "title": "返回消息"
+        },
+        "data": {
+          "type": "string",
+          "title": "返回的是微信登录的二维码链接"
+        }
+      },
+      "title": "获取微信登录二维码响应对象"
+    },
+    "GetWebsiteTrafficRequest": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string",
+          "title": "访问日期"
+        }
+      },
+      "title": "查看网站访问量请求对象"
+    },
+    "GetWebsiteTrafficResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表成功"
+        },
+        "message": {
+          "type": "string",
+          "title": "返回消息"
+        },
+        "data": {
+          "$ref": "#/definitions/WebsiteTraffic",
+          "title": "网站的访问量"
+        }
+      },
+      "title": "查看网站访问量响应对象"
+    },
+    "LoginOutRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        },
+        "token": {
+          "type": "string",
+          "title": "token"
+        }
+      },
+      "title": "用户退出登录请求与响应对象"
+    },
+    "LoginOutResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "rpcCode码 200代表调用成功 500代表调用失败"
+        },
+        "message": {
+          "type": "string",
+          "title": "rpc响应的消息"
+        },
+        "data": {
+          "type": "boolean",
+          "title": "退出登录状态"
+        }
+      },
+      "title": "用户退出登录请求与响应对象"
+    },
+    "SlidingVerificationCode": {
+      "type": "object",
+      "properties": {
+        "width": {
+          "type": "string",
+          "title": "宽"
+        },
+        "height": {
+          "type": "string",
+          "title": "高"
+        },
+        "angle": {
+          "type": "string",
+          "title": "角"
+        },
+        "defaultX": {
+          "type": "string",
+          "title": "默认x轴"
+        },
+        "defaultY": {
+          "type": "string",
+          "title": "默认Y轴"
+        },
+        "captchaId": {
+          "type": "string",
+          "title": "滑动验证码id发送手机验证码的时候使用"
+        },
+        "masterImage": {
+          "type": "string",
+          "title": "主图像"
+        },
+        "titleImage": {
+          "type": "string",
+          "title": "小图像"
+        }
+      },
+      "title": "滑动验证码对象"
+    },
+    "UnbindWeChatReqeust": {
+      "type": "object",
+      "title": "微信解绑请求对象"
+    },
+    "UnbindWeChatResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表成功"
+        },
+        "message": {
+          "type": "string",
+          "title": "返回消息"
+        },
+        "data": {
+          "type": "boolean",
+          "title": "返回true代表绑定成功 flase代表失败"
+        }
+      },
+      "title": "微信解绑响应对象"
+    },
+    "UpdatePhoneRequest": {
+      "type": "object",
+      "properties": {
+        "phone": {
+          "type": "string",
+          "title": "手机号"
+        },
+        "code": {
+          "type": "string",
+          "title": "短信码"
+        },
+        "password": {
+          "type": "string",
+          "title": "账号密码"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        }
+      },
+      "title": "修改手机号请求对象"
+    },
+    "UpdatePhoneResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "code码"
+        },
+        "message": {
+          "type": "string",
+          "title": "响应消息"
+        },
+        "data": {
+          "type": "boolean",
+          "title": "响应对象"
+        }
+      },
+      "title": "修改手机号响应对象"
+    },
+    "UpdateReleaseWarnReqeust": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        },
+        "releaseWarn": {
+          "type": "boolean",
+          "title": "余额预警状态"
+        }
+      },
+      "title": "更新到期释放预警请求对象"
+    },
+    "UpdateUserResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表成功"
+        },
+        "message": {
+          "type": "string",
+          "title": "返回消息"
+        }
+      },
+      "title": "更新用户响应对象"
+    },
+    "UpdateWarnOpenReqeust": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        },
+        "warnOpen": {
+          "type": "boolean",
+          "title": "余额预警状态"
+        }
+      },
+      "title": "更新余额预警请求对象"
+    },
+    "UserDefaultResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "type": "boolean",
+          "title": "成功或者失败"
+        }
+      },
+      "title": "用户默认响应对象"
+    },
+    "UserEmptyRequest": {
+      "type": "object"
+    },
+    "UserInfo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户主键"
+        },
+        "userName": {
+          "type": "string",
+          "title": "用户名"
+        },
+        "nickName": {
+          "type": "string",
+          "title": "昵称"
+        },
+        "avatar": {
+          "type": "string",
+          "title": "头像url"
+        },
+        "authenticationStatus": {
+          "type": "string",
+          "title": "身份认证状态"
+        },
+        "balance": {
+          "type": "string",
+          "title": "剩余雨点"
+        },
+        "accountNo": {
+          "type": "string",
+          "title": "账号"
+        },
+        "email": {
+          "type": "string",
+          "title": "邮箱地址"
+        },
+        "warnOpen": {
+          "type": "boolean",
+          "title": "余额预警"
+        },
+        "releaseWarn": {
+          "type": "boolean",
+          "title": "释放预警"
+        },
+        "walletBalance": {
+          "type": "string",
+          "title": "钱包余额"
+        },
+        "bindPassword": {
+          "type": "boolean",
+          "title": "是否绑定密码"
+        },
+        "bindPhone": {
+          "type": "boolean",
+          "title": "是否绑定手机号"
+        },
+        "bindRealName": {
+          "type": "boolean",
+          "title": "是否实名认证"
+        },
+        "bindWechat": {
+          "type": "boolean",
+          "title": "是否绑定微信"
+        },
+        "phone": {
+          "type": "string",
+          "title": "手机号"
+        },
+        "code": {
+          "type": "string",
+          "title": "推荐码"
+        },
+        "priority": {
+          "type": "integer",
+          "format": "int32",
+          "title": "优先级"
+        }
+      }
+    },
+    "UserInfoResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "$ref": "#/definitions/UserInfo",
+          "title": "用户详细对象"
+        }
+      },
+      "title": "用户详细响应对象"
+    },
+    "UserListPageResponse": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "总的记录数"
+        },
+        "size": {
+          "type": "string",
+          "format": "int64",
+          "title": "每页显示的大小"
+        },
+        "current": {
+          "type": "string",
+          "format": "int64",
+          "title": "当前页"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/UserResponse"
+          },
+          "title": "用户对象"
+        }
+      },
+      "title": "用户列表响应对象"
+    },
+    "UserLoginRequest": {
+      "type": "object",
+      "properties": {
+        "account": {
+          "type": "string",
+          "title": "账号"
+        },
+        "password": {
+          "type": "string",
+          "title": "密码"
+        },
+        "phone": {
+          "type": "string",
+          "title": "手机号"
+        },
+        "loginType": {
+          "type": "string",
+          "title": "登录类型 ACCOUNT 代表账号登录 PHONE 代表手机号登录  EMAIL 代表邮箱 PHONE_PASSWORD代表手机号和密码"
+        },
+        "email": {
+          "type": "string",
+          "title": "邮箱"
+        },
+        "code": {
+          "type": "string",
+          "title": "短信code码"
+        }
+      },
+      "title": "用户登录的请求体和响应体"
+    },
+    "UserLoginResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "string",
+          "title": "响应给用户的数据实体"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "rpcCode码 200代表调用成功 500代表调用失败"
+        },
+        "message": {
+          "type": "string",
+          "title": "登录成功的token"
+        }
+      },
+      "title": "用户登录响应对象"
+    },
+    "UserRecommend": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "主键"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "推荐人ID"
+        },
+        "referralCode": {
+          "type": "string",
+          "title": "推荐码"
+        },
+        "refereeId": {
+          "type": "string",
+          "format": "int64",
+          "title": "被推荐人ID"
+        },
+        "referralTime": {
+          "type": "string",
+          "title": "推荐时间"
+        },
+        "phone": {
+          "type": "string",
+          "title": "手机号"
+        },
+        "nickName": {
+          "type": "string",
+          "title": "昵称"
+        }
+      }
+    },
+    "UserRegisterRequest": {
+      "type": "object",
+      "properties": {
+        "phone": {
+          "type": "string",
+          "title": "手机号"
+        },
+        "code": {
+          "type": "string",
+          "title": "短信码"
+        },
+        "account": {
+          "type": "string",
+          "title": "账号"
+        },
+        "password": {
+          "type": "string",
+          "title": "密码"
+        },
+        "email": {
+          "type": "string",
+          "title": "邮箱"
+        },
+        "registerType": {
+          "type": "string",
+          "title": "登录类型"
+        },
+        "recommendationCode": {
+          "type": "string",
+          "title": "推荐码"
+        }
+      },
+      "title": "用户注册的请求对象与响应对象"
+    },
+    "UserRegisterResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表调用成功 500代表调用失败"
+        },
+        "message": {
+          "type": "string",
+          "title": "rpc响应的消息"
+        },
+        "data": {
+          "type": "boolean",
+          "title": "用户注册响应的消息"
+        }
+      }
+    },
+    "UserResponse": {
+      "type": "object",
+      "properties": {
+        "iD": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户ID"
+        },
+        "userName": {
+          "type": "string",
+          "title": "用户名"
+        },
+        "password": {
+          "type": "string",
+          "title": "密码"
+        },
+        "nickName": {
+          "type": "string",
+          "title": "昵称"
+        },
+        "phone": {
+          "type": "string",
+          "title": "手机号"
+        },
+        "openID": {
+          "type": "string",
+          "title": "微信登录的open_id"
+        },
+        "loginTime": {
+          "type": "string",
+          "title": "登录时间"
+        },
+        "updatePasswordTime": {
+          "type": "string",
+          "title": "上次修改密码时间"
+        },
+        "createTime": {
+          "type": "string",
+          "title": "创建时间"
+        },
+        "updateTime": {
+          "type": "string",
+          "title": "更新时间"
+        },
+        "avatar": {
+          "type": "string",
+          "title": "头像url"
+        },
+        "code": {
+          "type": "string",
+          "title": "推荐码"
+        },
+        "authenticationStatus": {
+          "type": "string",
+          "title": "身份认证状态"
+        },
+        "identificationNumber": {
+          "type": "string",
+          "title": "身份证号"
+        },
+        "balance": {
+          "type": "string",
+          "title": "账户余额"
+        },
+        "accountNo": {
+          "type": "string",
+          "title": "账号"
+        },
+        "email": {
+          "type": "string",
+          "title": "邮箱地址"
+        },
+        "version": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "del": {
+          "type": "boolean"
+        },
+        "warnFlag": {
+          "type": "boolean"
+        },
+        "warnOpen": {
+          "type": "boolean"
+        },
+        "releaseWarn": {
+          "type": "boolean"
+        },
+        "invoiceFlag": {
+          "type": "boolean",
+          "title": "发票状态"
+        },
+        "priority": {
+          "type": "integer",
+          "format": "int32",
+          "title": "优先级"
+        }
+      }
+    },
+    "WeChatBindingCallbackResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表成功"
+        },
+        "message": {
+          "type": "string",
+          "title": "返回消息"
+        },
+        "data": {
+          "type": "boolean",
+          "title": "返回true代表绑定成功 flase代表失败"
+        }
+      },
+      "title": "微信绑定回调通知响应对象"
+    },
+    "WebsiteTraffic": {
+      "type": "object",
+      "properties": {
+        "pv": {
+          "type": "string",
+          "format": "int64",
+          "title": "网站点击量"
+        },
+        "uv": {
+          "type": "string",
+          "format": "int64",
+          "title": "独立访客"
+        },
+        "pvTotal": {
+          "type": "string",
+          "format": "int64",
+          "title": "pv总数"
+        },
+        "date": {
+          "type": "string",
+          "title": "日期"
+        }
+      },
+      "title": "网站访问量"
+    },
+    "WechatLoginCallbackResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "200代表成功"
+        },
+        "message": {
+          "type": "string",
+          "title": "返回消息"
+        },
+        "data": {
+          "type": "string",
+          "title": "返回的是微信登录的二维码链接"
+        }
+      },
+      "title": "微信登录回调响应对象"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

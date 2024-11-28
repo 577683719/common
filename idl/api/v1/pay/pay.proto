@@ -1,0 +1,447 @@
+syntax="proto3";
+
+
+option go_package = "./pay";
+
+import "validate/validate.proto";
+//支付服务
+service PayService{
+
+    //获取支付二维码
+    rpc GetPaymentQRCode(GetPaymentQRCodeRequet)returns (GetPaymentQRCodeResponse);
+
+    //回调通知接口
+    rpc Notify(NotifyRequest)returns (NotifyResponse);
+
+    //---------------------------管理端------------------------------
+    //查询支付宝提现申请
+    rpc QueryAlipayCashOutApplication(QueryAlipayCashOutApplicationRequest)returns (QueryAlipayCashOutApplicationResponse);
+}
+
+
+message GetQRCodeTransactionStatus{
+    string retryUuid = 1;
+    string payType = 2;
+}
+
+//支付宝提现
+message AlipayWithdrawalRequest{
+    //系统用户id
+    int64 adminUserId = 1;
+
+    //提现金额
+    string withdrawalAmount = 2;
+
+    //用户id
+    int64 userId = 3;
+
+    //申请单id
+    int64 alipayCashOutApplicationId = 4;
+
+}
+//用户实名认证
+message UserRealNameAuthenticationReqeust{
+    //真实姓名
+    string certName= 1;
+    //身份证号
+    string certNo= 2;
+}
+
+
+//查询支付宝提现申请请求对象
+message QueryAlipayCashOutApplicationRequest{
+    //页号
+    int64 pageNum = 1;
+    //页大小
+    int64 pageSize = 2;
+    //主键
+    int64 id = 3;
+    //提现金额
+    string cashOutAmount = 4;
+    //申请时间从
+    string tradingHoursFrom = 5;
+    //审批时间
+    string approvalTime = 6;
+    //审批状态 PENDING:待审批 APPROVED:已批准 REJECTED:已拒绝 IN_REVIEW:审核中 COMPLETED:已完成 UNDER_REVIEW:正在审查 CANCELLED:已取消
+    string approvalStatus = 7;
+    //转账状态  未转账:PENDING    已转账:SUCCESS  转账失败:FAIL
+    string transferStatus = 8;
+    //账户
+    string account = 9;
+    //真实姓名
+    string realName = 10;
+    //用户id
+    int64 userID = 11;
+    //申请时间到
+    string tradingHoursTo = 12;
+}
+
+//查询支付宝提现申请响应对象
+message QueryAlipayCashOutApplicationResponse{
+    // 总的记录数
+    int64 total = 1;
+    // 每页显示的大小
+    int64 size = 2;
+    // 当前页
+    int64 current = 3;
+    // 当前页内容
+    repeated  AlipayCashOutApplication rows = 4;
+}
+message AlipayCashOutApplication{
+    //主键
+    int64 id = 3;
+    //提现金额
+    string cashOutAmount = 4;
+    //申请时间
+    string applicationTime = 5;
+    //审批时间
+    string approvalTime = 6;
+    //审批状态 PENDING:待审批 APPROVED:已批准 REJECTED:已拒绝 IN_REVIEW:审核中 COMPLETED:已完成 UNDER_REVIEW:正在审查 CANCELLED:已取消
+    string approvalStatus = 7;
+    //转账状态  未转账:PENDING    已转账:SUCCESS  转账失败:FAIL
+    string transferStatus = 8;
+    //账户
+    string account = 9;
+    //真实姓名
+    string realName = 10;
+    //用户id
+    int64 userID = 11;
+    //创建时间
+    string createTime =12;
+    //修改时间
+    string updateTime =13;
+}
+
+//支付宝提现申请请求对象
+message AliPayCashOutApplicationReqeust{
+    //提现金额
+    string cashOutAmount = 1;
+    //账户
+    string account =2;
+    //真实姓名
+    string realName =3;
+    //备注
+    string remarks=5;
+}
+
+//提现请求对象
+message AliCashOutReqeust{
+    //提现金额
+    string transAmount=1;
+    //支付宝账户
+    string identity = 2;
+    //姓名
+    string nanem = 3;
+    //备注
+    string remark=4;
+
+}
+
+//查询微信支付记录请求对象
+message QueryWechatPaymentRecordsRequest{
+    //页号
+    int64 pageNum = 1;
+    //页大小
+    int64 pageSize = 2;
+    // 微信支付订单号
+    string transactionID = 3;
+    // 交易类型
+    string tradeType = 4;
+    // 交易状态
+    string tradeState = 5;
+    //交易时间从
+    string tradingHoursFrom = 6;
+    //交易时间到
+    string tradingHoursTo = 7;
+    // 用户id
+    int64 userID = 8;
+    //商户订单号
+    string outTradeNo = 9;
+}
+
+//查询支付宝支付记录请求对象
+message QueryAliPaymentRecordsRequest{
+    //页号
+    int64 pageNum = 1;
+    //页大小
+    int64 pageSize = 2;
+    //交易时间从
+    string tradingHoursFrom = 3;
+    //交易时间到
+    string tradingHoursTo = 4;
+    // 交易状态
+    string tradeStatus = 5;
+    // 用户id
+    int64 userID = 6;
+    //商户订单号
+    string outTradeNo = 7;
+    //支付宝交易号
+    string tradeNo = 8;
+}
+
+//支付宝支付记录响应对象
+message AliPaymentRecordsResponse{
+    // 总的记录数
+    int64 total = 1;
+    // 每页显示的大小
+    int64 size = 2;
+    // 当前页
+    int64 current = 3;
+    // 当前页内容
+    repeated  AliPaymentRecord rows = 4;
+}
+
+//微信支付记录响应对象
+message WechatPaymentRecordsResponse {
+    // 总的记录数
+    int64 total = 1;
+    // 每页显示的大小
+    int64 size = 2;
+    // 当前页
+    int64 current = 3;
+    // 当前页内容
+    repeated  WechatPaymentRecord rows = 4;
+}
+//微信支付记录
+message WechatPaymentRecord{
+    // 主键 ID
+    int32 id = 1;
+    // 微信扫码通知记录id
+    int64 wechatScanCodeID = 2;
+    // 商户号
+    string mchid = 3;
+    // 应用 id
+    string appid = 4;
+    // 商户订单号
+    string outTradeNo = 5;
+    // 微信支付订单号
+    string transactionID = 6;
+    // 交易类型
+    string tradeType = 7;
+    // 交易状态
+    string tradeState = 8;
+    // 交易状态描述
+    string tradeStateDesc = 9;
+    // 付款银行
+    string bankType = 10;
+    // 附加数据
+    string attach = 11;
+    // 支付完成时间
+    string successTime = 12;
+    // 用户标识
+    string payerOpenid = 13;
+    // 订单金额
+    string amountTotal = 14;
+    // 用户支付金额
+    string amountPayerTotal = 15;
+    // 货币类型
+    string amountCurrency = 16;
+    // 用户支付货币类型
+    string amountPayerCurrency = 17;
+    // 创建时间
+    string createTime = 18;
+    // 更新时间
+    string updateTime = 19;
+    // 用户id
+    int64 userID = 20;
+}
+
+message AliPaymentRecord{
+    // 主键ID
+    int64 id = 1;
+    // 支付宝扫码通知记录id
+    int64 aliScanCodeID = 2;
+    // 卖家Id
+    string sellerID = 3;
+    // 版本号
+    string version = 4;
+    // 总金额
+    string totalAmount = 5;
+    // 卖家邮箱
+    string sellerEmail = 6;
+    // 商户订单号
+    string outTradeNo = 7;
+    // 订单创建时间
+    string gmtCreate = 8;
+    // 实收金额
+    string receiptAmount = 9;
+    // 应用Id
+    string appID = 10;
+    // 通知时间
+    string notifyTime = 11;
+    // 支付宝交易号
+    string tradeNo = 12;
+    // 买家登录id
+    string buyerLogonID = 13;
+    // 通知Id
+    string notifyID = 14;
+    // 付款时间
+    string gmtPayment = 15;
+    // 授权应用id
+    string authAppID = 16;
+    // 订单标题
+    string subject = 17;
+    // 买家Id
+    string buyerID = 18;
+    // 支付金额信息
+    string fundBillList = 19;
+    // 开票金额
+    string invoiceAmount = 20;
+    // 签名类型
+    string signType = 21;
+    // 雨点支付金额
+    string pointAmount = 22;
+    // 编码格式
+    string charset = 23;
+    // 买家付款金额
+    string buyerPayAmount = 24;
+    // 通知类型
+    string notifyType = 25;
+    // 交易状态
+    string tradeStatus = 26;
+    // 用户id
+    int64 userID = 27;
+    // 创建时间
+    string createTime = 28;
+    // 更新时间
+    string updateTime = 29;
+}
+//钱包购买请求对象
+message WalletBuyRequest{
+
+    //用户id
+    int64 userId=1;
+
+    //交易金额
+    string payAmount=3;
+
+    //购买雨点
+    string buyIntegral=4;
+}
+
+
+message NotifyRequest{
+    // App Id
+    string auth_app_id = 1;
+    // 通知时间
+    string notify_time = 2;
+    // 通知类型
+    string notify_type = 3;
+    // 通知校验ID
+    string notify_id = 4;
+    // 开发者的app_id
+    string app_id = 5;
+    // 编码格式
+    string charset = 6;
+    // 接口版本
+    string version = 7;
+    // 签名类型
+    string sign_type = 8;
+    // 签名
+    string sign = 9;
+    // 支付宝交易号
+    string trade_no = 10;
+    // 商户订单号
+    string out_trade_no = 11;
+    // 退款请求编号
+    string out_request_no = 12;
+    // 商户业务号
+    string out_biz_no = 13;
+    // 买家支付宝用户号
+    string buyer_id = 14;
+    // 买家支付宝账号
+    string buyer_logon_id = 15;
+    // 卖家支付宝用户号
+    string seller_id = 16;
+    // 卖家支付宝账号
+    string seller_email = 17;
+    // 交易状态
+    string trade_status = 18;
+    // 退款状态
+    string refund_status = 19;
+    // 退款原因
+    string refund_reason = 20;
+    // 退款金额
+    string refund_amount = 21;
+    // 订单金额
+    string total_amount = 22;
+    // 实收金额
+    string receipt_amount = 23;
+    // 开票金额
+    string invoice_amount = 24;
+    // 付款金额
+    string buyer_pay_amount = 25;
+    // 集分宝金额
+    string point_amount = 26;
+    // 总退款金额
+    string refund_fee = 27;
+    // 商品的标题/交易标题/订单标题/订单关键字等，是请求时对应的参数，原样通知回来。
+    string subject = 28;
+    // 商品描述
+    string body = 29;
+    // 交易创建时间
+    string gmt_create = 30;
+    // 交易付款时间
+    string gmt_payment = 31;
+    // 交易退款时间
+    string gmt_refund = 32;
+    // 交易结束时间
+    string gmt_close = 33;
+    // 支付金额信息
+    string fund_bill_list = 34;
+    // 回传参数
+    string passback_params = 35;
+    // 优惠券信息
+    string voucher_detail_list = 36;
+    // 支付宝签约号
+    string agreement_no = 37;
+    // 商户自定义签约号
+    string external_agreement_no = 38;
+    // 银行卡冲退状态
+    string dback_status = 39;
+    // 银行卡冲退金额
+    string dback_amount = 40;
+    // 银行响应时间
+    string bank_ack_time = 41;
+}
+
+message NotifyResponse{
+
+    string message =2;
+
+
+}
+//获取支付二维码
+message GetPaymentQRCodeRequet{
+    //用户id
+    int64 userId=1;
+    //支付类型
+    string payType = 2;
+    //交易金额
+    string payAmount=3;
+    //交易code码
+    string retryUuid = 4;
+    //充值类型:[雨点:INTEGRAL,钱包:WALLET]
+    string rechargeType=5;
+
+}
+
+//获取支付二维码请求对象
+message GetPaymentQRCodeResponse{
+
+
+    //响应码 200 代表成功
+    int32 code =1;
+    // 消息
+    string message =2;
+    //响应的数据
+    PaymentQRCode data=3;
+}
+//获取二维码返回的数据
+message PaymentQRCode{
+    //支付链接需要生成二维码
+    string url=1;
+    //重试uuid
+    string retryUuid=2;
+}
+

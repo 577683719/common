@@ -1,0 +1,1668 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "product.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "ProductService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/admin/v1/product/addCpuTypeIntroduce": {
+      "post": {
+        "summary": "管理端_添加cpu类型介绍",
+        "operationId": "ProductService_AddCpuTypeIntroduce",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AddCpuTypeIntroduceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddCpuTypeIntroduceRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProductService"
+        ]
+      }
+    },
+    "/admin/v1/product/addGpuTypeIntroduce": {
+      "post": {
+        "summary": "管理端_添加gpu类型介绍",
+        "operationId": "ProductService_AddGpuTypeIntroduce",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AddGpuTypeIntroduceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddGpuTypeIntroduceRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProductService"
+        ]
+      }
+    },
+    "/admin/v1/product/addProductPurpose": {
+      "post": {
+        "summary": "管理端—添加产品用途",
+        "operationId": "ProductService_AddProductPurpose",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ProductDefaultResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ProductPurpose"
+            }
+          }
+        ],
+        "tags": [
+          "ProductService"
+        ]
+      }
+    },
+    "/admin/v1/product/getProductDetailed": {
+      "post": {
+        "summary": "管理端-获取产品详细",
+        "operationId": "ProductService_GetProductDetailed",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetProductDetailedResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetProductDetailedReq"
+            }
+          }
+        ],
+        "tags": [
+          "ProductService"
+        ]
+      }
+    },
+    "/admin/v1/product/getProductPurpose": {
+      "post": {
+        "summary": "管理端-根据产品id获取产品用途",
+        "operationId": "ProductService_GetProductPurpose",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetProductPurposeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ProductPurpose"
+            }
+          }
+        ],
+        "tags": [
+          "ProductService"
+        ]
+      }
+    },
+    "/admin/v1/product/getRecommendedPersonProductList": {
+      "post": {
+        "summary": "管理端_获取推荐人产品列表",
+        "operationId": "ProductService_GetRecommendedPersonProductList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetRecommendedPersonProductListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetRecommendedPersonProductListRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProductService"
+        ]
+      }
+    },
+    "/admin/v1/product/queryCpuType": {
+      "post": {
+        "summary": "管理端_查询cpu类型列表",
+        "operationId": "ProductService_QueryCpuType",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/QueryCpuTypeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryCpuTypeRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProductService"
+        ]
+      }
+    },
+    "/admin/v1/product/queryGpuType": {
+      "post": {
+        "summary": "-------------------------------管理端-------------------------------\r\n管理端_查询gpu类型列表",
+        "operationId": "ProductService_QueryGpuType",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/QueryGpuTypeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryGpuTypeRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProductService"
+        ]
+      }
+    },
+    "/admin/v1/product/updateProductDetailed": {
+      "post": {
+        "summary": "管理端-修改产品信息",
+        "operationId": "ProductService_UpdateProductDetailed",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UpdateProductDetailedResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        ],
+        "tags": [
+          "ProductService"
+        ]
+      }
+    },
+    "/admin/v1/product/updateProductPurpose": {
+      "post": {
+        "summary": "管理端-修改产品用途",
+        "operationId": "ProductService_UpdateProductPurpose",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ProductDefaultResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ProductPurpose"
+            }
+          }
+        ],
+        "tags": [
+          "ProductService"
+        ]
+      }
+    },
+    "/api/v1/product/queryCpuTypeList": {
+      "post": {
+        "summary": "查询cup类型列表",
+        "operationId": "ProductService_QueryCpuTypeList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/QueryCpuTypeListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryCpuTypeListRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProductService"
+        ]
+      }
+    },
+    "/api/v1/product/queryGpuTypeList": {
+      "post": {
+        "summary": "查询gpu类型列表",
+        "operationId": "ProductService_QueryGpuTypeList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/QueryGpuTypeListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryGpuTypeListRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProductService"
+        ]
+      }
+    },
+    "/api/v1/product/queryInstancesPrice": {
+      "post": {
+        "summary": "查询当前实例的价格",
+        "operationId": "ProductService_QueryInstancesPrice",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/QueryInstancesPriceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryInstancesPriceRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProductService"
+        ]
+      }
+    },
+    "/api/v1/product/queryMemoryList": {
+      "post": {
+        "summary": "查询内存列表",
+        "operationId": "ProductService_QueryMemoryList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/QueryMemoryListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryMemoryListRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProductService"
+        ]
+      }
+    },
+    "/api/v1/product/queryServerAreaList": {
+      "post": {
+        "summary": "查询区域列表",
+        "operationId": "ProductService_QueryServerAreaList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/QueryServerAreaListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryServerAreaListRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProductService"
+        ]
+      }
+    },
+    "/api/v1/product/queryVideoMemoryList": {
+      "post": {
+        "summary": "查询显存列表",
+        "operationId": "ProductService_QueryVideoMemoryList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/QueryVideoMemoryListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryVideoMemoryListRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProductService"
+        ]
+      }
+    },
+    "/api/v1/product/selectProductDetailed": {
+      "post": {
+        "summary": "产品详细",
+        "operationId": "ProductService_SelectProductDetailed",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SelectProductDetailedResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SelectProductDetailedRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProductService"
+        ]
+      }
+    },
+    "/api/v1/product/selectProductList": {
+      "post": {
+        "summary": "产品列表",
+        "operationId": "ProductService_SelectProductList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SelectProductListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SelectProductListRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProductService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "AddCpuTypeIntroduceRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "主键id"
+        },
+        "cpuIntroduce": {
+          "type": "string",
+          "title": "cpu类型"
+        }
+      },
+      "title": "管理端_添加cpu类型介绍请求对象"
+    },
+    "AddCpuTypeIntroduceResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码 200 代表成功"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        }
+      },
+      "title": "管理端_添加cpu类型介绍响应对象"
+    },
+    "AddGpuTypeIntroduceRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "主键id"
+        },
+        "gpuIntroduce": {
+          "type": "string",
+          "title": "gpu类型"
+        }
+      },
+      "title": "管理端_添加gpu类型介绍请求对象"
+    },
+    "AddGpuTypeIntroduceResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码 200 代表成功"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        }
+      },
+      "title": "管理端_添加gpu类型介绍响应对象"
+    },
+    "CpuType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "主键id"
+        },
+        "cpuType": {
+          "type": "string",
+          "title": "gpu类型"
+        },
+        "createTime": {
+          "type": "string",
+          "title": "创建时间"
+        },
+        "updateTime": {
+          "type": "string",
+          "title": "更新时间"
+        },
+        "cpuIntroduce": {
+          "type": "string",
+          "title": "gpu介绍"
+        }
+      }
+    },
+    "CpuTypeList": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "总的记录数"
+        },
+        "size": {
+          "type": "string",
+          "format": "int64",
+          "title": "每页显示的大小"
+        },
+        "current": {
+          "type": "string",
+          "format": "int64",
+          "title": "当前页"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/CpuType"
+          },
+          "title": "执行成功返回数据"
+        }
+      }
+    },
+    "GetProductDetailedReq": {
+      "type": "object",
+      "properties": {
+        "productId": {
+          "type": "string",
+          "title": "产品id"
+        }
+      },
+      "title": "获取产品详细请求对象"
+    },
+    "GetProductDetailedResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码 200 代表成功"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "$ref": "#/definitions/Product",
+          "title": "响应的数据"
+        }
+      },
+      "title": "获取产品详细请求对象"
+    },
+    "GetProductPurposeResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码 200 代表成功"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/ProductPurpose"
+          },
+          "title": "响应的数据"
+        }
+      }
+    },
+    "GetRecommendedPersonProductListPage": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "总的记录数"
+        },
+        "size": {
+          "type": "string",
+          "format": "int64",
+          "title": "每页显示的大小"
+        },
+        "current": {
+          "type": "string",
+          "format": "int64",
+          "title": "当前页"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/RecommendedPersonProduct"
+          },
+          "title": "推荐人产品列表"
+        }
+      },
+      "title": "获取推荐人产品列表"
+    },
+    "GetRecommendedPersonProductListRequest": {
+      "type": "object",
+      "properties": {
+        "pageNum": {
+          "type": "string",
+          "format": "int64",
+          "title": "页号"
+        },
+        "pagesize": {
+          "type": "string",
+          "format": "int64",
+          "title": "页大小"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        }
+      },
+      "title": "获取账单产品列表"
+    },
+    "GetRecommendedPersonProductListResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码"
+        },
+        "message": {
+          "type": "string",
+          "title": "响应消息"
+        },
+        "data": {
+          "$ref": "#/definitions/GetRecommendedPersonProductListPage",
+          "title": "收支明细响应结构体"
+        }
+      }
+    },
+    "GpuType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "主键id"
+        },
+        "gpuType": {
+          "type": "string",
+          "title": "gpu类型"
+        },
+        "createTime": {
+          "type": "string",
+          "title": "创建时间"
+        },
+        "updateTime": {
+          "type": "string",
+          "title": "更新时间"
+        },
+        "gpuIntroduce": {
+          "type": "string",
+          "title": "gpu介绍"
+        }
+      }
+    },
+    "GpuTypeList": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "总的记录数"
+        },
+        "size": {
+          "type": "string",
+          "format": "int64",
+          "title": "每页显示的大小"
+        },
+        "current": {
+          "type": "string",
+          "format": "int64",
+          "title": "当前页"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/GpuType"
+          },
+          "title": "执行成功返回数据"
+        }
+      }
+    },
+    "Product": {
+      "type": "object",
+      "properties": {
+        "productId": {
+          "type": "string",
+          "title": "产品id"
+        },
+        "gpuType": {
+          "type": "string",
+          "title": "GPU类型"
+        },
+        "gpuNum": {
+          "type": "string",
+          "title": "GPU数量"
+        },
+        "gpuMem": {
+          "type": "string",
+          "title": "GPU内存"
+        },
+        "cudaVer": {
+          "type": "string",
+          "title": "Cuda版本"
+        },
+        "cpuType": {
+          "type": "string",
+          "title": "CPU类型"
+        },
+        "cpuNum": {
+          "type": "string",
+          "title": "CPU数量"
+        },
+        "cpuMem": {
+          "type": "string",
+          "title": "cpu内存"
+        },
+        "cpuFreq": {
+          "type": "string",
+          "title": "CPU频率"
+        },
+        "sysDiskSize": {
+          "type": "string",
+          "title": "系统磁盘大小"
+        },
+        "dataDiskSize": {
+          "type": "string",
+          "title": "数据磁盘大小"
+        },
+        "configPrice": {
+          "type": "string",
+          "title": "配置价格"
+        },
+        "storagePrice": {
+          "type": "string",
+          "title": "存储价格"
+        },
+        "leftNum": {
+          "type": "integer",
+          "format": "int32",
+          "title": "剩余产品个数"
+        },
+        "totalNum": {
+          "type": "integer",
+          "format": "int32",
+          "title": "产品总数"
+        },
+        "serverId": {
+          "type": "string",
+          "title": "serverId"
+        },
+        "computePower": {
+          "type": "string",
+          "title": "计算能力"
+        },
+        "starLevel": {
+          "type": "integer",
+          "format": "int32",
+          "title": "产品等级"
+        }
+      },
+      "title": "产品"
+    },
+    "ProductDefaultResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ProductListByBilling": {
+      "type": "object",
+      "properties": {
+        "productId": {
+          "type": "string",
+          "title": "产品id"
+        },
+        "gpuType": {
+          "type": "string",
+          "title": "GPU类型"
+        },
+        "gpuNum": {
+          "type": "string",
+          "title": "GPU数量"
+        },
+        "gpuMem": {
+          "type": "string",
+          "title": "GPU内存"
+        },
+        "cudaVer": {
+          "type": "string",
+          "title": "Cuda版本"
+        },
+        "cpuType": {
+          "type": "string",
+          "title": "CPU类型"
+        },
+        "cpuNum": {
+          "type": "string",
+          "title": "CPU数量"
+        },
+        "cpuMem": {
+          "type": "string",
+          "title": "cpu内存"
+        },
+        "cpuFreq": {
+          "type": "string",
+          "title": "CPU频率"
+        },
+        "sysDiskSize": {
+          "type": "string",
+          "title": "系统磁盘大小"
+        },
+        "dataDiskSize": {
+          "type": "string",
+          "title": "数据磁盘大小"
+        },
+        "configPrice": {
+          "type": "string",
+          "title": "配置价格"
+        },
+        "storagePrice": {
+          "type": "string",
+          "title": "存储价格"
+        },
+        "leftNum": {
+          "type": "integer",
+          "format": "int32",
+          "title": "剩余产品个数"
+        },
+        "totalNum": {
+          "type": "integer",
+          "format": "int32",
+          "title": "产品总数"
+        },
+        "serverId": {
+          "type": "string",
+          "title": "serverId"
+        },
+        "billingType": {
+          "type": "string",
+          "title": "计费类型"
+        },
+        "unitPrice": {
+          "type": "string",
+          "title": "价格"
+        },
+        "activityName": {
+          "type": "string",
+          "title": "activityName 活动名 暂时没有值"
+        },
+        "activityPrice": {
+          "type": "string",
+          "title": "activityPrice 活动价格 暂时没有值"
+        },
+        "productDescribe": {
+          "type": "string",
+          "title": "productDescribe 产品描述 暂时没有值"
+        },
+        "gpuDrive": {
+          "type": "string",
+          "title": "gpuDrive  GPU驱动 暂时没有值"
+        },
+        "computePower": {
+          "type": "string",
+          "title": "计算能力"
+        },
+        "starLevel": {
+          "type": "integer",
+          "format": "int32",
+          "title": "产品等级"
+        }
+      },
+      "title": "产品列表"
+    },
+    "ProductPurpose": {
+      "type": "object",
+      "properties": {
+        "productId": {
+          "type": "string",
+          "title": "产品id"
+        },
+        "purpose": {
+          "type": "string",
+          "title": "用途用途,分割就可以   用途ai推理:AI_REASONING  ai训练:AI_TRAIN GPU渲染:GPU_RENDERING  其他:OTHER',"
+        }
+      },
+      "title": "产品用途"
+    },
+    "QueryAllRunningInstancesPriceResponse": {
+      "type": "object",
+      "properties": {
+        "instanceId": {
+          "type": "string",
+          "title": "用户实例ID"
+        },
+        "nodeId": {
+          "type": "string",
+          "title": "节点ID"
+        },
+        "productId": {
+          "type": "string",
+          "title": "产品ID"
+        },
+        "imageName": {
+          "type": "string",
+          "title": "镜像名称"
+        },
+        "instanceStatus": {
+          "type": "string",
+          "title": "实例运行状态"
+        },
+        "yamlPath": {
+          "type": "string",
+          "title": "实例配置Yaml路径"
+        },
+        "sysdiskPath": {
+          "type": "string",
+          "title": "系统盘挂载路径"
+        },
+        "datadiskPath": {
+          "type": "string",
+          "title": "数据盘挂载路径"
+        },
+        "sysdiskSize": {
+          "type": "string",
+          "title": "系统盘大小"
+        },
+        "datadiskSize": {
+          "type": "string",
+          "title": "数据盘大小"
+        },
+        "sysvolumeId": {
+          "type": "string",
+          "title": "系统盘ID"
+        },
+        "password": {
+          "type": "string",
+          "title": "用户实例访问密码"
+        },
+        "frpServer": {
+          "type": "string",
+          "title": "FRP服务器"
+        },
+        "frpUuid": {
+          "type": "string",
+          "title": "FRP服务器的UUID"
+        },
+        "sshPort": {
+          "type": "string",
+          "title": "SSH访问实例的端口"
+        },
+        "jupyterPort": {
+          "type": "string",
+          "title": "Jupter端口号"
+        },
+        "sysAttachment": {
+          "type": "string",
+          "title": "系统盘信息"
+        },
+        "datavolumeId": {
+          "type": "string",
+          "title": "数据盘ID"
+        },
+        "dataAttachment": {
+          "type": "string",
+          "title": "数据盘信息"
+        },
+        "token": {
+          "type": "string",
+          "title": "用户实例访问令牌"
+        },
+        "startTime": {
+          "type": "string",
+          "format": "date-time",
+          "title": "启动时间"
+        },
+        "stopTime": {
+          "type": "string",
+          "format": "date-time",
+          "title": "停止时间"
+        }
+      }
+    },
+    "QueryCpuTypeListRequest": {
+      "type": "object",
+      "title": "查询cup类型列表请求对象"
+    },
+    "QueryCpuTypeListResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码 200 代表成功"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/CpuType"
+          },
+          "title": "cpu类型"
+        }
+      },
+      "title": "查询cup类型列表响应对象"
+    },
+    "QueryCpuTypeRequest": {
+      "type": "object",
+      "properties": {
+        "pageNum": {
+          "type": "string",
+          "format": "int64",
+          "title": "页号"
+        },
+        "pageSize": {
+          "type": "string",
+          "format": "int64",
+          "title": "页大小"
+        }
+      },
+      "title": "管理端_查询cpu类型列表请求对象"
+    },
+    "QueryCpuTypeResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码 200 代表成功"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "$ref": "#/definitions/CpuTypeList",
+          "title": "gpu类型"
+        }
+      },
+      "title": "管理端_查询cpu类型列表响应对象"
+    },
+    "QueryGpuTypeListRequest": {
+      "type": "object",
+      "title": "查询gpu类型列表请求对象"
+    },
+    "QueryGpuTypeListResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码 200 代表成功"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/GpuType"
+          },
+          "title": "gpu类型"
+        }
+      },
+      "title": "查询gpu类型列表响应对象"
+    },
+    "QueryGpuTypeRequest": {
+      "type": "object",
+      "properties": {
+        "pageNum": {
+          "type": "string",
+          "format": "int64",
+          "title": "页号"
+        },
+        "pageSize": {
+          "type": "string",
+          "format": "int64",
+          "title": "页大小"
+        }
+      },
+      "title": "管理端_查询gpu类型列表请求对象"
+    },
+    "QueryGpuTypeResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码 200 代表成功"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "$ref": "#/definitions/GpuTypeList",
+          "title": "gpu类型"
+        }
+      },
+      "title": "管理端_查询gpu类型列表响应对象"
+    },
+    "QueryInstancesPriceRequest": {
+      "type": "object",
+      "properties": {
+        "instanceId": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "实例ids"
+        }
+      },
+      "title": "查询实例的价格 请求与访问对象"
+    },
+    "QueryInstancesPriceResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码 200 代表成功"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/QueryInstancesPriceResponseResponse"
+          },
+          "title": "返回的实例价格数据"
+        }
+      }
+    },
+    "QueryInstancesPriceResponseResponse": {
+      "type": "object",
+      "properties": {
+        "instanceId": {
+          "type": "string",
+          "title": "实例id"
+        },
+        "instancePrice": {
+          "type": "string",
+          "title": "实例价格"
+        },
+        "productId": {
+          "type": "string",
+          "title": "产品Id"
+        },
+        "productName": {
+          "type": "string",
+          "title": "产品名称"
+        }
+      },
+      "title": "响应对象"
+    },
+    "QueryMemoryListRequest": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        }
+      },
+      "title": "查询内存列表请求对象"
+    },
+    "QueryMemoryListResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码"
+        },
+        "message": {
+          "type": "string",
+          "title": "响应消息"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "内存列表"
+        }
+      },
+      "title": "查询内存列表响应对象"
+    },
+    "QueryServerAreaListRequest": {
+      "type": "object",
+      "title": "查询区域列表请求对象"
+    },
+    "QueryServerAreaListResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码 200 代表成功"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "serverArea": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "产品区域"
+        }
+      },
+      "title": "查询区域列表响应对象"
+    },
+    "QueryVideoMemoryListRequest": {
+      "type": "object",
+      "title": "查询显存列表请求对象"
+    },
+    "QueryVideoMemoryListResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码"
+        },
+        "message": {
+          "type": "string",
+          "title": "响应消息"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "内存列表"
+        }
+      },
+      "title": "查询显存列表响应对象"
+    },
+    "RecommendedPersonProduct": {
+      "type": "object",
+      "properties": {
+        "productName": {
+          "type": "string",
+          "title": "产品名称"
+        },
+        "productId": {
+          "type": "string",
+          "title": "产品id"
+        },
+        "duration": {
+          "type": "string",
+          "format": "int64",
+          "title": "时长"
+        },
+        "totalPrice": {
+          "type": "string",
+          "title": "总价格"
+        }
+      },
+      "title": "账单产品"
+    },
+    "SelectProductDetailedRequest": {
+      "type": "object",
+      "properties": {
+        "productId": {
+          "type": "string",
+          "title": "产品id"
+        },
+        "billingType": {
+          "type": "string",
+          "title": "计费类型[DAY日 WEEK 周 MONTH 月 AMOUNT 按量]'"
+        }
+      },
+      "title": "产品详细请求对象"
+    },
+    "SelectProductDetailedResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/ProductListByBilling"
+        }
+      },
+      "title": "产品详细响应对象"
+    },
+    "SelectProductListPageResponse": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "总的记录数"
+        },
+        "size": {
+          "type": "string",
+          "format": "int64",
+          "title": "每页显示的大小"
+        },
+        "current": {
+          "type": "string",
+          "format": "int64",
+          "title": "当前页"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/ProductListByBilling"
+          },
+          "title": "当前页内容"
+        }
+      },
+      "title": "风险响应对象"
+    },
+    "SelectProductListRequest": {
+      "type": "object",
+      "properties": {
+        "billingType": {
+          "type": "string",
+          "title": "计费类型[DAY日 WEEK 周 MONTH 月 AMOUNT 按量]'"
+        },
+        "pageNum": {
+          "type": "string",
+          "format": "int64",
+          "title": "页号"
+        },
+        "pageSize": {
+          "type": "string",
+          "format": "int64",
+          "title": "页大小"
+        },
+        "serverArea": {
+          "type": "string",
+          "title": "区域"
+        },
+        "gpuType": {
+          "type": "string",
+          "title": "Gpu类型"
+        },
+        "memory": {
+          "type": "string",
+          "title": "内存"
+        },
+        "cpuType": {
+          "type": "string",
+          "title": "Cpu类信息"
+        },
+        "productPurpose": {
+          "type": "string",
+          "title": "产品用途 用途ai推理:AI_REASONING  ai训练:AI_TRAIN GPU渲染:GPU_RENDERING  其他:OTHER',"
+        },
+        "videoMemory": {
+          "type": "string",
+          "title": "显存"
+        },
+        "productId": {
+          "type": "string",
+          "title": "产品id"
+        }
+      },
+      "title": "产品列表请求对象"
+    },
+    "SelectProductListResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/SelectProductListPageResponse"
+        }
+      },
+      "title": "产品列表响应对象"
+    },
+    "UpdateProductDetailedResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码 200 代表成功"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "type": "boolean",
+          "title": "响应的数据"
+        }
+      },
+      "title": "修改产品信息"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

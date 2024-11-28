@@ -1,0 +1,54 @@
+type: google.api.Service
+config_version: 3
+
+# Please refer google.api.Http in https://github.com/googleapis/googleapis/blob/master/google/api/http.proto file for details.
+http:
+  rules:
+
+#    优惠卷
+    - selector: CouponsService.AddPromotionCoupons
+      post: /api/v1/coupons/addPromotionCoupons
+      body: "*"
+
+    - selector: CouponsService.AddCoupons
+      post: /api/v1/coupons/addCoupons
+      body: "*"
+
+    - selector: CouponsService.EditCoupons
+      post: /api/v1/coupons/editCoupons
+      body: "*"
+
+    - selector: CouponsService.DeleteCoupons
+      post: /api/v1/coupons/deleteCoupons
+      body: "*"
+#      代金券相关路径
+#app端
+    - selector: CouponsService.PickUpVouchers
+      post: /api/v1/vouchers/pickUpVouchers
+      body: "*"
+
+#      首页
+    - selector: CouponsService.HomePage
+      post: /api/v1/activity/homePage
+      body: "*"
+
+
+#管理端
+    - selector: CouponsService.AddVouchers
+      post: /admin/v1/vouchers/addVouchers
+      body: "*"
+
+    - selector: CouponsService.EditVouchers
+      post: /admin/v1/vouchers/editVouchers
+      body: "*"
+
+    - selector: CouponsService.DeleteVouchers
+      post: /admin/v1/vouchers/deleteVouchers
+      body: "*"
+
+    - selector: CouponsService.GetVouchersList
+      post: /admin/v1/vouchers/getVouchersList
+      body: "*"
+    - selector: CouponsService.VouchersAreIssued
+      post: /admin/v1/vouchers/vouchersAreIssued
+      body: "*"

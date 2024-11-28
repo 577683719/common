@@ -1,0 +1,35 @@
+type: google.api.Service
+config_version: 3
+
+# Please refer google.api.Http in https://github.com/googleapis/googleapis/blob/master/google/api/http.proto file for details.
+http:
+  rules:
+#    订单
+    - selector: BillServices.TransactionDetailList
+      post: /api/v1/bill/getTransactionDetailList
+      body: "*"
+    - selector: BillServices.BillDetailsList
+      post: /api/v1/bill/billDetailsList
+      body: "*"
+    - selector: BillServices.GetRecentPointsStatistics
+      post: /api/v1/bill/getRecentPointsStatistics
+      body: "*"
+
+    - selector: BillServices.BillDetails
+      post: /api/v1/bill/billDetails
+      body: "*"
+
+
+
+    #管理端_查询收支明细列表
+    - selector: BillServices.QueryTransactionDetailList
+      post: /admin/v1/bill/queryTransactionDetailList
+      body: "*"
+    #管理端_查询收支明细列表
+    - selector: BillServices.QueryBillDetailsList
+      post: /admin/v1/bill/queryBillDetailsList
+      body: "*"
+    #管理端_查询收支明细列表
+    - selector: BillServices.GetBillProductList
+      post: /admin/v1/bill/getBillProductList
+      body: "*"

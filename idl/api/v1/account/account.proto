@@ -1,0 +1,586 @@
+syntax="proto3";
+import "google/protobuf/descriptor.proto";
+
+option go_package = "./account";
+
+import "validate/validate.proto";
+//用户服务
+service UserService{
+    //------------------------------app端----------------------
+
+
+    //绑定手机号
+    rpc BindPhone(BindPhoneRequest)returns (BindPhoneResponse);
+
+    //微信解绑
+    rpc UnbindWeChat(UnbindWeChatReqeust)returns (UnbindWeChatResponse);
+
+    //获取微信绑定二维码
+    rpc GetWeChatBindingQRCode(GetWeChatBindingQRCodeRequest)returns (GetWeChatBindingQRCodeResponse);
+
+    //微信绑定回调通知
+    rpc WeChatBindingCallback(WeChatBindingCallbackRequest)returns (WeChatBindingCallbackResponse);
+
+    //用户登录
+    rpc UserLogin(UserLoginRequest) returns(UserLoginResponse){
+
+    }
+    //用户注册
+    rpc UserRegister(UserRegisterRequest) returns(UserRegisterResponse){
+
+    }
+    //退出登录
+    rpc LoginOut(LoginOutRequest) returns(LoginOutResponse){
+
+    }
+    //忘记密码
+    rpc EditPassword(EditPasswordRequest) returns (EditPasswordResponse){
+
+    }
+    //用户详细
+    rpc GetUserInfo(UserEmptyRequest) returns (UserInfoResponse){}
+
+    //修改到期预警
+    rpc UpdateWarnOpen(UpdateWarnOpenReqeust)returns (UserDefaultResponse);
+    //修改到期释放预警
+    rpc UpdateReleaseWarn(UpdateReleaseWarnReqeust)returns (UserDefaultResponse);
+
+    //获取滑动式验证码
+    rpc GetSlidingVerificationCode(GetSlidingVerificationCodeReq)returns (GetSlidingVerificationCodeResp);
+
+    //微信登录回调
+    rpc WechatLoginCallback(WechatLoginCallbackRequest)returns (WechatLoginCallbackResponse);
+    //获取微信登录二维码
+    rpc GetWeChatLoginQRCode(GetWeChatLoginQRCodeRequest)returns (GetWeChatLoginQRCodeResponse);
+
+    // 修改手机号
+    rpc UpdatePhone(UpdatePhoneRequest)returns (UpdatePhoneResponse);
+    //---------------------------------管理端-----------------------------
+
+    //管理端_查看网站访问量
+    rpc GetWebsiteTraffic(GetWebsiteTrafficRequest)returns (GetWebsiteTrafficResponse);
+
+    //获取用户列表
+    rpc GetUserList(GetUserListRequest) returns (GetUserListResponse){}
+
+    //管理端_获取被推荐人列表
+    rpc GetRecommendedPersonList(GetRecommendedPersonListReq)returns (GetRecommendedPersonListResp);
+
+
+    //管理端-修改用户信息
+    rpc UpdateUser(UserInfo)returns (UpdateUserResponse);
+
+}
+
+
+//更新用户响应对象
+message UpdateUserResponse{
+    //200代表成功
+    int32 code = 1;
+
+    //返回消息
+    string message = 2;
+}
+
+//绑定手机号响应对象
+message BindPhoneResponse{
+
+    //200代表成功
+    int32 code = 1;
+
+    //返回消息
+    string message = 2;
+
+    //返回token
+    string data = 3;
+}
+
+//绑定手机号请求对象
+message BindPhoneRequest{
+    //手机号
+    string phone=1;
+    //短信码
+    string code=2;
+    //微信OpenId
+    string openId =3;
+}
+
+//微信解绑请求对象
+message UnbindWeChatReqeust{
+}
+
+//微信解绑响应对象
+message UnbindWeChatResponse{
+    //200代表成功
+    int32 code = 1;
+    //返回消息
+    string message = 2;
+    //返回true代表绑定成功 flase代表失败
+    bool data = 3;
+}
+
+//查看网站访问量请求对象
+message GetWebsiteTrafficRequest {
+    //访问日期
+    string date = 1;
+}
+
+//查看网站访问量响应对象
+message GetWebsiteTrafficResponse{
+    //200代表成功
+    int32 code = 1;
+    //返回消息
+    string message = 2;
+    //网站的访问量
+    WebsiteTraffic data = 3;
+}
+
+//网站访问量
+message WebsiteTraffic{
+
+    //网站点击量
+    int64 pv = 1;
+
+    //独立访客
+    int64 uv = 2;
+
+    //pv总数
+    int64 pvTotal = 3;
+
+    //日期
+    string date = 4;
+
+}
+
+//微信绑定回调通知请求对象
+message WeChatBindingCallbackRequest{
+    string code = 1;
+    string state = 2;
+}
+
+//微信绑定回调通知响应对象
+message WeChatBindingCallbackResponse{
+    //200代表成功
+    int32 code = 1;
+    //返回消息
+    string message = 2;
+    //返回true代表绑定成功 flase代表失败
+    bool data = 3;
+}
+
+
+
+
+//获取微信绑定二维码
+message GetWeChatBindingQRCodeRequest{
+    //用户id
+    int64 userId =1;
+}
+
+//微信登录回调响应对象
+message GetWeChatBindingQRCodeResponse{
+    //200代表成功
+    int32 code = 1;
+    //返回消息
+    string message = 2;
+    //返回的是微信登录的二维码链接
+    string data = 3;
+}
+
+//修改手机号响应对象
+message UpdatePhoneResponse{
+    //code码
+    int32 code = 1;
+    //响应消息
+    string message= 2;
+    //响应对象
+    bool data=3;
+}
+
+//修改手机号请求对象
+message UpdatePhoneRequest{
+    //手机号
+    string phone=1;
+    //短信码
+    string code=2;
+    //账号密码
+    string password = 3;
+    //用户id
+    int64 userId = 4;
+}
+
+
+//获取滑动验证码
+message GetSlidingVerificationCodeReq{}
+
+
+
+
+//获取滑动验证码响应参数
+message GetSlidingVerificationCodeResp{
+    //code码
+    int32 code = 1;
+    //响应消息
+    string message= 2;
+    //滑动验证码对象
+    SlidingVerificationCode data=3;
+
+}
+//滑动验证码对象
+message SlidingVerificationCode{
+    //宽
+    string width = 1;
+    //高
+    string height=2;
+    //角
+    string angle=3;
+    //默认x轴
+    string defaultX=4;
+    //默认Y轴
+    string defaultY=5;
+    //滑动验证码id发送手机验证码的时候使用
+    string captchaId=6;
+    //主图像
+    string masterImage=7;
+    //小图像
+    string titleImage =8;
+}
+//获取被推荐列表请求对象
+message GetRecommendedPersonListReq{
+    //用户id
+    int64 userId=1;
+    //页号
+    int64 pageNum=2;
+    //页大小
+    int64 pageSize=3;
+}
+
+//获取被推荐列表响应对象
+message GetRecommendedPersonListResp{
+    //code码
+    int32 code = 1;
+    //响应消息
+    string message= 2;
+    //响应体
+    GetRecommendedPersonListPage data=3;
+}
+
+//响应体
+message GetRecommendedPersonListPage{
+    // 总的记录数
+    int64 total = 1;
+    // 每页显示的大小
+    int64 size = 2;
+    // 当前页
+    int64 current = 3;
+
+    // 查询数据列表，使用 bytes 类型表示任意数据
+    repeated UserRecommend rows = 5;
+}
+message UserRecommend{
+    // 主键
+    int64 id = 1;
+    // 推荐人ID
+    int64 userId = 2;
+    // 推荐码
+    string referralCode = 3;
+    // 被推荐人ID
+    int64 refereeId = 4;
+    // 推荐时间
+    string referralTime = 5;
+    //手机号
+    string phone =6;
+    //昵称
+    string nickName=7;
+
+}
+
+//获取微信登录二维码请求对象
+message GetWeChatLoginQRCodeRequest{}
+
+//获取微信登录二维码响应对象
+message GetWeChatLoginQRCodeResponse{
+    //200代表成功
+    int32 code = 1;
+    //返回消息
+    string message = 2;
+    //返回的是微信登录的二维码链接
+    string data = 3;
+}
+
+//微信登录回调请求对象
+message WechatLoginCallbackRequest{
+    string code=1;
+    string state=2;
+}
+
+//微信登录回调响应对象
+message WechatLoginCallbackResponse{
+    //200代表成功
+    int32 code = 1;
+    //返回消息
+    string message = 2;
+    //返回的是微信登录的二维码链接
+    string data = 3;
+}
+message UserEmptyRequest{}
+//用户默认响应对象
+message UserDefaultResponse{
+    //响应码
+    int32 code = 1;
+    //消息
+    string message = 2;
+    //成功或者失败
+    bool data = 3;
+}
+//更新到期释放预警请求对象
+message UpdateReleaseWarnReqeust{
+    //用户id
+    int64 userId = 1;
+    //余额预警状态
+    bool releaseWarn=2;
+}
+//更新余额预警请求对象
+message UpdateWarnOpenReqeust{
+    //用户id
+    int64 userId = 1;
+    //余额预警状态
+    bool warnOpen=2;
+}
+
+//获取用户列表请求对象
+message GetUserListRequest{
+    //页号
+    int64 pageNum = 1;
+    //页大小
+    int64 pageSize = 2;
+    //手机号
+    string phone = 3;
+    //发票标记
+    bool invoiceFlag = 4;
+}
+
+//用户详细响应对象
+message UserInfoResponse{
+    //响应码
+    int32 code = 1;
+    //消息
+    string message = 2;
+    //用户详细对象
+    UserInfo data = 3;
+}
+message UserInfo{
+    // 用户主键
+    int64 id = 1;
+    // 用户名
+    string userName = 2;
+    // 昵称
+    string nickName = 4;
+    // 头像url
+    string avatar = 11;
+    // 身份认证状态
+    string authenticationStatus = 13;
+    // 剩余雨点
+    string balance = 15;
+    // 账号
+    string accountNo = 16;
+    // 邮箱地址
+    string email = 17;
+    //余额预警
+    bool warnOpen = 18;
+    //释放预警
+    bool releaseWarn=19;
+    //钱包余额
+    string walletBalance = 20;
+    //是否绑定密码
+    bool bindPassword = 21;
+    //是否绑定手机号
+    bool bindPhone = 22;
+    //是否实名认证
+    bool bindRealName = 23;
+    //是否绑定微信
+    bool bindWechat =24;
+    //手机号
+    string phone = 25;
+    //推荐码
+    string code =26;
+
+    //优先级
+    int32 priority = 27;
+}
+//修改密码请求对象与响应对象
+message EditPasswordRequest{
+    //验证码
+    string code = 1;
+    //手机号
+    string phone = 2;
+    //邮箱
+    string emial = 3;
+    //密码
+    string password = 4;
+}
+message EditPasswordResponse{
+    //响应码
+    int32 code = 1;
+    //消息
+    string message = 2;
+    //修改状态是否成功
+    bool data = 3;
+}
+
+//用户退出登录请求与响应对象
+message LoginOutRequest{
+    //用户id
+    int64 userId = 1;
+    //token
+    string token = 2;
+}
+//用户退出登录请求与响应对象
+message LoginOutResponse{
+    //rpcCode码 200代表调用成功 500代表调用失败
+    int32 code=1;
+    //rpc响应的消息
+    string message=2;
+    // 退出登录状态
+    bool data = 3;
+}
+
+
+//用户注册的请求对象与响应对象
+message UserRegisterRequest{
+    //手机号
+    string phone =1;
+    //短信码
+    string code =2;
+    //账号
+    string account =3;
+    //密码
+    string password =4;
+    //邮箱
+    string email = 5;
+    // 登录类型
+    string registerType=6;
+    // 推荐码
+    string recommendationCode = 7;
+}
+
+message UserRegisterResponse{
+    // 200代表调用成功 500代表调用失败
+    int32 code=1;
+    //rpc响应的消息
+    string message=2;
+    // 用户注册响应的消息
+    bool data = 3;
+}
+
+
+//用户登录的请求体和响应体
+message UserLoginRequest{
+    //账号
+    string account=1;
+    //密码
+    string password=2;
+    //手机号
+    string phone=3;
+    //登录类型 ACCOUNT 代表账号登录 PHONE 代表手机号登录  EMAIL 代表邮箱 PHONE_PASSWORD代表手机号和密码
+    string loginType=4;
+    //邮箱
+    string email=5;
+    //短信code码
+    string code=6;
+}
+
+//账号登录与注册类型
+enum AccountLoginRegistrationType{
+    //账号
+    ACCOUNT=0;
+    //邮箱
+    EMAIL=1;
+    //手机号验证码
+    PHONE=2;
+    //手机号和密码
+    PHONE_PASSWORD=3;
+}
+//用户登录响应对象
+message UserLoginResponse{
+    //响应给用户的数据实体
+    string data=1;
+    //rpcCode码 200代表调用成功 500代表调用失败
+    int32 code=2;
+    //登录成功的token
+    string message=3;
+}
+
+//用户列表响应对象
+message GetUserListResponse{
+    //rpcCode码 200代表调用成功 500代表调用失败
+    int32 code =1;
+    //rpc响应的消息
+    string message =2;
+    //响应给用户的数据实体
+    UserListPageResponse data =3;
+}
+
+//用户列表响应对象
+message UserListPageResponse {
+    // 总的记录数
+    int64 total = 1;
+    // 每页显示的大小
+    int64 size = 2;
+    // 当前页
+    int64 current = 3;
+    // 用户对象
+    repeated  UserResponse rows = 4;
+}
+
+message UserResponse{
+    //用户ID
+    int64 iD = 1;
+    // 用户名
+    string userName = 2;
+    //密码
+    string password = 3;
+    //昵称
+    string nickName = 4;
+    //手机号
+    string phone = 5;
+    //微信登录的open_id
+    string openID = 6;
+    //登录时间
+    string loginTime = 7;
+    //上次修改密码时间
+    string updatePasswordTime = 8;
+    //创建时间
+    string createTime = 9;
+    //更新时间
+    string updateTime = 10;
+    //头像url
+    string avatar = 11;
+    //推荐码
+    string code = 12;
+    //身份认证状态
+    string authenticationStatus = 13;
+    //身份证号
+    string identificationNumber = 14;
+    //账户余额
+    string balance = 15;
+    //账号
+    string accountNo = 16;
+    //邮箱地址
+    string email = 17;
+    //
+    int32 version = 18;
+    //
+    bool del = 19;
+    //
+    bool warnFlag = 20;
+    //
+    bool warnOpen = 21;
+    //
+    bool releaseWarn = 22;
+    //发票状态
+    bool invoiceFlag = 23;
+    //优先级
+    int32 priority = 24;
+
+}

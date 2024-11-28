@@ -1,0 +1,134 @@
+type: google.api.Service
+config_version: 3
+
+# Please refer google.api.Http in https://github.com/googleapis/googleapis/blob/master/google/api/http.proto file for details.
+http:
+  rules:
+    #    设备开机
+    - selector: DeviceService.StartInstance
+      post: /api/v1/device/start
+      body: "*"
+    # 设备关机
+    - selector: DeviceService.StopInstance
+      post: /api/v1/device/stop
+      body: "*"
+    # 设备释放
+    - selector: DeviceService.ReleaseInstance
+      post: /api/v1/device/release
+      body: "*"
+    # 获取用户实例列表
+    - selector: DeviceService.SelectUserInstanceList
+      post: /api/v1/device/selectUserInstanceList
+      body: "*"
+    # 获取用户实例列表
+    - selector: DeviceService.GetUserInstanceInfo
+      post: /api/v1/device/getUserInstanceInfo
+      body: "*"
+    # 获取镜像列表
+    - selector: DeviceService.GetImageList
+      post: /api/v1/device/getImageList
+      body: "*"
+    #实例续费列表
+    - selector: DeviceService.RenewalInstanceDetails
+      post: /api/v1/device/renewalInstanceDetails
+      body: "*"
+    - selector: DeviceService.SetInstanceName
+      post: /api/v1/device/setInstanceName
+      body: "*"
+#管理端
+    # 管理端_获取镜像列表
+    - selector: DeviceService.SelectImageList
+      post: /admin/v1/device/selectImageList
+      body: "*"
+    # 管理端_更新镜像
+    - selector: DeviceService.UpdateImage
+      post: /admin/v1/device/updateImage
+      body: "*"
+    # 管理端_添加镜像
+    - selector: DeviceService.AddImage
+      post: /admin/v1/device/addImage
+      body: "*"
+    # 管理端_删除镜像
+    - selector: DeviceService.DeleteImage
+      post: /admin/v1/device/deleteImage
+      body: "*"
+    # 管理端-查询BmxServer
+    - selector: DeviceService.QueryBmxServer
+      post: /admin/v1/device/queryBmxServer
+      body: "*"
+    # 管理端-查询设备
+    - selector: DeviceService.QueryDevice
+      post: /admin/v1/device/queryDevice
+      body: "*"
+    # 管理端-查询设备
+    - selector: DeviceService.QueryClientLabel
+      post: /admin/v1/device/queryClientLabel
+      body: "*"
+    # 管理端-更新BmxServer的磁盘id
+    - selector: DeviceService.UpdateBmxServerDiskId
+      post: /admin/v1/device/updateBmxServerDiskId
+      body: "*"
+    # 管理端-查询磁盘信息
+    - selector: DeviceService.QueryDiskInfo
+      post: /admin/v1/device/queryDiskInfo
+      body: "*"
+    # 管理端-添加磁盘信息
+    - selector: DeviceService.AddDiskInfo
+      post: /admin/v1/device/addDiskInfo
+      body: "*"
+    # 管理端-删除磁盘信息
+    - selector: DeviceService.DeleteDiskInfo
+      post: /admin/v1/device/deleteDiskInfo
+      body: "*"
+    # 管理端-更新磁盘信息
+    - selector: DeviceService.UpdateDiskInfo
+      post: /admin/v1/device/updateDiskInfo
+      body: "*"
+
+    # 管理端-实例开关机记录
+    - selector: DeviceService.InstancePowerOnOffRecord
+      post: /admin/v1/device/instancePowerOnOffRecord
+      body: "*"
+
+    # 管理端-批量更新BmxServer的磁盘id
+    - selector: DeviceService.BatchUpdateBmxServerDiskId
+      post: /admin/v1/device/batchUpdateBmxServerDiskId
+      body: "*"
+
+    # 管理端-查询磁盘对应的bmxServer列表
+    - selector: DeviceService.QueryBmxServerByDisk
+      post: /admin/v1/device/queryBmxServerByDisk
+      body: "*"
+
+    # 管理端-查询磁盘对应的bmxServer列表
+    - selector: DeviceService.QueryDiskHistoryBasedOn
+      post: /admin/v1/device/queryDiskHistoryBasedOn
+      body: "*"
+    # 管理端-查询磁盘对应的bmxServer列表
+    - selector: DeviceService.QueryPidExists
+      post: /admin/v1/device/queryPidExists
+      body: "*"
+    - selector: DeviceService.QueryInstancePage
+      post: /admin/v1/device/queryInstancePage
+      body: "*"
+    - selector: DeviceService.UpdateInstance
+      post: /admin/v1/device/updateInstance
+      body: "*"
+
+    - selector: DeviceService.AddBmxServer
+      post: /admin/v1/device/addBmxServer
+      body: "*"
+    #    设备开机
+    - selector: DeviceService.AdminStartInstance
+      post: /admin/v1/device/start
+      body: "*"
+    # 设备关机
+    - selector: DeviceService.AdminStopInstance
+      post: /admin/v1/device/stop
+      body: "*"
+    - selector: DeviceService.GetBmxServerIdList
+      get: /admin/v1/device/getBmxServerIdList
+    - selector: DeviceService.GetBmxChartData
+      get: /admin/v1/device/getBmxChartData
+    - selector: DeviceService.GetVisitsChartData
+      get: /admin/v1/device/getVisitsChartData

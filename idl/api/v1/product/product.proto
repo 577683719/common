@@ -1,0 +1,569 @@
+syntax="proto3";
+import "google/protobuf/timestamp.proto";
+
+
+option go_package = "./product";
+
+import "validate/validate.proto";
+//商品服务
+service ProductService{
+    //查询当前实例的价格
+    rpc QueryInstancesPrice(QueryInstancesPriceRequest) returns(QueryInstancesPriceResponse){}
+    rpc QueryAllRunningInstances(QueryAllRunningInstancesPriceRequest) returns(QueryAllRunningInstancesPriceResponse){}
+    //产品列表
+    rpc SelectProductList(SelectProductListRequest) returns(SelectProductListResponse){}
+    //产品详细
+    rpc SelectProductDetailed(SelectProductDetailedRequest) returns(SelectProductDetailedResponse){}
+    //查询区域列表
+    rpc QueryServerAreaList(QueryServerAreaListRequest) returns(QueryServerAreaListResponse){}
+    //查询gpu类型列表
+    rpc QueryGpuTypeList(QueryGpuTypeListRequest) returns(QueryGpuTypeListResponse){}
+
+    //查询内存列表
+    rpc QueryMemoryList(QueryMemoryListRequest)returns (QueryMemoryListResponse);
+
+    //查询显存列表
+    rpc QueryVideoMemoryList(QueryVideoMemoryListRequest)returns (QueryVideoMemoryListResponse);
+
+    //查询cup类型列表
+    rpc QueryCpuTypeList(QueryCpuTypeListRequest)returns (QueryCpuTypeListResponse);
+
+    //-------------------------------管理端-------------------------------
+    //管理端_查询gpu类型列表
+    rpc QueryGpuType(QueryGpuTypeRequest) returns(QueryGpuTypeResponse);
+    //管理端_查询cpu类型列表
+    rpc QueryCpuType(QueryCpuTypeRequest)returns (QueryCpuTypeResponse);
+    //管理端_添加gpu类型介绍
+    rpc AddGpuTypeIntroduce(AddGpuTypeIntroduceRequest)returns (AddGpuTypeIntroduceResponse);
+    //管理端_添加cpu类型介绍
+    rpc AddCpuTypeIntroduce(AddCpuTypeIntroduceRequest)returns (AddCpuTypeIntroduceResponse);
+
+    //管理端_获取推荐人产品列表
+    rpc GetRecommendedPersonProductList(GetRecommendedPersonProductListRequest)returns (GetRecommendedPersonProductListResponse);
+
+    //管理端—添加产品用途
+    rpc AddProductPurpose(ProductPurpose)returns (ProductDefaultResponse);
+
+    //管理端-修改产品用途
+    rpc UpdateProductPurpose(ProductPurpose)returns (ProductDefaultResponse);
+
+    //管理端-根据产品id获取产品用途
+    rpc GetProductPurpose(ProductPurpose)returns (GetProductPurposeResponse);
+
+    //管理端-获取产品详细
+    rpc GetProductDetailed(GetProductDetailedReq)returns (GetProductDetailedResp);
+
+    //管理端-修改产品信息
+    rpc UpdateProductDetailed(Product)returns (UpdateProductDetailedResp);
+}
+
+
+
+
+//修改产品信息
+message UpdateProductDetailedResp{
+    //响应码 200 代表成功
+    int32 code =1;
+    // 消息
+    string message =2;
+    //响应的数据
+    bool data= 3;
+}
+
+//获取产品详细请求对象
+message GetProductDetailedReq{
+    //产品id
+    string productId = 1;
+}
+
+//获取产品详细请求对象
+message GetProductDetailedResp{
+    //响应码 200 代表成功
+    int32 code =1;
+    // 消息
+    string message =2;
+    //响应的数据
+    Product data= 3;
+}
+
+
+message GetProductPurposeResponse{
+  //响应码 200 代表成功
+  int32 code =1;
+  // 消息
+  string message =2;
+  //响应的数据
+  repeated ProductPurpose data= 3;
+}
+//管理端_查询gpu类型列表请求对象
+message QueryGpuTypeRequest{
+    //页号
+    int64 pageNum = 1;
+    //页大小
+    int64 pageSize = 2;
+}
+//产品用途
+message ProductPurpose{
+  //产品id
+  string productId = 2;
+  //用途用途,分割就可以   用途ai推理:AI_REASONING  ai训练:AI_TRAIN GPU渲染:GPU_RENDERING  其他:OTHER',
+  string purpose =3;
+}
+//管理端_查询gpu类型列表响应对象
+message QueryGpuTypeResponse{
+    //响应码 200 代表成功
+    int32 code =1;
+    // 消息
+    string message =2;
+    //gpu类型
+    GpuTypeList data = 3;
+}
+message GpuType{
+    // 主键id
+    string id =1;
+    // gpu类型
+    string gpuType =2;
+    // 创建时间
+    string createTime =3;
+    // 更新时间
+    string updateTime =4;
+    // gpu介绍
+    string gpuIntroduce =5;
+}
+message GpuTypeList{
+    // 总的记录数
+    int64 total = 1;
+    // 每页显示的大小
+    int64 size = 2;
+    // 当前页
+    int64 current = 3;
+    //执行成功返回数据
+    repeated GpuType rows = 4;
+}
+//管理端_查询cpu类型列表请求对象
+message QueryCpuTypeRequest{
+    //页号
+    int64 pageNum = 1;
+    //页大小
+    int64 pageSize = 2;
+}
+
+//管理端_查询cpu类型列表响应对象
+message QueryCpuTypeResponse{
+    //响应码 200 代表成功
+    int32 code =1;
+    // 消息
+    string message =2;
+    //gpu类型
+    CpuTypeList data = 3;
+}
+
+message CpuTypeList{
+    // 总的记录数
+    int64 total = 1;
+    // 每页显示的大小
+    int64 size = 2;
+    // 当前页
+    int64 current = 3;
+    //执行成功返回数据
+    repeated CpuType rows = 4;
+}
+message CpuType{
+    // 主键id
+    string id =1;
+    // gpu类型
+    string cpuType =2;
+    // 创建时间
+    string createTime =3;
+    // 更新时间
+    string updateTime =4;
+    // gpu介绍
+    string cpuIntroduce =5;
+}
+//管理端_添加gpu类型介绍请求对象
+message AddGpuTypeIntroduceRequest{
+    // 主键id
+    string id =1;
+    // gpu类型
+    string gpuIntroduce =2;
+}
+//管理端_添加gpu类型介绍响应对象
+message AddGpuTypeIntroduceResponse{
+    //响应码 200 代表成功
+    int32 code =1;
+    // 消息
+    string message =2;
+}
+
+//管理端_添加cpu类型介绍请求对象
+message AddCpuTypeIntroduceRequest{
+    // 主键id
+    string id =1;
+    // cpu类型
+    string cpuIntroduce =2;
+}
+//管理端_添加cpu类型介绍响应对象
+message AddCpuTypeIntroduceResponse{
+    //响应码 200 代表成功
+    int32 code =1;
+    // 消息
+    string message =2;
+}
+
+//查询cup类型列表请求对象
+message QueryCpuTypeListRequest{}
+
+//查询cup类型列表响应对象
+message QueryCpuTypeListResponse{
+    //响应码 200 代表成功
+    int32 code =1;
+    // 消息
+    string message =2;
+    //cpu类型
+    repeated CpuType data = 3;
+}
+
+//查询内存列表请求对象
+message QueryMemoryListRequest{
+    //用户id
+    int64 userId =1;
+}
+
+//查询内存列表响应对象
+message QueryMemoryListResponse{
+    //响应码
+    int32 code = 1;
+    //响应消息
+    string message = 2;
+    //内存列表
+    repeated string data=3;
+}
+
+//查询显存列表请求对象
+message QueryVideoMemoryListRequest{
+}
+
+//查询显存列表响应对象
+message QueryVideoMemoryListResponse{
+    //响应码
+    int32 code = 1;
+    //响应消息
+    string message = 2;
+    //内存列表
+    repeated string data=3;
+}
+
+//获取账单产品列表
+message  GetRecommendedPersonProductListRequest{
+    //页号
+    int64 pageNum = 5;
+    //页大小
+    int64 pagesize = 6;
+    //用户id
+    int64 userId = 7;
+}
+message GetRecommendedPersonProductListResponse{
+    //响应码
+    int32 code = 1;
+    //响应消息
+    string message = 2;
+    //收支明细响应结构体
+    GetRecommendedPersonProductListPage data = 3;
+}
+
+
+//获取推荐人产品列表
+message GetRecommendedPersonProductListPage{
+    // 总的记录数
+    int64 total = 1;
+    // 每页显示的大小
+    int64 size = 2;
+    // 当前页
+    int64 current = 3;
+    // 推荐人产品列表
+    repeated RecommendedPersonProduct rows = 5;
+}
+
+
+//账单产品
+message RecommendedPersonProduct{
+    //产品名称
+    string productName = 1;
+    //产品id
+    string productId = 2;
+    //时长
+    int64 duration=3;
+    //总价格
+    string totalPrice = 4;
+}
+
+
+
+//查询gpu类型列表请求对象
+message QueryGpuTypeListRequest{}
+
+//查询gpu类型列表响应对象
+message QueryGpuTypeListResponse{
+    //响应码 200 代表成功
+    int32 code =1;
+    // 消息
+    string message =2;
+    //gpu类型
+    repeated GpuType data = 3;
+}
+
+
+//查询区域列表请求对象
+message QueryServerAreaListRequest{}
+
+//查询区域列表响应对象
+message QueryServerAreaListResponse{
+    //响应码 200 代表成功
+    int32 code =1;
+    // 消息
+    string message =2;
+    //产品区域
+    repeated string serverArea = 3;
+}
+//产品详细请求对象
+message SelectProductDetailedRequest{
+    //产品id
+    string productId = 1;
+
+    // 计费类型[DAY日 WEEK 周 MONTH 月 AMOUNT 按量]'
+    string billingType =2;
+}
+
+//产品详细响应对象
+message SelectProductDetailedResponse{
+    int32 code =1;
+    string message =2;
+    ProductListByBilling data =3;
+}
+
+message ProductEmpty{}
+//产品列表请求对象
+message SelectProductListRequest{
+    // 计费类型[DAY日 WEEK 周 MONTH 月 AMOUNT 按量]'
+    string billingType =1;
+    //页号
+    int64 pageNum =2;
+    //页大小
+    int64 pageSize =3;
+    //区域
+    string serverArea = 4;
+    //Gpu类型
+    string gpuType = 5;
+    //内存
+    string memory = 6;
+    //Cpu类信息
+    string cpuType= 7;
+    //产品用途 用途ai推理:AI_REASONING  ai训练:AI_TRAIN GPU渲染:GPU_RENDERING  其他:OTHER',
+    string productPurpose = 8;
+    //显存
+    string videoMemory = 9;
+    //产品id
+    string productId = 10;
+
+}
+//产品列表响应对象
+message SelectProductListResponse{
+    int32 code =1;
+    string message =2;
+    SelectProductListPageResponse data =3;
+}
+
+//风险响应对象
+message SelectProductListPageResponse {
+    // 总的记录数
+    int64 total = 1;
+    // 每页显示的大小
+    int64 size = 2;
+    // 当前页
+    int64 current = 3;
+    // 当前页内容
+    repeated  ProductListByBilling rows = 4;
+}
+//产品
+message Product{
+    //产品id
+    string productId = 1;
+    //GPU类型
+    string gpuType = 2;
+    //GPU数量
+    string gpuNum = 3;
+    //GPU内存
+    string gpuMem = 4;
+    //Cuda版本
+    string cudaVer = 5;
+    //CPU类型
+    string cpuType = 6;
+    //CPU数量
+    string cpuNum = 7;
+    //cpu内存
+    string cpuMem = 8;
+    //CPU频率
+    string cpuFreq = 9;
+    //系统磁盘大小
+    string sysDiskSize = 10;
+    //数据磁盘大小
+    string dataDiskSize = 11;
+    //配置价格
+    string configPrice = 12;
+    //存储价格
+    string storagePrice = 13;
+    //剩余产品个数
+    int32 leftNum = 14;
+    //产品总数
+    int32 totalNum = 15;
+    //serverId
+    string serverId = 16;
+    //计算能力
+    string computePower = 17;
+    //产品等级
+    int32 starLevel = 18;
+}
+
+//产品列表
+message ProductListByBilling{
+    //产品id
+    string productId = 1;
+    //GPU类型
+    string gpuType = 2;
+    //GPU数量
+    string gpuNum = 3;
+    //GPU内存
+    string gpuMem = 4;
+    //Cuda版本
+    string cudaVer = 5;
+    //CPU类型
+    string cpuType = 6;
+    //CPU数量
+    string cpuNum = 7;
+    //cpu内存
+    string cpuMem = 8;
+    //CPU频率
+    string cpuFreq = 9;
+    //系统磁盘大小
+    string sysDiskSize = 10;
+    //数据磁盘大小
+    string dataDiskSize = 11;
+    //配置价格
+    string configPrice = 12;
+    //存储价格
+    string storagePrice = 13;
+    //剩余产品个数
+    int32 leftNum = 14;
+    //产品总数
+    int32 totalNum = 15;
+    //serverId
+    string serverId = 16;
+    //计费类型
+    string billingType = 17;
+    //价格
+    string unitPrice = 18;
+    //activityName 活动名 暂时没有值
+    string activityName=19;
+    //activityPrice 活动价格 暂时没有值
+    string activityPrice=20;
+    // productDescribe 产品描述 暂时没有值
+    string productDescribe=21;
+    // gpuDrive  GPU驱动 暂时没有值
+    string gpuDrive=22;
+    //计算能力
+    string computePower = 23;
+    //产品等级
+    int32 starLevel = 24;
+
+}
+message ProductDefaultResponse{
+    int32 code =1;
+    string message =2;
+    bool data =3;
+}
+message QueryAllRunningInstancesPriceRequest{
+    //产品id
+    string productId = 1;
+
+    //
+
+}
+message QueryAllRunningInstancesPriceResponse{
+    // 用户实例ID
+    string instanceId = 1;
+    // 节点ID
+    string nodeId = 2;
+    // 产品ID
+    string productId = 3;
+    // 镜像名称
+    string imageName = 4;
+    // 实例运行状态
+    string instanceStatus = 5;
+    // 实例配置Yaml路径
+    string yamlPath = 6;
+    // 系统盘挂载路径
+    string sysdiskPath = 7;
+    // 数据盘挂载路径
+    string datadiskPath = 8;
+    // 系统盘大小
+    string sysdiskSize = 9;
+    // 数据盘大小
+    string datadiskSize = 10;
+    // 系统盘ID
+    string sysvolumeId = 11;
+    // 用户实例访问密码
+    string password = 12;
+    // FRP服务器
+    string frpServer = 13;
+    // FRP服务器的UUID
+    string frpUuid = 14;
+    // SSH访问实例的端口
+    string sshPort = 15;
+    // Jupter端口号
+    string jupyterPort = 16;
+    // 系统盘信息
+    string sysAttachment = 17;
+    // 数据盘ID
+    string datavolumeId = 18;
+    // 数据盘信息
+    string dataAttachment = 19;
+    // 用户实例访问令牌
+    string token = 20;
+    // 启动时间
+    google.protobuf.Timestamp startTime = 21;
+    // 停止时间
+    google.protobuf.Timestamp stopTime = 22;
+}
+
+
+
+
+
+//查询实例的价格 请求与访问对象
+message QueryInstancesPriceRequest{
+    //实例ids
+    repeated string instanceId=1;
+}
+
+message QueryInstancesPriceResponse{
+    //响应码 200 代表成功
+    int32 code =1;
+    // 消息
+    string message =2;
+    //返回的实例价格数据
+    repeated Response data =3;
+
+    //响应对象
+    message Response{
+        //实例id
+        string instanceId = 1;
+
+        //实例价格
+        string instancePrice=2;
+
+        //产品Id
+        string productId = 3;
+        //产品名称
+        string productName = 4;
+    }
+}

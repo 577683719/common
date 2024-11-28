@@ -1,0 +1,35 @@
+type: google.api.Service
+config_version: 3
+
+# Please refer google.api.Http in https://github.com/googleapis/googleapis/blob/master/google/api/http.proto file for details.
+http:
+  rules:
+#    订单
+    - selector: OrderService.OrderDetailed
+      post: /api/v1/order/orderDetailed
+      body: "*"
+    - selector: OrderService.OrderList
+      post: /api/v1/order/orderList
+      body: "*"
+    - selector: OrderService.CreateOrder
+      post: /api/v1/order/createOrder
+      body: "*"
+    - selector: OrderService.GetOrderToken
+      post: /api/v1/order/getOrderToken
+      body: "*"
+    - selector: OrderService.OrderRenewalLease
+      post: /api/v1/order/orderRenewalLease
+      body: "*"
+    #管理端_查询订单列表
+    - selector: OrderService.QueryOrderList
+      post: /admin/v1/order/queryOrderList
+      body: "*"
+    - selector: OrderService.UserSettlementApplication
+      post: /admin/v1/order/settlementApplication
+      body: "*"
+    - selector: OrderService.SettlementApplicationPage
+      post: /admin/v1/order/settlementApplicationPage
+      body: "*"
+    - selector: OrderService.UpdateSettlementApplication
+      post: /admin/v1/order/updateSettlementApplication
+      body: "*"

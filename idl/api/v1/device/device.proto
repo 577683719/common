@@ -1,0 +1,1313 @@
+syntax="proto3";
+
+
+option go_package = "./device";
+
+import "validate/validate.proto";
+//网关服务
+service DeviceService{
+
+
+  //-----------------------------------rpc接口------------------
+  //启动实例
+  rpc RpcStartInstance(StartInstanceRequest)returns (DeviceDefaultResponse);
+  //关闭实例
+  rpc RpcStopInstance(StopInstanceRequest)returns (StopInstanceResponse);
+  //释放实例
+  rpc RpcReleaseInstance(ReleaseInstanceRequest)returns (ReleaseInstanceResponse);
+  //-----------------------------APP----------------------
+  //启动实例
+    rpc StartInstance(StartInstanceRequest)returns (DeviceDefaultResponse);
+    //关闭实例
+    rpc StopInstance(StopInstanceRequest)returns (StopInstanceResponse);
+    //释放实例
+    rpc ReleaseInstance(ReleaseInstanceRequest)returns (ReleaseInstanceResponse);
+
+    //续费实例详细
+    rpc RenewalInstanceDetails(RenewalInstanceDetailsRequest)returns (RenewalInstanceDetailsResponse);
+
+    //获取用户实例列表
+    rpc SelectUserInstanceList(SelectUserInstanceListRequest)returns (SelectUserInstanceListResponse);
+
+    //获取容器实例信息
+    rpc GetUserInstanceInfo(GetUserInstanceInfoRequest)returns (GetUserInstanceInfoResponse);
+
+    //获取镜像列表
+    rpc GetImageList(GetImageListRequest)returns (GetImageListResponse);
+
+    //设置名称
+    rpc SetInstanceName(SetInstanceNameReq)returns (SetInstanceNameResp);
+
+    //______________________________管理端__________________________________
+
+    //管理端-获取镜像列表
+    rpc SelectImageList(SelectImageListRequest)returns (SelectImageListResponse);
+
+    //管理端-更新镜像
+    rpc UpdateImage(Image)returns (UpdateImageResponse);
+
+    //管理端-添加镜像
+    rpc AddImage(Image)returns (AddImageResponse);
+
+    //管理端-删除镜像
+    rpc DeleteImage(DeleteImageRequest)returns (DeleteImageResponse);
+
+    //管理端-查询BmxServer
+    rpc QueryBmxServer(QueryBmxServerRequest)returns (QueryBmxServerResponse);
+
+    //管理端-更新BmxServer的磁盘id
+    rpc UpdateBmxServerDiskId(UpdateBmxServerDiskIdRequest)returns (UpdateBmxServerDiskIdResponse);
+
+    //管理端-查询设备
+    rpc QueryDevice(QueryDeviceRequest)returns (QueryDeviceResponse);
+
+    //管理端-查询客户标签
+    rpc QueryClientLabel(QueryClientLabelRequest)returns (QueryClientLabelResponse);
+
+    //管理端-查询磁盘信息
+    rpc QueryDiskInfo(QueryDiskInfoRequest)returns (QueryDiskInfoResponse);
+
+    //管理端-添加磁盘信息
+    rpc AddDiskInfo(AddDiskInfoRequest)returns (AddDiskInfoResponse);
+
+    //管理端-删除磁盘信息
+    rpc DeleteDiskInfo(DeleteDiskInfoRequest)returns (DeleteDiskInfoResponse);
+
+    //管理端-更新磁盘信息
+    rpc UpdateDiskInfo(UpdateDiskInfoRequest)returns (UpdateDiskInfoResponse);
+
+    //管理端-实例开关机记录
+    rpc InstancePowerOnOffRecord(InstancePowerOnOffRecordRequest)returns (InstancePowerOnOffRecordResponse);
+
+    //管理端-批量更新BmxServer的磁盘id
+    rpc BatchUpdateBmxServerDiskId(BatchUpdateBmxServerDiskIdRequest)returns (BatchUpdateBmxServerDiskIdResponse);
+
+    //管理端-查询磁盘对应的bmxServer列表
+    rpc QueryBmxServerByDisk(QueryBmxServerByDiskRequest)returns (QueryBmxServerByDiskResponse);
+
+    //管理端-查询磁盘历史记录根据
+    rpc QueryDiskHistoryBasedOn(QueryDiskHistoryBasedOnRequest)returns (QueryDiskHistoryBasedOnResponse);
+
+    //管理端-查询pid是否存在
+    rpc QueryPidExists(QueryPidExistsReq)returns (QueryPidExistsResp);
+
+    //管理端-查看实例列表
+    rpc QueryInstancePage(Instance)returns (QueryInstancePageResp);
+
+    //管理端-更新实例
+    rpc UpdateInstance(Instance)returns (UpdateInstanceResp);
+
+    //管理端-添加bmx服务器
+    rpc AddBmxServer(BmxServer)returns (AddBmxServerResp);
+
+
+    //管理端-启动实例
+    rpc AdminStartInstance(StartInstanceRequest)returns (DeviceDefaultResponse);
+    //管理端-关闭实例
+    rpc AdminStopInstance(StopInstanceRequest)returns (StopInstanceResponse);
+    //管理端-释放实例
+    rpc AdminReleaseInstance(ReleaseInstanceRequest)returns (ReleaseInstanceResponse);
+
+    // 管理端-获取 BmxServer ID 列表
+    rpc GetBmxServerIdList(GetBmxServerIdListRequest) returns (GetBmxServerIdListResponse);
+    // 管理端-获取 BmxChart 数据
+    rpc GetBmxChartData(GetBmxChartDataRequest) returns (GetBmxChartDataResponse);
+    // 新增接口 - 获取访问图表数据
+    rpc GetVisitsChartData(GetVisitsChartDataRequest) returns (GetVisitsChartDataResponse);
+}
+
+message GetVisitsChartDataRequest {
+    string interval = 1;  // 时间间隔
+}
+
+message GetVisitsChartDataResponse {
+    int32 code = 1; // 200 代表正常
+    string message = 2; // 消息
+    VisitsChartData data = 3; // 执行成功返回数据
+}
+
+message VisitsChartData {
+    repeated int32 pvList = 1; // 使用 repeated 表示数组
+    repeated string pvDate = 2; // 使用 repeated 表示数组
+}
+
+
+// 获取 BmxServer ID 列表请求对象
+message GetBmxServerIdListRequest {
+}
+
+// 获取 BmxServer ID 列表响应对象
+message GetBmxServerIdListResponse {
+    // 200 代表正常
+    int32 code = 1;
+    // 消息
+    string message = 2;
+    // 执行成功返回数据
+    BmxServerIdList data = 3;
+}
+
+// BmxServer ID 列表
+message BmxServerIdList {
+    repeated string ids = 1; // 使用 repeated 关键字表示这是一个字符串数组
+}
+
+// 获取 BmxChart 数据请求对象
+message GetBmxChartDataRequest {
+    string serverId = 1; // 服务器ID
+    string interval = 2;  // 时间间隔
+}
+
+// 获取 BmxChart 数据响应对象
+message GetBmxChartDataResponse {
+    // 200 代表正常
+    int32 code = 1;
+    // 消息
+    string message = 2;
+    BmxChartData data = 3; // 执行成功返回数据
+
+}
+
+// BmxChart 数据
+message BmxChartData {
+    // 设备数量列表
+    repeated int32 deviceNumList = 1;
+    // 设备就绪数量列表
+    repeated int32 deviceReadyNumList = 2;
+    // 创建时间列表
+    repeated string createTimeList = 3;
+    repeated int32 totalDeviceNumList = 4;
+    repeated int32 totalDeviceReadyNumList = 5;
+}
+
+
+message SetInstanceNameResp{
+    //200代表正常
+    int32 code =1;
+    //消息
+    string message =2;
+}
+//设置实例名称
+message SetInstanceNameReq{
+    //实例名称
+    string instanceName = 1;
+    //实例id
+    string instanceId = 2;
+}
+
+message AddBmxServerResp{
+    //200代表正常
+    int32 code =1;
+    //消息
+    string message =2;
+    //新添加的服务器
+    BmxServer data = 3;
+}
+
+//查看实例列表响应对象
+message QueryInstancePageResp{
+    //200代表正常
+    int32 code =1;
+    //消息
+    string message =2;
+    //实例列表响应对象
+    InstancePageResp data = 3;
+}
+
+//更新实例响应对象
+message UpdateInstanceResp{
+    //200代表正常
+    int32 code =1;
+    //消息
+    string message =2;
+}
+
+
+//实例分页响应对象
+message InstancePageResp{
+    // 总的记录数
+    int64 total = 1;
+    // 每页显示的大小
+    int64 size = 2;
+    // 当前页
+    int64 current = 3;
+    //执行成功返回数据
+    repeated Instance rows =4;
+}
+
+//实例对象
+message Instance {
+
+    // 用户实例ID
+    string instanceId = 2;
+
+    // 节点ID
+    string nodeId = 3;
+
+    // 产品ID
+    string productId = 4;
+
+    // 镜像名称
+    string imageName = 5;
+
+    // 实例运行状态: On, Off, invalid, Re-Create, Fail
+    string instanceStatus = 6;
+
+    // 实例配置Yaml路径
+    string yamlPath = 7;
+
+    // 系统盘挂载路径
+    string sysdiskPath = 8;
+
+    // 数据盘挂载路径
+    string datadiskPath = 9;
+
+    // 系统盘大小
+    string sysdiskSize = 10;
+
+    // 数据盘大小
+    string datadiskSize = 11;
+
+    // 系统盘ID
+    string sysvolumeId = 12;
+
+    // 用户实例访问密码
+    string password = 13;
+
+    // FRP服务器
+    string frpServer = 14;
+
+    // FRP服务器的UUID
+    string frpUuid = 15;
+
+    // SSH访问实例的端口
+    string sshPort = 16;
+
+    // Jupyter端口号
+    string jupyterPort = 17;
+
+    // 系统盘信息
+    string sysAttachment = 18;
+
+    // 数据盘ID
+    string datavolumeId = 19;
+
+    // 数据盘信息
+    string dataAttachment = 20;
+
+    // 用户实例访问令牌
+    string token = 21;
+
+    // 启动时间
+    string startTime = 22;
+
+    // 停止时间
+    string stopTime = 23;
+
+    // 理由
+    string reason = 24;
+
+    // 自动释放时间
+    string autoReleaseTime = 25;
+
+    // 用户ID
+    int64 userId = 26;
+
+    // 使用时常
+    int64 useTime = 27;
+
+    // 产品名
+    string productName = 28;
+
+    //mac地址
+    string macAddr = 29;
+
+    //页号
+    int64 pageNum = 30;
+    //页大小
+    int64 pageSize = 31;
+}
+
+
+//查询pid是否存在请求对象
+message QueryPidExistsReq{
+    string pid = 1;
+}
+//查询pid是否存在响应对象
+message QueryPidExistsResp{
+    //200代表正常
+    int32 code =1;
+    //消息
+    string message =2;
+}
+//实例续费请求对象
+message RenewalInstanceDetailsRequest{
+    //实例id
+    string instanceId = 1;
+    //续费类型
+    string billingType = 2;
+    //到期时间
+    string expirationDate = 3;
+}
+
+//实例续费响应对象
+message RenewalInstanceDetailsResponse{
+    //200代表正常
+    int32 code =1;
+    //消息
+    string message =2;
+    //续费实例
+    RenewalInstanceDetails data = 3;
+}
+
+//实例续费详细
+message RenewalInstanceDetails{
+
+    //实例id
+    string instanceId = 1;
+
+    //规格详情
+    string specificationDetails = 2;
+
+    //到期时间
+    string expirationDate = 3;
+
+    //续费后到期时间
+    string expirationDateAfterRenewal = 4;
+
+    //金额
+    string amountMoney = 5;
+
+    //产品id
+    string productId = 6;
+
+}
+
+
+//查询磁盘历史记录响应对象
+message QueryDiskHistoryBasedOnResponse{
+    //200代表正常
+    int32 code =1;
+    //消息
+    string message =2;
+    repeated QueryDiskHistoryBasedOn data = 3;
+}
+//磁盘历史查询
+message QueryDiskHistoryBasedOn{
+    //名称
+    string name = 1;
+    //id
+    string id = 2;
+    //pid
+    string pid = 3;
+//    //磁盘记录
+//    repeated DiskTableRecords data = 4;
+    // 磁盘镜像ID
+    string diskID = 21;
+    // 磁盘类型
+    string type = 22;
+    // 镜像快照ID
+    string snapshotID = 23;
+    // 磁盘镜像版本
+    string version = 24;
+    // 机器启动类型
+    string machineType = 25;
+    //
+    string initiator = 6;
+
+    //修改内容
+    string updateContent = 7;
+
+    //上级id
+    string parentID = 8;
+
+    //磁盘说明
+    string description = 9;
+
+    //更新时间
+    string updateTime = 10;
+
+    //创建时间
+    string createTime = 11;
+    //记录主键
+    int64 diskTableRecordsId =12;
+    //磁盘子记录
+    repeated QueryDiskHistoryBasedOn children = 5;
+}
+message DiskTableRecords{
+    // 磁盘镜像ID
+    string diskID = 1;
+    // 磁盘类型
+    string type = 2;
+    // 镜像快照ID
+    string snapshotID = 3;
+    // 磁盘镜像版本
+    string version = 4;
+    // 机器启动类型
+    string machineType = 5;
+    //
+    string initiator = 6;
+
+    //修改内容
+    string updateContent = 7;
+
+    //上级id
+    string parentID = 8;
+
+    //磁盘说明
+    string description = 9;
+
+    //更新时间
+    string updateTime = 10;
+
+    //创建时间
+    string createTime = 11;
+    //记录主键
+    int64 id =12;
+
+}
+
+//查询磁盘历史记录请求对象
+message QueryDiskHistoryBasedOnRequest{
+
+    //磁盘镜像id
+    string diskId = 2;
+
+    //镜像快照id
+    string snapshotId = 3;
+
+
+}
+
+
+//批量更新BmxServer的磁盘id请求对象
+message  BatchUpdateBmxServerDiskIdRequest{
+    //磁盘id
+    string diskId = 1;
+    //bmxserverId列表
+    repeated string bmxServerId = 2;
+}
+
+//批量更新BmxServer的磁盘id响应对象
+message BatchUpdateBmxServerDiskIdResponse{
+    //200代表正常
+    int32 code =1;
+    //消息
+    string message =2;
+}
+
+//查询磁盘对应的bmxServer列表请求对象
+message QueryBmxServerByDiskRequest{
+    //磁盘id
+    string diskId = 1;
+}
+
+//查询磁盘对应的bmxServer列表响应对象
+message QueryBmxServerByDiskResponse{
+    //200代表正常
+    int32 code =1;
+    //消息
+    string message =2;
+    //bmxServer列表
+    repeated string bmxServerId = 3;
+}
+
+//实例开关机记录请求对象
+message InstancePowerOnOffRecordRequest{
+
+    // 主键
+    int64 id = 1;
+    // 用户实例ID
+    string instanceId = 2;
+
+    // 节点ID
+    string nodeId = 3;
+
+    // 产品ID
+    string productId = 4;
+
+    // 实例运行状态: On, Off, invalid, Re-Create, Fail
+    string instanceStatus = 6;
+
+    // 系统盘ID
+    string sysvolumeId = 12;
+
+    // 用户ID
+    int64 userId = 26;
+
+    // 使用时常
+    int64 useTime = 27;
+
+    // 产品名
+    string productName = 28;
+    //页号
+    int64 pageNum = 29;
+    //页大小
+    int64 pageSize = 30;
+}
+
+
+//实例开关机记录响应对象
+message InstancePowerOnOffRecordResponse{
+    //200代表正常
+    int32 code =1;
+    //消息
+    string message =2;
+    //实例开关机page对象
+    InstanceTableRecordPage data=3;
+}
+
+//实例记录page对象
+message InstanceTableRecordPage{
+    // 总的记录数
+    int64 total = 1;
+    // 每页显示的大小
+    int64 size = 2;
+    // 当前页
+    int64 current = 3;
+    //执行成功返回数据
+    repeated InstanceTableRecord rows =4;
+}
+
+//实例记录对象
+message InstanceTableRecord{
+    // 主键
+    int64 id = 1;
+
+    // 用户实例ID
+    string instanceId = 2;
+
+    // 节点ID
+    string nodeId = 3;
+
+    // 产品ID
+    string productId = 4;
+
+    // 镜像名称
+    string imageName = 5;
+
+    // 实例运行状态: On, Off, invalid, Re-Create, Fail
+    string instanceStatus = 6;
+
+    // 实例配置Yaml路径
+    string yamlPath = 7;
+
+    // 系统盘挂载路径
+    string sysdiskPath = 8;
+
+    // 数据盘挂载路径
+    string datadiskPath = 9;
+
+    // 系统盘大小
+    string sysdiskSize = 10;
+
+    // 数据盘大小
+    string datadiskSize = 11;
+
+    // 系统盘ID
+    string sysvolumeId = 12;
+
+    // 用户实例访问密码
+    string password = 13;
+
+    // FRP服务器
+    string frpServer = 14;
+
+    // FRP服务器的UUID
+    string frpUuid = 15;
+
+    // SSH访问实例的端口
+    string sshPort = 16;
+
+    // Jupyter端口号
+    string jupyterPort = 17;
+
+    // 系统盘信息
+    string sysAttachment = 18;
+
+    // 数据盘ID
+    string datavolumeId = 19;
+
+    // 数据盘信息
+    string dataAttachment = 20;
+
+    // 用户实例访问令牌
+    string token = 21;
+
+    // 启动时间
+    string startTime = 22;
+
+    // 停止时间
+    string stopTime = 23;
+
+    // 理由
+    string reason = 24;
+
+    // 自动释放时间
+    string autoReleaseTime = 25;
+
+    // 用户ID
+    int64 userId = 26;
+
+    // 使用时常
+    int64 useTime = 27;
+
+    // 产品名
+    string productName = 28;
+
+    //mac地址
+    string macAddr=29;
+}
+
+
+//更新BmxServer的磁盘id请求对象
+message UpdateBmxServerDiskIdRequest{
+    // Bmx服务器ID，主键
+    string serverID = 1 ;
+    // 系统母盘ID
+    string sysDiskID = 2 ;
+    // 数据母盘ID
+    string dataDiskID = 3 ;
+    //备注
+    string comment = 4;
+}
+
+//更新BmxServer的磁盘id响应对象
+message UpdateBmxServerDiskIdResponse{
+    //200代表正常
+    int32 code =1;
+    //消息
+    string message =2;
+}
+
+//添加磁盘信息请求对象
+message AddDiskInfoRequest{
+    //磁盘信息
+    DiskInfo data = 1;
+}
+
+//添加磁盘信息响应对象
+message AddDiskInfoResponse{
+    //200代表正常
+    int32 code =1;
+    //消息
+    string message =2;
+}
+
+//删除磁盘信息请求对象
+message DeleteDiskInfoRequest{
+    // 磁盘镜像ID
+    string diskID = 1;
+}
+
+//删除磁盘信息响应对象
+message DeleteDiskInfoResponse{
+    //200代表正常
+    int32 code =1;
+    //消息
+    string message =2;
+}
+
+//更新磁盘信息请求对象
+message UpdateDiskInfoRequest{
+    //磁盘信息
+    DiskInfo data = 1;
+}
+
+//更新磁盘信息响应对象
+message UpdateDiskInfoResponse{
+    //200代表正常
+    int32 code =1;
+    //消息
+    string message =2;
+}
+
+//查询磁盘信息请求对象
+message QueryDiskInfoRequest{
+    //页号
+    int64 pageNum = 1;
+    //页大小
+    int64 pageSize = 2;
+    //磁盘id
+    string diskId = 3;
+    //磁盘类型
+    string diskType = 4;
+}
+
+//查询磁盘信息响应对象
+message QueryDiskInfoResponse{
+    //200代表正常
+    int32 code =1;
+    //消息
+    string message =2;
+    //执行成功返回数据
+    QueryDiskInfo data = 3;
+}
+
+message QueryDiskInfo{
+    // 总的记录数
+    int64 total = 1;
+    // 每页显示的大小
+    int64 size = 2;
+    // 当前页
+    int64 current = 3;
+    //执行成功返回数据
+    repeated DiskInfo rows =4;
+}
+
+message DiskInfo{
+    // 磁盘镜像ID
+    string diskID = 1;
+    // 磁盘类型
+    string type = 2;
+    // 镜像快照ID
+    string snapshotID = 3;
+    // 磁盘镜像版本
+    string version = 4;
+    // 机器启动类型
+    string machineType = 5;
+    //
+    string initiator = 6;
+
+    // 修改内容 仅克隆: CLONE_ONLY  克隆后修改: CLONE_AND_MODIFY
+    string updateContent = 7;
+
+    //上级id
+    string parentID = 8;
+
+    //磁盘说明
+    string description = 9;
+
+    //更新时间
+    string updateTime = 10;
+
+    //创建时间
+    string createTime = 11;
+
+    //gpu驱动版本
+    string gpuDriveVer = 12;
+
+    //数据盘大小
+    string datadiskSize = 13;
+
+}
+
+//查询客户标签请求对象
+message QueryClientLabelRequest{
+    //页号
+    int64 pageNum = 1;
+    //页大小
+    int64 pageSize = 2;
+}
+
+//查询客户标签响应对象
+message QueryClientLabelResponse{
+    //200代表正常
+    int32 code =1;
+    //消息
+    string message =2;
+    //执行成功返回数据
+    QueryClientLabel data = 3;
+}
+
+message QueryClientLabel{
+    // 总的记录数
+    int64 total = 1;
+    // 每页显示的大小
+    int64 size = 2;
+    // 当前页
+    int64 current = 3;
+
+    //执行成功返回数据
+    repeated LabelPage rows =4;
+    //客户标签
+    string label = 5;
+}
+message LabelPage{
+    //客户标签
+    string label = 1;
+    //bmx服务器数量
+    int32 bmxServerNum = 2;
+    //设备数量
+    int32 deviceNum = 3;
+    //总价格
+    string totalPrice = 4;
+    //比例价格
+    string sharingRatio = 5;
+    //总收益
+    string profit = 6;
+    //已结算金额
+    string settledAmount = 7;
+    //未结算金额
+    string unsettledAmount = 8;
+    //结算申请数量
+    int64 settlementCount = 11;
+
+}
+
+//查询Device请求对象
+message QueryDeviceRequest{
+    //页号
+    int64 pageNum = 1;
+    //页大小
+    int64 pageSize = 2;
+    //筛选参数
+    Device data = 3;
+}
+
+//查询Device响应对象
+message QueryDeviceResponse{
+    //200代表正常
+    int32 code =1;
+    //消息
+    string message =2;
+    //执行成功返回数据
+    QueryDevice data = 3;
+}
+
+message QueryDevice{
+    // 总的记录数
+    int64 total = 1;
+    // 每页显示的大小
+    int64 size = 2;
+    // 当前页
+    int64 current = 3;
+    //执行成功返回数据
+    repeated DeviceResponse rows = 4;
+}
+
+message DeviceResponse{
+    // 设备ID，主键
+    string deviceID = 1;
+    // Bmx服务器ID
+    string serverID = 2;
+    // Mac地址
+    string macAddr = 3;
+    // GPU类型
+    string gpuType = 4;
+    // GPU个数
+    string gpuNum = 5;
+    // GPU内存
+    string gpuMem = 6;
+    // Cuda版本
+    string cudaVer = 7;
+    // CPU类型
+    string cpuType = 8;
+    // CPU频率
+    string cpuFreq = 9;
+    // CPU个数
+    string cpuNum = 10;
+    // CPU内存
+    string cpuMem = 11;
+    // 设备状态
+    string deviceStatus = 12;
+    // 产品ID
+    string productID = 13;
+    // 使用时间
+    string timeOfUsed = 14;
+    // 价格
+    string price = 15;
+}
+
+message Device{
+    // 设备ID，主键
+    string deviceID = 1;
+    // Bmx服务器ID
+    string serverID = 2;
+    // Mac地址
+    string macAddr = 3;
+    // GPU类型
+    string gpuType = 4;
+    // GPU个数
+    string gpuNum = 5;
+    // GPU内存
+    string gpuMem = 6;
+    // Cuda版本
+    string cudaVer = 7;
+    // CPU类型
+    string cpuType = 8;
+    // CPU频率
+    string cpuFreq = 9;
+    // CPU个数
+    string cpuNum = 10;
+    // CPU内存
+    string cpuMem = 11;
+    // 设备状态
+    string deviceStatus = 12;
+    // 产品ID
+    string productID = 13;
+    // 使用时间
+    string timeOfUsed = 14;
+    // 价格
+    string price = 15;
+    //客户标签
+    string label = 16;
+}
+//查询BmxServer请求对象
+message QueryBmxServerRequest{
+    //页号
+    int64 pageNum = 1;
+    //页大小
+    int64 pageSize = 2;
+    //筛选参数
+    BmxServer data = 3;
+}
+
+//查询BmxServer响应对象
+message QueryBmxServerResponse{
+    //200代表正常
+    int32 code =1;
+    //消息
+    string message =2;
+    //执行成功返回数据
+    QueryBmxServer data = 3;
+}
+
+message QueryBmxServer{
+    // 总的记录数
+    int64 total = 1;
+    // 每页显示的大小
+    int64 size = 2;
+    // 当前页
+    int64 current = 3;
+    //执行成功返回数据
+    repeated BmxServer rows = 4;
+}
+
+message BmxServer{
+    // Bmx服务器ID，主键
+    string serverID = 1 ;
+    // 服务器区域
+    string serverArea = 2 ;
+    // 设备总数
+    int32 deviceNum = 3 ;
+    // 可用设备数
+    int32 deviceReadyNum  = 4 ;
+    // Bmx服务器作为客户端的ID
+    string clientID = 5 ;
+    // 系统母盘ID
+    string sysdiskID = 6 ;
+    // 数据母盘ID
+    string datadiskID = 7 ;
+    //标签
+    string label = 8;
+    //价格
+    string price = 9;
+    //备注
+    string comment = 10;
+
+}
+
+//添加镜像请求对象
+message DeleteImageRequest{
+    //镜像ID
+    int32 imageID = 1;
+}
+
+//添加镜像响应对象
+message DeleteImageResponse{
+    //200代表正常
+    int32 code =1;
+    //消息
+    string message =2;
+}
+
+//添加镜像响应对象
+message AddImageResponse{
+    //200代表正常
+    int32 code =1;
+    //消息
+    string message =2;
+}
+
+//更新镜像响应对象
+message UpdateImageResponse{
+    //200代表正常
+    int32 code =1;
+    //消息
+    string message =2;
+}
+
+//获取镜像列表请求对象
+message SelectImageListRequest{
+    //页号
+    int64 pageNum = 1;
+    //页大小
+    int64 pageSize = 2;
+    //镜像id
+    string imageId = 3;
+    //镜像类型
+    string imageType = 4;
+}
+
+//获取镜像列表响应对象
+message SelectImageListResponse{
+    //200代表正常
+    int32 code =1;
+    //消息
+    string message =2;
+    //执行成功返回数据
+    SelectImageList data = 3;
+}
+
+message SelectImageList{
+    // 总的记录数
+    int64 total = 1;
+    // 每页显示的大小
+    int64 size = 2;
+    // 当前页
+    int64 current = 3;
+    //执行成功返回数据
+    repeated Image rows = 4;
+}
+//获取容器实例信息请求对象
+message GetUserInstanceInfoRequest{
+    //用户id
+    int64 userId = 1;
+}
+//获取容器实例信息响应对象
+message GetUserInstanceInfoResponse{
+    //200代表正常
+    int32 code =1;
+    //消息
+    string message =2;
+    //执行成功返回数据
+    InstanceInfoCountResponse data = 3;
+}
+message InstanceInfoCountResponse{
+    //容器实例
+    int32 instanceCount=1;
+    //运行中
+    int32 instanceRunCount=2;
+    //即将到期
+    int32 expirationComingCount=3;
+    //即将释放
+    int32 comingSoonCount=4;
+}
+
+//获取镜像列表请求对象
+message GetImageListRequest{
+    string type= 1;
+}
+
+//获取镜像列表响应对象
+message GetImageListResponse{
+    //200代表正常
+    int32 code =1;
+    //消息
+    string message =2;
+    //执行成功返回数据
+    repeated Image data = 3;
+}
+
+message Image{
+    //镜像ID
+    int32 imageID = 1;
+    //镜像类型
+    string imageType = 2;
+    //镜像名称
+    string imageName = 3;
+    //镜像描述
+    string description = 4;
+    //镜像路径
+    string imagePath = 5;
+    //镜像社区讨论页
+    string discussPage = 6;
+    //下载次数
+    string downloadTime = 7;
+    //作者
+    string author = 8;
+    //作者社区页
+    string authorPage =9;
+    //镜像大小
+    string imageSize = 10;
+    //框架
+    string framework = 11;
+    //CUDA版本
+    string cudaVersion = 12;
+    //新加字段
+    string cmdRun = 13;
+}
+//获取用户实例信息请求对象
+message SelectUserInstanceListRequest{
+    //用户id
+    int64 userId=1;
+    //页号
+    int64 pageNum = 2;
+    //页大小
+    int64 pageSize = 3;
+    //实例id
+    string instanceId=4;
+}
+
+//获取用户实例信息响应对象
+message SelectUserInstanceListResponse{
+    //响应码
+    int32 code = 1;
+    //消息
+    string message = 2;
+    //实例表响应对像
+    SelectUserInstancePageResponse data = 3;
+}
+//获取用户实例分页对象
+message SelectUserInstancePageResponse {
+    // 总的记录数
+    int64 total = 1;
+    // 每页显示的大小
+    int64 size = 2;
+    // 当前页
+    int64 current = 3;
+    // 查询数据列表，使用 bytes 类型表示任意数据
+    repeated InstanceTableResponse rows = 5;
+}
+
+//实例表响应对象
+message InstanceTableResponse{
+    // 用户实例ID
+    string instanceId = 1;
+
+    // 节点ID
+    string nodeId = 2;
+
+    // 产品ID
+    string productId = 3;
+
+    // 镜像名称
+    string imageName = 4;
+
+    // 实例运行状态: On, Off, invalid, Re-Create, Fail
+    string instanceStatus = 5;
+
+    // 实例配置Yaml路径
+    string yamlPath = 6;
+
+    // 系统盘挂载路径
+    string sysdiskPath = 7;
+
+    // 数据盘挂载路径
+    string datadiskPath = 8;
+
+    // 系统盘大小
+    string sysdiskSize = 9;
+
+    // 数据盘大小
+    string datadiskSize = 10;
+
+    // 系统盘ID
+    string sysvolumeId = 11;
+
+    // 用户实例访问密码
+    string password = 12;
+
+    // FRP服务器
+    string frpServer = 13;
+
+    // FRP服务器的UUID
+    string frpUuid = 14;
+
+    // SSH访问实例的端口
+    string sshPort = 15;
+
+    // Jupter端口号
+    string jupyterPort = 16;
+
+    // 系统盘信息
+    string sysAttachment = 17;
+
+    // 数据盘ID
+    string datavolumeId = 18;
+
+    // 数据盘信息
+    string dataAttachment = 19;
+
+    // 用户实例访问令牌
+    string token = 20;
+
+    // 启动时间
+    string startTime = 21;
+
+    // 停止时间
+    string stopTime = 22;
+
+    // 原因
+    string reason = 23;
+
+    // 自定释放时间
+    string autoReleaseTime = 24;
+
+    //用户id
+    string userId = 25;
+
+    //Jupyter的url
+    string jupyterUrl=26;
+
+    //规格型号
+    string specificationAndModel = 27;
+
+    //付费方式 [DAY日 WEEK 周 MONTH 月 AMOUNT 按量]
+    string paymentMethod = 28;
+
+    //进度条
+    int64 progressBar = 29;
+
+    //实例名称
+    string instanceName  = 30;
+
+}
+
+message DeviceDefaultResponse{
+    //200代表正常
+    int32 code =1;
+    //消息
+    string message =2;
+    //执行成功返回true
+    bool data =3;
+}
+
+//释放实例请求对象
+message ReleaseInstanceRequest{
+    //实例id
+    string instanceId = 1;
+    //用户id
+    int64 userId = 2;
+}
+//释放实例响应对象
+message ReleaseInstanceResponse{
+    //200代表正常
+    int32 code =1;
+    //消息
+    string message =2;
+    //执行成功返回true
+    bool data =3;
+}
+
+
+
+//启动实例请求对象
+message StartInstanceRequest{
+    //实例id
+    string instanceId = 1;
+    //用户id
+    int64 userId = 2;
+}
+
+//启动实例响应对象
+message StartInstanceResponse{
+
+}
+
+//关闭实例请求对象
+message StopInstanceRequest{
+    //实例id
+    string instanceId = 1;
+    //用户id
+    int64 userId = 2;
+}
+//关闭实例响应对象
+message StopInstanceResponse{
+    //200代表正常
+    int32 code =1;
+    string message =2;
+    //执行成功返回true
+    bool data =3;
+}
+

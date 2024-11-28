@@ -1,0 +1,34 @@
+type: google.api.Service
+config_version: 3
+
+# Please refer google.api.Http in https://github.com/googleapis/googleapis/blob/master/google/api/http.proto file for details.
+http:
+  rules:
+    - selector: MessageService.SendMessage
+      post: /api/v1/message/send
+      body: "*"
+    - selector: MessageService.SendSms
+      post: /api/v1/message/sendSms
+      body: "*"
+    - selector: MessageService.GetMessageList
+      post: /api/v1/message/getMessageList
+      body: "*"
+    - selector: MessageService.GetMessageCount
+      post: /api/v1/message/getMessageCount
+      body: "*"
+    - selector: MessageService.ReadMessage
+      post: /api/v1/message/readMessage
+      body: "*"
+    - selector: MessageService.DeleteUserMessage
+      post: /api/v1/message/deleteUserMessage
+      body: "*"
+
+    - selector: MessageService.SendMessage
+      post: /admin/v1/message/send
+      body: "*"
+
+#管理端
+    # 管理端_查询根据手机号短信验证码
+    - selector: MessageService.QuerySmsByPhone
+      post: /admin/v1/message/querySmsByPhone
+      body: "*"

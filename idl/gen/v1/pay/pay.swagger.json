@@ -1,0 +1,170 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "pay.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "PayService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {},
+  "definitions": {
+    "AlipayCashOutApplication": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "主键"
+        },
+        "cashOutAmount": {
+          "type": "string",
+          "title": "提现金额"
+        },
+        "applicationTime": {
+          "type": "string",
+          "title": "申请时间"
+        },
+        "approvalTime": {
+          "type": "string",
+          "title": "审批时间"
+        },
+        "approvalStatus": {
+          "type": "string",
+          "title": "审批状态 PENDING:待审批 APPROVED:已批准 REJECTED:已拒绝 IN_REVIEW:审核中 COMPLETED:已完成 UNDER_REVIEW:正在审查 CANCELLED:已取消"
+        },
+        "transferStatus": {
+          "type": "string",
+          "title": "转账状态  未转账:PENDING    已转账:SUCCESS  转账失败:FAIL"
+        },
+        "account": {
+          "type": "string",
+          "title": "账户"
+        },
+        "realName": {
+          "type": "string",
+          "title": "真实姓名"
+        },
+        "userID": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        },
+        "createTime": {
+          "type": "string",
+          "title": "创建时间"
+        },
+        "updateTime": {
+          "type": "string",
+          "title": "修改时间"
+        }
+      }
+    },
+    "GetPaymentQRCodeResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码 200 代表成功"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "$ref": "#/definitions/PaymentQRCode",
+          "title": "响应的数据"
+        }
+      },
+      "title": "获取支付二维码请求对象"
+    },
+    "NotifyResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "PaymentQRCode": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "title": "支付链接需要生成二维码"
+        },
+        "retryUuid": {
+          "type": "string",
+          "title": "重试uuid"
+        }
+      },
+      "title": "获取二维码返回的数据"
+    },
+    "QueryAlipayCashOutApplicationResponse": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "总的记录数"
+        },
+        "size": {
+          "type": "string",
+          "format": "int64",
+          "title": "每页显示的大小"
+        },
+        "current": {
+          "type": "string",
+          "format": "int64",
+          "title": "当前页"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/AlipayCashOutApplication"
+          },
+          "title": "当前页内容"
+        }
+      },
+      "title": "查询支付宝提现申请响应对象"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

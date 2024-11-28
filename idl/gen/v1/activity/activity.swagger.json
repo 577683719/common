@@ -1,0 +1,124 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "activity.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "ActivityService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/v1/bannar/getBannerList": {
+      "get": {
+        "summary": "获取Banner列表",
+        "operationId": "ActivityService_GetBannerList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetBannerListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "ActivityService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "BannerResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "banner的主键"
+        },
+        "bannerIndex": {
+          "type": "integer",
+          "format": "int32",
+          "title": "banner的位置"
+        },
+        "bannerName": {
+          "type": "string",
+          "title": "banner的名称"
+        },
+        "bannerInfo": {
+          "type": "string",
+          "title": "banner的备注"
+        },
+        "showPicture": {
+          "type": "string",
+          "title": "显示图片的URL"
+        }
+      },
+      "title": "banner对象"
+    },
+    "GetBannerListResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "响应码"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/BannerResp"
+          },
+          "title": "banner对象"
+        }
+      },
+      "title": "获取bannar列表响应对象"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,845 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "coupons.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "CouponsService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/admin/v1/vouchers/addVouchers": {
+      "post": {
+        "summary": "管理端-添加代金券",
+        "operationId": "CouponsService_AddVouchers",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DefaultResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VouchersRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CouponsService"
+        ]
+      }
+    },
+    "/admin/v1/vouchers/deleteVouchers": {
+      "post": {
+        "summary": "管理端-删除代金券",
+        "operationId": "CouponsService_DeleteVouchers",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DefaultResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VouchersRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CouponsService"
+        ]
+      }
+    },
+    "/admin/v1/vouchers/editVouchers": {
+      "post": {
+        "summary": "管理端-修改代金券",
+        "operationId": "CouponsService_EditVouchers",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DefaultResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VouchersRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CouponsService"
+        ]
+      }
+    },
+    "/admin/v1/vouchers/getVouchersList": {
+      "post": {
+        "summary": "管理端-获取代金券列表",
+        "operationId": "CouponsService_GetVouchersList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetVouchersListResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetVouchersListRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CouponsService"
+        ]
+      }
+    },
+    "/admin/v1/vouchers/vouchersAreIssued": {
+      "post": {
+        "summary": "管理端-发放代金券",
+        "operationId": "CouponsService_VouchersAreIssued",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DefaultResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VouchersAreIssuedReqeust"
+            }
+          }
+        ],
+        "tags": [
+          "CouponsService"
+        ]
+      }
+    },
+    "/api/v1/activity/homePage": {
+      "post": {
+        "summary": "首页",
+        "operationId": "CouponsService_HomePage",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/HomePageResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/HomePageRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CouponsService"
+        ]
+      }
+    },
+    "/api/v1/coupons/addCoupons": {
+      "post": {
+        "summary": "添加优惠券",
+        "operationId": "CouponsService_AddCoupons",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AddCouponsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CouponsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CouponsService"
+        ]
+      }
+    },
+    "/api/v1/coupons/addPromotionCoupons": {
+      "post": {
+        "summary": "领取优惠券",
+        "operationId": "CouponsService_AddPromotionCoupons",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AddPromotionCouponsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddPromotionCouponsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CouponsService"
+        ]
+      }
+    },
+    "/api/v1/coupons/deleteCoupons": {
+      "post": {
+        "summary": "删除优惠卷",
+        "operationId": "CouponsService_DeleteCoupons",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DeleteCouponsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CouponsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CouponsService"
+        ]
+      }
+    },
+    "/api/v1/coupons/editCoupons": {
+      "post": {
+        "summary": "修改优惠卷",
+        "operationId": "CouponsService_EditCoupons",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/EditCouponsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CouponsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CouponsService"
+        ]
+      }
+    },
+    "/api/v1/vouchers/pickUpVouchers": {
+      "post": {
+        "summary": "领取代金券",
+        "operationId": "CouponsService_PickUpVouchers",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PickUpVouchersResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PickUpVouchersRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CouponsService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "AddCouponsResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "boolean"
+        }
+      }
+    },
+    "AddPromotionCouponsRequest": {
+      "type": "object",
+      "properties": {
+        "couponsId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64"
+        },
+        "category": {
+          "type": "string"
+        }
+      },
+      "title": "领取优惠卷接口"
+    },
+    "AddPromotionCouponsResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "boolean"
+        }
+      }
+    },
+    "CouponsRequest": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": "string",
+          "format": "int64",
+          "title": "优惠券ID"
+        },
+        "category": {
+          "type": "string",
+          "title": "优惠卷类型[NEW_USER注册赠券，TASK任务卷，PROMOTION促销劵]"
+        },
+        "publish": {
+          "type": "string",
+          "title": "发布状态, PUBLISH发布，DRAFT草稿，OFFLINE下线"
+        },
+        "couponImg": {
+          "type": "string",
+          "title": "优惠券图片"
+        },
+        "couponTitle": {
+          "type": "string",
+          "title": "优惠券标题"
+        },
+        "price": {
+          "type": "string",
+          "title": "抵扣价格"
+        },
+        "userLimit": {
+          "type": "integer",
+          "format": "int32",
+          "title": "每人限制张数"
+        },
+        "startTime": {
+          "type": "string",
+          "title": "优惠券开始有效时间"
+        },
+        "endTime": {
+          "type": "string",
+          "title": "优惠券失效时间"
+        },
+        "publishCount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "优惠券总量"
+        },
+        "stock": {
+          "type": "integer",
+          "format": "int32",
+          "title": "库存"
+        },
+        "createTime": {
+          "type": "string",
+          "title": "创建时间"
+        },
+        "conditionPrice": {
+          "type": "string",
+          "title": "满多少才可以使用"
+        }
+      },
+      "title": "添加优惠卷请求与响应对象"
+    },
+    "DefaultResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "状态码"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "type": "boolean",
+          "title": "添加成功与失败"
+        }
+      },
+      "title": "defaultResponse"
+    },
+    "DeleteCouponsResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "boolean"
+        }
+      }
+    },
+    "EditCouponsResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "boolean"
+        }
+      }
+    },
+    "GetAVoucherByCategoryResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "rpcCode码 200代表调用成功 500代表调用失败"
+        },
+        "message": {
+          "type": "string",
+          "title": "rpc响应的消息"
+        },
+        "data": {
+          "$ref": "#/definitions/VouchersResponse",
+          "title": "代金券对象"
+        }
+      },
+      "title": "根据类型获取代金券响应对象"
+    },
+    "GetVouchersListRequest": {
+      "type": "object",
+      "properties": {
+        "pageNum": {
+          "type": "string",
+          "format": "int64",
+          "title": "页号"
+        },
+        "pageSize": {
+          "type": "string",
+          "format": "int64",
+          "title": "页大小"
+        }
+      },
+      "title": "获取代金券列表请求对象"
+    },
+    "GetVouchersListResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "rpcCode码 200代表调用成功 500代表调用失败"
+        },
+        "message": {
+          "type": "string",
+          "title": "rpc响应的消息"
+        },
+        "data": {
+          "$ref": "#/definitions/VouchersListPageResponse",
+          "title": "响应给用户的数据实体"
+        }
+      }
+    },
+    "HomePageRequest": {
+      "type": "object",
+      "title": "首页响应对象"
+    },
+    "HomePageResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "rpcCode码 200代表调用成功 500代表调用失败"
+        },
+        "message": {
+          "type": "string",
+          "title": "rpc响应的消息"
+        },
+        "data": {
+          "type": "boolean",
+          "title": "响应的数据"
+        }
+      },
+      "title": "首页响应对象"
+    },
+    "PickUpVouchersRequest": {
+      "type": "object",
+      "properties": {
+        "vouchersId": {
+          "type": "string",
+          "format": "int64",
+          "title": "代金券id"
+        },
+        "userId": {
+          "type": "string",
+          "format": "int64",
+          "title": "用户id"
+        }
+      },
+      "title": "领取代金券请求对象"
+    },
+    "PickUpVouchersResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "状态码"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "data": {
+          "type": "boolean",
+          "title": "添加成功与失败"
+        }
+      },
+      "title": "领取代金券响应对象"
+    },
+    "VouchersAreIssuedReqeust": {
+      "type": "object",
+      "properties": {
+        "userIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          },
+          "title": "用户id列表"
+        },
+        "vouchersId": {
+          "type": "string",
+          "format": "int64",
+          "title": "代金券id"
+        }
+      },
+      "title": "发放代金券请求对象"
+    },
+    "VouchersListPageResponse": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "总的记录数"
+        },
+        "size": {
+          "type": "string",
+          "format": "int64",
+          "title": "每页显示的大小"
+        },
+        "current": {
+          "type": "string",
+          "format": "int64",
+          "title": "当前页"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/VouchersResponse"
+          },
+          "title": "当前页内容"
+        }
+      },
+      "title": "用户列表响应对象"
+    },
+    "VouchersRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "代金券id"
+        },
+        "category": {
+          "type": "string",
+          "title": "代金券类型[NEW_USER注册赠券，TASK任务卷，PROMOTION促销劵]"
+        },
+        "publish": {
+          "type": "string",
+          "title": "发布状态, PUBLISH发布，DRAFT草稿，OFFLINE下线"
+        },
+        "vouchersImg": {
+          "type": "string",
+          "title": "代金券图片"
+        },
+        "vouchersTitle": {
+          "type": "string",
+          "title": "代金券标题"
+        },
+        "price": {
+          "type": "string",
+          "title": "抵扣价格，这里假设抵扣价格是字符串，如果是整数或其他类型需要调整"
+        },
+        "userLimit": {
+          "type": "integer",
+          "format": "int32",
+          "title": "每人限制张数"
+        },
+        "startTime": {
+          "type": "string",
+          "title": "代金券开始有效时间"
+        },
+        "endTime": {
+          "type": "string",
+          "title": "代金券失效时间"
+        },
+        "publishCount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "代金券总量"
+        },
+        "stock": {
+          "type": "integer",
+          "format": "int32",
+          "title": "库存"
+        },
+        "createTime": {
+          "type": "string",
+          "title": "创建时间"
+        }
+      },
+      "title": "代金券请求对象"
+    },
+    "VouchersResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64",
+          "title": "代金券id"
+        },
+        "category": {
+          "type": "string",
+          "title": "代金券类型[NEW_USER注册赠券，TASK任务卷，PROMOTION促销劵]"
+        },
+        "publish": {
+          "type": "string",
+          "title": "发布状态, PUBLISH发布，DRAFT草稿，OFFLINE下线"
+        },
+        "vouchersImg": {
+          "type": "string",
+          "title": "代金券图片"
+        },
+        "vouchersTitle": {
+          "type": "string",
+          "title": "代金券标题"
+        },
+        "price": {
+          "type": "string",
+          "title": "抵扣价格，这里假设抵扣价格是字符串，如果是整数或其他类型需要调整"
+        },
+        "userLimit": {
+          "type": "integer",
+          "format": "int32",
+          "title": "每人限制张数"
+        },
+        "startTime": {
+          "type": "string",
+          "title": "代金券开始有效时间"
+        },
+        "endTime": {
+          "type": "string",
+          "title": "代金券失效时间"
+        },
+        "publishCount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "代金券总量"
+        },
+        "stock": {
+          "type": "integer",
+          "format": "int32",
+          "title": "库存"
+        },
+        "createTime": {
+          "type": "string",
+          "title": "创建时间"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

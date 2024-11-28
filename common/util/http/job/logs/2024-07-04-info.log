@@ -1,0 +1,8 @@
+2024-07-04 16:54:55.669 [INFO] ecs_cloud/common/util/logger.initialize(logger.go:76) - 日志初始化成功
+2024-07-04 16:54:55.671 [INFO] ecs_cloud/common/util/http/job.InitJob(job.go:77) - 初始化:jobClinet成功
+2024-07-04 16:57:03.764 [INFO] ecs_cloud/common/util/logger.initialize(logger.go:76) - 日志初始化成功
+2024-07-04 16:57:03.764 [INFO] ecs_cloud/common/util/http/job.InitJob(job.go:77) - 初始化:jobClinet成功
+2024-07-04 17:03:15.856 [INFO] ecs_cloud/common/util/logger.initialize(logger.go:76) - 日志初始化成功
+2024-07-04 17:03:15.857 [INFO] ecs_cloud/common/util/http/job.InitJob(job.go:77) - 初始化:jobClinet成功
+2024-07-04 17:47:33.642 [INFO] ecs_cloud/common/util/logger.initialize(logger.go:76) - 日志初始化成功
+2024-07-04 17:47:33.643 [INFO] ecs_cloud/common/util/http/job.InitJob(job.go:77) - 初始化:jobClinet成功

@@ -1,0 +1,73 @@
+type: google.api.Service
+config_version: 3
+
+# Please refer google.api.Http in https://github.com/googleapis/googleapis/blob/master/google/api/http.proto file for details.
+http:
+  rules:
+
+#    - 产品
+    - selector:  ProductService.QueryInstancesPrice
+      post: /api/v1/product/queryInstancesPrice
+      body: "*"
+
+    - selector:  ProductService.SelectProductList
+      post: /api/v1/product/selectProductList
+      body: "*"
+
+    - selector:  ProductService.SelectProductDetailed
+      post: /api/v1/product/selectProductDetailed
+      body: "*"
+
+    - selector: ProductService.QueryServerAreaList
+      post: /api/v1/product/queryServerAreaList
+      body: "*"
+
+    - selector: ProductService.QueryGpuTypeList
+      post: /api/v1/product/queryGpuTypeList
+      body: "*"
+    - selector: ProductService.QueryMemoryList
+      post: /api/v1/product/queryMemoryList
+      body: "*"
+    - selector: ProductService.QueryVideoMemoryList
+      post: /api/v1/product/queryVideoMemoryList
+      body: "*"
+
+    - selector: ProductService.QueryCpuTypeList
+      post: /api/v1/product/queryCpuTypeList
+      body: "*"
+
+#管理端
+    - selector: ProductService.GetRecommendedPersonProductList
+      post: /admin/v1/product/getRecommendedPersonProductList
+      body: "*"
+
+    - selector: ProductService.QueryGpuType
+      post: /admin/v1/product/queryGpuType
+      body: "*"
+
+    - selector: ProductService.QueryCpuType
+      post: /admin/v1/product/queryCpuType
+      body: "*"
+
+    - selector: ProductService.AddGpuTypeIntroduce
+      post: /admin/v1/product/addGpuTypeIntroduce
+      body: "*"
+
+    - selector: ProductService.AddCpuTypeIntroduce
+      post: /admin/v1/product/addCpuTypeIntroduce
+      body: "*"
+    - selector: ProductService.AddProductPurpose
+      post: /admin/v1/product/addProductPurpose
+      body: "*"
+    - selector: ProductService.UpdateProductPurpose
+      post: /admin/v1/product/updateProductPurpose
+      body: "*"
+    - selector: ProductService.GetProductPurpose
+      post: /admin/v1/product/getProductPurpose
+      body: "*"
+    - selector: ProductService.GetProductDetailed
+      post: /admin/v1/product/getProductDetailed
+      body: "*"
+    - selector: ProductService.UpdateProductDetailed
+      post: /admin/v1/product/updateProductDetailed
+      body: "*"

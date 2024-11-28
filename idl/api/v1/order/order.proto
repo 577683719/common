@@ -1,0 +1,390 @@
+syntax="proto3";
+
+option go_package = "./order";
+
+import "validate/validate.proto";
+//订单服务
+service OrderService{
+
+
+
+  //订单列表
+  rpc OrderList(OrderListRequest) returns(OrderListResponse);
+  //订单详细
+  rpc OrderDetailed(OrderDetailedRequest) returns(OrderDetailResponse);
+  //创建订单
+  rpc CreateOrder(CreateOrderRequest) returns(CreateOrderResponse);
+  //获取订单提交token
+  rpc GetOrderToken(OrderEmptyRequest) returns(GetOrderTokenResponse);
+
+  //订单续费
+  rpc OrderRenewalLease(OrderRenewalLeaseRequest)returns (OrderDefaultResponse);
+
+  //管理端_查询订单列表
+  rpc QueryOrderList(QueryOrderListRequest)returns (QueryOrderListResponse);
+
+  //管理端-结算申请
+  rpc UserSettlementApplication(SettlementApplicationPB)returns (SettlementApplicationResp);
+  //管理端-结算申请分页对象
+  rpc SettlementApplicationPage(SettlementApplicationPB)returns (SettlementApplicationPageResp);
+  //管理端-更新申请单
+  rpc UpdateSettlementApplication(SettlementApplicationPB)returns (UpdateSettlementApplicationResp);
+}
+
+//更新申请单响应对象
+message UpdateSettlementApplicationResp{
+  //code码
+  int32 code = 1;
+  //响应消息
+  string message= 2;
+}
+//结算申请响应对象
+message SettlementApplicationPageResp{
+  //code码
+  int32 code = 1;
+  //响应消息
+  string message= 2;
+  SettlementApplicationPage data = 3;
+}
+//结算申请分页对象
+message SettlementApplicationPage{
+  // 总的记录数
+  int64 total = 1;
+  // 每页显示的大小
+  int64 size = 2;
+  // 当前页
+  int64 current = 3;
+  repeated SettlementApplicationPB rows = 4;
+}
+
+//结算申请响应对象
+message SettlementApplicationResp{
+  //code码
+  int32 code = 1;
+  //响应消息
+  string message= 2;
+}
+
+
+//结算申请请求对象
+message SettlementApplicationPB {
+  // 主键ID
+  int64 id = 1;
+
+  // 客户标签
+  string customerTag = 2;
+
+  // 银行账户
+  string bankAccount = 3;
+
+  // 开户行
+  string bankName = 4;
+
+  // 结算申请时间 (ISO 8601 格式)
+  string applicationTime = 5;
+
+  // 结算申请金额 (Decimal 表示为字符串)
+  string applicationAmount = 6;
+
+  // 结算金额 (Decimal 表示为字符串)
+  string settlementAmount = 7;
+
+
+  // 结算时间 (ISO 8601 格式)
+  string settlementTime = 9;
+
+  // 结算状态 (PENDING: 待处理, SETTLED: 已结算, REJECTED: 拒绝)
+  string settlementStatus = 10;
+
+  // 创建时间 (ISO 8601 格式)
+  string createTime = 11;
+
+  // 更新时间 (ISO 8601 格式)
+  string updateTime = 12;
+
+  // 删除标记 (false: 未删除, true: 已删除)
+  bool del = 13;
+
+  // 备注
+  string info = 14;
+
+  //页号
+  int64 pageNum = 15;
+  //页大小
+  int64 pageSize = 16;
+  //账号姓名
+  string accountName = 17;
+}
+
+//订单列表请求对象
+message QueryOrderListRequest{
+  //页号
+  int64 pageNum = 4;
+  //页大小
+  int64 pageSize = 5;
+  //交易时间从
+  string tradingHoursFrom = 2;
+  //交易时间到
+  string tradingHoursTo = 3;
+  // 订单编号
+  string code = 6;
+  // 用户id
+  int64 userId = 7;
+  // 订单支付状态
+  string payState = 8;
+  // 计费方式
+  string billingType = 9;
+  // 订单状态
+  string orderState = 10;
+}
+
+//订单列表响应对象
+message QueryOrderListResponse{
+  //code码
+  int32 code = 1;
+  //响应消息
+  string message= 2;
+  //订单体
+  QueryOrderList data=3;
+}
+
+//风险响应对象
+message QueryOrderList {
+  // 总的记录数
+  int64 total = 1;
+  // 每页显示的大小
+  int64 size = 2;
+  // 当前页
+  int64 current = 3;
+  // 查询数据列表，使用 bytes 类型表示任意数据
+  repeated Order rows = 4;
+}
+
+message OrderEmptyRequest{}
+//自定义订单默认响应对象
+message OrderDefaultResponse{
+  //响应码
+  int32 code = 1;
+  //响应消息
+  string message = 2;
+  //成功为true
+  bool data = 3;
+}
+//订单续续租请求对象
+message OrderRenewalLeaseRequest{
+
+  //用户id
+  int64 userId = 2;
+
+  //产品id
+  string productId = 3;
+
+  //续费类型
+  string productBillingType = 4;
+
+  //实例id
+  string instanceId = 5;
+  //总金额
+  string totalAmount = 6;
+  //实际支付金额
+  string realPayAmount = 7;
+
+}
+
+
+
+//订单详细请求对象
+message OrderDetailedRequest{
+  //订单id
+  int64 orderId = 1;
+  //用户id
+  int64 userId = 2;
+  //订单编号
+  string orderCode = 3;
+}
+//订单详细响应对象
+message OrderDetailResponse{
+  //响应码
+  int32 code = 1;
+  //响应消息
+  string message = 2;
+  //响应数据 提交token
+  OrderDetail data = 3;
+}
+message OrderDetail{
+  Order order = 2;
+  OrderItem orderItem = 1;
+}
+// 订单项
+message OrderItem {
+  // 订单项id
+  int64 id = 1;
+  // 订单号
+  string orderCode = 2;
+  // 订单id
+  int64 orderId = 3;
+  // 商品id
+  string productId = 4;
+  // 商品名称
+  string productName = 5;
+  // 商品图片
+  string productImg = 6;
+  // 购买数量
+  int32 buyNum = 7;
+  // 修改时间
+  string updateTime = 8;
+  // 创建时间
+  string createTime = 9;
+  // 商品总价格
+  string totalAmount = 10;
+  // 商品单价
+  string amount = 11;
+  // CPU类型
+  string cpuType = 12;
+  // CPU数量
+  string cpuNum = 13;
+  // GPU内存
+  string gpuMem = 14;
+  // 数据磁盘大小
+  string datadiskSize = 15;
+  //实例id
+  string instanceId=16;
+}
+
+//获取提交订单token响应对象
+message GetOrderTokenResponse{
+  //响应码
+  int32 code = 1;
+  //响应消息
+  string message = 2;
+  //响应数据 提交token
+  string data = 3;
+
+}
+
+//创建订单请求对象
+message CreateOrderRequest {
+  //产品id
+  string productId = 2;
+  //用户id
+  int64 userId = 3;
+  //支付类型
+  string payType = 4;
+  //总价格
+  string totalAmount = 5;
+  //实际支付价格
+  string realPayAmount = 6;
+  //计费类型
+  string billingType = 7;
+  //防重令牌
+  string token = 8;
+  //镜像 这个值不需要传
+  string image = 9;
+  //地区
+  string bmxSevArea = 10;
+  //镜像id
+  int32 imageId = 11;
+}
+
+//创建订单响应对象
+message CreateOrderResponse{
+
+  //code码 200 请求成功
+  int64 code = 1;
+
+  //消息
+  string message = 2;
+
+  //实例id
+  string data = 3;
+
+}
+
+//订单列表请求对象
+message OrderListRequest{
+  //实例id
+  string instanceId=1;
+  //交易时间从
+  string tradingHoursFrom = 2;
+  //交易时间到
+  string tradingHoursTo = 3;
+  //页号
+  int64 pageNum = 4;
+  //页大小
+  int64 pageSize = 5;
+  //用户id
+  int64 userId = 6;
+  //订单号
+  string orderCode= 7;
+}
+//订单列表响应对象
+message OrderListResponse{
+  //code码
+  int32 code = 1;
+  //响应消息
+  string message= 2;
+  //订单体
+  PageResponse data=3;
+}
+
+message OrderOrderItem {
+  // 需要排序的字段
+  string column  =1;
+  // 正序倒序
+  bool asc  =2;
+}
+//风险响应对象
+message PageResponse {
+  // 总的记录数
+  int64 total = 1;
+  // 每页显示的大小
+  int64 size = 2;
+  // 当前页
+  int64 current = 3;
+  // 排序条件，repeated 表示重复字段，类似于 slice
+  repeated OrderOrderItem orders = 4;
+  // 查询数据列表，使用 bytes 类型表示任意数据
+  repeated Order rows = 5;
+}
+//订单model
+message Order{
+  // 订单编号
+  string code = 1;
+  // 用户id
+  int64 userId = 2;
+  // 订单支付状态
+  string payState = 3;
+  // 计费方式
+  string billingType = 4;
+  // 订单状态
+  string orderState = 5;
+  // 订单生成时间
+  string createTime = 6;
+  // 更新时间
+  string updateTime = 7;
+  // 订单总金额
+  string totalAmount = 8;
+  // 订单实际支付价格
+  string payAmount = 9;
+  // 支付类型
+  string payType = 10;
+  // 昵称
+  string nickname = 11;
+  // 头像
+  string headImg = 12;
+  // 订单类型
+  string orderType = 13;
+  // 邮箱地址
+  string emailAddress = 14;
+  // 备注
+  string info = 15;
+  // 删除状态 0代表未删除，1代表已删除
+  bool del = 16;
+  // 实例id
+  string instanceId = 17;
+  //主键
+  int64 id = 18;
+
+}
+
+
